@@ -12,13 +12,13 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        //flag para utilizar Material 3(paleta de cores dinâmicas)
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 66, 13, 190)),
-        brightness: Brightness.light,
-        primaryColor: const Color.fromARGB(255, 104, 44, 243),
-      ),
+          //flag para utilizar Material 3(paleta de cores dinâmicas)
+          // useMaterial3: true,
+          // colorScheme: ColorScheme.fromSeed(
+          //     seedColor: const Color.fromARGB(255, 66, 13, 190)),
+          // brightness: Brightness.light,
+          // primaryColor: const Color.fromARGB(255, 104, 44, 243),
+          ),
       initialRoute: 'home',
     ).modular();
   }
