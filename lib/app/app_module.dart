@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-
-import 'modules/auth/presentation/onboarding/splash_page.dart';
-import 'modules/journey/presentation/home/home_page.dart';
+import 'package:ods10/app/modules/auth/auth_module.dart';
+import 'package:ods10/app/modules/journey/presentation/journey_module.dart';
 
 class AppModule extends Module {
   @override
@@ -11,11 +10,14 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => const SplashPage()),
-        ChildRoute(
-          '/home',
+        ModuleRoute(
+          '/',
+          module: AuthModule(),
+        ),
+        ModuleRoute(
+          '/journey-module',
           transition: TransitionType.fadeIn,
-          child: (context, args) => const HomePage(),
+          module: JourneyModule(),
         ),
       ];
 }
