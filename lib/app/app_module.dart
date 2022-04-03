@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'modules/presentation/home/home_page.dart';
-import 'modules/presentation/splashscreen/splash_page.dart';
+import 'modules/auth/presentation/onboarding/splash_page.dart';
+import 'modules/journey/presentation/home/home_page.dart';
 
 class AppModule extends Module {
   @override
