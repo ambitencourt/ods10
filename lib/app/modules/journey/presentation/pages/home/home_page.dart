@@ -79,23 +79,19 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 10),
                 _buildCentralImage(context),
                 const SizedBox(height: 40),
-                Row(
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Lista de ',
-                            style: getRegularStyle(fontSize: 18),
-                          ),
-                          TextSpan(
-                            text: 'Documentos',
-                            style: getBoldStyle(fontSize: 18),
-                          ),
-                        ],
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Lista de ',
+                        style: getRegularStyle(fontSize: 18),
                       ),
-                    ),
-                  ],
+                      TextSpan(
+                        text: 'Documentos',
+                        style: getBoldStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
