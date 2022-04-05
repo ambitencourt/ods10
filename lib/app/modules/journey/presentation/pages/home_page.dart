@@ -116,7 +116,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget _buildCentralImage(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(AppImages.rectangle1816),
+        Image.asset(
+          AppImages.rectangle1816,
+          width: double.maxFinite,
+          fit: BoxFit.cover,
+        ),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
