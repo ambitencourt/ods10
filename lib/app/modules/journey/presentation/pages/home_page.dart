@@ -53,10 +53,20 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         style: getRegularStyle(fontSize: 34),
                       ),
                       TextSpan(
-                        text: 'retificar prenome e gênero',
+                        text: 'retificar',
                         style: getBoldStyle(fontSize: 34),
                       ),
                     ],
+                  ),
+                ),
+                Container(
+                  color: AppColors.secondary,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Text(
+                      'prenome e gênero',
+                      style: getBoldStyle(fontSize: 34, color: AppColors.white),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
