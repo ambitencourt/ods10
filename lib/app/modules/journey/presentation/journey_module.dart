@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/home/journey_home.dart';
 
 import 'pages/home/home_page.dart';
 
@@ -14,6 +15,11 @@ class JourneyModule extends Module {
           '/home',
           transition: TransitionType.fadeIn,
           child: (context, args) => const HomePage(),
+        ),
+        ChildRoute(
+          '/journey-home',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => const JourneyHome(),
         ),
       ];
 }
