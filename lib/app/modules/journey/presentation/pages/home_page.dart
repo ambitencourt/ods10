@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
-import 'package:ods10/app/components/bottom_navibar.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -101,7 +100,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavibar(),
     );
   }
 

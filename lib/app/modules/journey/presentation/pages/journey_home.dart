@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ods10/app/modules/journey/presentation/pages/home/widgets/text_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/text_widget.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'widgets/sizedbox_widget.dart';
 
 class JourneyHome extends StatefulWidget {
   const JourneyHome({Key? key}) : super(key: key);

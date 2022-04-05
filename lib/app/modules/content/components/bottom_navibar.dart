@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ods10/app/controllers/bottom_navibar_controller.dart';
+import 'package:ods10/app/modules/content/controllers/bottom_navibar_controller.dart';
 
-class BottomNavibar extends StatelessWidget {
+class BottomNavibar extends StatefulWidget {
   const BottomNavibar({Key? key}) : super(key: key);
 
   @override
+  State<BottomNavibar> createState() => _BottomNavibarState();
+}
+
+class _BottomNavibarState
+    extends ModularState<BottomNavibar, BottomNavibarController> {
+  @override
   Widget build(BuildContext context) {
-    final navibarController = Modular.get<BottomNavibarController>();
     return Observer(builder: (_) {
       return BottomNavigationBar(
-        currentIndex: navibarController.store.index,
+        currentIndex: controller.store.index,
         onTap: (index) {
-          navibarController.store.setIndex(index);
+          controller.navigateToModule(index);
         },
         items: const [
           BottomNavigationBarItem(label: 'Início', icon: Icon(Icons.home)),

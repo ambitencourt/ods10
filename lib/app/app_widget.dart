@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: getLightTheme(),
-      initialRoute: '/journey-module/home',
+      initialRoute: '/',
     ).modular();
   }
 }
