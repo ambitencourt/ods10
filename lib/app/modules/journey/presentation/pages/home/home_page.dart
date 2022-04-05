@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
+import 'package:ods10/app/components/bottom_navibar.dart';
+import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,7 +13,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +101,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNavibar(),
     );
   }
 
