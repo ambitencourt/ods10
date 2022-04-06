@@ -66,13 +66,13 @@ class _HomePageState extends ModularState<HomePage, HomeController>
             },
             body: TabBarView(
               controller: controller.tabController,
-              children: <Widget>[
-                Container(),
-                Container(),
-                Container(),
-                Container(),
-                Container(),
-                Container(),
+              children: const <Widget>[
+                Text('Tab 1'),
+                Text('Tab 2'),
+                Text('Tab 2'),
+                Text('Tab 2'),
+                Text('Tab 2'),
+                Text('Tab 2'),
               ],
             ),
           ),
