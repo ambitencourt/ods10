@@ -16,7 +16,7 @@ TextStyle getBoldStyle({
 
 TextStyle getRegularStyle({
   double fontSize = 16,
-  FontWeight fontWeight = FontWeight.w300,
+  FontWeight fontWeight = FontWeight.w400,
   Color color = AppColors.primary,
 }) {
   return GoogleFonts.ubuntu(

@@ -14,7 +14,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Future.delayed(
       const Duration(
-        seconds: 1,
+        seconds: 2,
       ),
       () {
         Modular.to.navigate('/content/journey');
@@ -24,6 +24,10 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Center(
+      child: Text(
+        'ODS SPLASH',
+      ),
+    );
   }
 }

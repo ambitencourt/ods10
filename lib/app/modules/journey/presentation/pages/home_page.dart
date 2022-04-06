@@ -4,6 +4,7 @@ import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,104 +13,161 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeController> {
+class _HomePageState extends ModularState<HomePage, HomeController>
+    with SingleTickerProviderStateMixin {
+  List<Widget> tabMenu = [
+    const Tab(
+      text: "Todos",
+    ),
+    const Tab(
+      text: "Pendentes",
+    ),
+    const Tab(
+      text: "Solicitados",
+    ),
+    const Tab(
+      text: "Recebidos",
+    ),
+    const Tab(
+      text: "gratuitos",
+    ),
+    const Tab(
+      text: "Pagos",
+    ),
+  ];
+
+  @override
+  void initState() {
+    controller.tabController =
+        TabController(length: tabMenu.length, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 60),
-                Row(
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Olá, ',
-                            style: getRegularStyle(fontSize: 20),
-                          ),
-                          TextSpan(
-                            text: 'Clarice Linspector',
-                            style: getBoldStyle(fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+          child: NestedScrollView(
+            headerSliverBuilder: (context, value) {
+              return [
+                SliverToBoxAdapter(
+                  child: _buildTopInfo(context),
                 ),
-                const SizedBox(height: 10),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Entenda como ',
-                        style: getRegularStyle(fontSize: 34),
-                      ),
-                      TextSpan(
-                        text: 'retificar',
-                        style: getBoldStyle(fontSize: 34),
-                      ),
-                    ],
+                SliverToBoxAdapter(
+                  child: PersonalTabs(
+                    tabMenu: tabMenu,
+                    onTabSelect: (index) {},
+                    tabController: controller.tabController,
                   ),
                 ),
-                Container(
-                  color: AppColors.secondary,
-                  child: Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Text(
-                      'prenome e gênero',
-                      style: getBoldStyle(fontSize: 34, color: AppColors.white),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 30),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'O ',
-                        style: getRegularStyle(fontSize: 18),
-                      ),
-                      TextSpan(
-                        text: 'passo a passo ',
-                        style: getBoldStyle(fontSize: 18),
-                      ),
-                      TextSpan(
-                        text: 'da retificação',
-                        style: getRegularStyle(fontSize: 18),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 10),
-                _buildCentralImage(context),
-                const SizedBox(height: 40),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Lista de ',
-                        style: getRegularStyle(fontSize: 18),
-                      ),
-                      TextSpan(
-                        text: 'Documentos',
-                        style: getBoldStyle(fontSize: 18),
-                      ),
-                    ],
-                  ),
-                ),
+              ];
+            },
+            body: TabBarView(
+              controller: controller.tabController,
+              children: <Widget>[
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTopInfo(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 60),
+        Row(
+          children: [
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Olá, ',
+                    style: getRegularStyle(fontSize: 20),
+                  ),
+                  TextSpan(
+                    text: 'Clarice Linspector',
+                    style: getBoldStyle(fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Entenda como ',
+                style: getRegularStyle(fontSize: 32),
+              ),
+              TextSpan(
+                text: 'retificar',
+                style: getBoldStyle(fontSize: 32),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          color: AppColors.secondary,
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              'prenome e gênero',
+              style: getBoldStyle(fontSize: 32, color: AppColors.white),
+            ),
+          ),
+        ),
+        const SizedBox(height: 30),
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'O ',
+                style: getRegularStyle(fontSize: 18),
+              ),
+              TextSpan(
+                text: 'passo a passo ',
+                style: getBoldStyle(fontSize: 18),
+              ),
+              TextSpan(
+                text: 'da retificação',
+                style: getRegularStyle(fontSize: 18),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        _buildCentralImage(context),
+        const SizedBox(height: 40),
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Lista de ',
+                style: getRegularStyle(fontSize: 18),
+              ),
+              TextSpan(
+                text: 'Documentos',
+                style: getBoldStyle(fontSize: 18),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
