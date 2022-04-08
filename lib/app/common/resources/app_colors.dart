@@ -9,7 +9,9 @@ class AppColors {
   static const Color received = Color(0xff1C7A2F);
   static const Color paid = Color(0xffBD4815);
   static const Color background = Color(0xffFBFBFB);
+  static const Color ligthGrey = Color(0xffCFCAE4);
   static const Color white = Color(0xffFFFFFF);
+  static const Color black = Color(0xff000000);
   static const Color whiteOpacity = Color(0xffBDBDBD);
 }
 

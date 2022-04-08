@@ -10,6 +10,6 @@ ThemeData getLightTheme() {
       secondary: AppColors.secondary,
     ),
     scaffoldBackgroundColor: AppColors.background,
-    iconTheme: const IconThemeData(color: AppColors.primary),
+    iconTheme: const IconThemeData(color: AppColors.white),
   );
 }

@@ -1,5 +1,6 @@
-import 'package:ods10/app/stores/bottom_navibar_store.dart';
+import 'package:flutter/material.dart';
 
 class HomeController {
+  late TabController tabController;
   HomeController();
 }
