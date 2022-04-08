@@ -7,6 +7,8 @@ class TextWidget extends StatelessWidget {
   final FontWeight fontWeight;
   final double? height;
   final TextAlign? align;
+  final FontStyle? fontStyle;
+
   const TextWidget({
     Key? key,
     required this.data,
@@ -15,6 +17,7 @@ class TextWidget extends StatelessWidget {
     required this.fontWeight,
     this.height,
     this.align,
+    this.fontStyle,
   }) : super(key: key);
 
   @override
@@ -27,6 +30,7 @@ class TextWidget extends StatelessWidget {
         color: color,
         fontWeight: fontWeight,
         height: height,
+        fontStyle: fontStyle,
       ),
     );
   }

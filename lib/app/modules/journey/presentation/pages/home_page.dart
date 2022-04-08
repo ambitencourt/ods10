@@ -327,43 +327,46 @@ class _HomePageState extends ModularState<HomePage, HomeController>
   }
 
   Widget _buildCentralImage(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          AppImages.rectangle1816,
-          width: double.maxFinite,
-          fit: BoxFit.cover,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16),
-              Text(
-                'Acompanhe sua documentação',
-                style: getBoldStyle(
-                  color: AppColors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'Organize seus documentos e acompanhe o processo para a alteração do prenome e gênero com a ordem recomendada pelos nossos especialistas.',
-                style: getBoldStyle(
-                  fontSize: 12,
-                  color: AppColors.white.withOpacity(0.7),
-                ),
-              ),
-              const SizedBox(height: 10),
-              LinearProgressIndicator(
-                value: 0.5,
-                backgroundColor: AppColors.white.withOpacity(0.4),
-                color: AppColors.secondary,
-              ),
-            ],
+    return InkWell(
+      onTap: () => Modular.to.navigate('/content/journey/islands-page'),
+      child: Stack(
+        children: [
+          Image.asset(
+            AppImages.rectangle1816,
+            width: double.maxFinite,
+            fit: BoxFit.cover,
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16),
+                Text(
+                  'Acompanhe sua documentação',
+                  style: getBoldStyle(
+                    color: AppColors.white,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Organize seus documentos e acompanhe o processo para a alteração do prenome e gênero com a ordem recomendada pelos nossos especialistas.',
+                  style: getBoldStyle(
+                    fontSize: 12,
+                    color: AppColors.white.withOpacity(0.7),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                LinearProgressIndicator(
+                  value: 0.5,
+                  backgroundColor: AppColors.white.withOpacity(0.4),
+                  color: AppColors.secondary,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
