@@ -8,8 +8,8 @@ import 'package:ods10/app/stores/bottom_navibar_store.dart';
 class ContentModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.factory((i) => BottomNavibarStore()),
-        Bind.factory((i) => BottomNavibarController(i())),
+        // Bind.factory((i) => BottomNavibarStore()),
+        // Bind.factory((i) => BottomNavibarController(i())),
       ];
 
   @override

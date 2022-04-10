@@ -328,7 +328,9 @@ class _HomePageState extends ModularState<HomePage, HomeController>
 
   Widget _buildCentralImage(BuildContext context) {
     return InkWell(
-      onTap: () => Modular.to.navigate('/content/journey/islands-page'),
+      onTap: () {
+        Modular.to.pushNamed('/content/journey/islands-page');
+      },
       child: Stack(
         children: [
           Image.asset(
