@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/text_widget.dart';
 import '../widgets/image_sliders_widget.dart';
 import 'islands_bottomsheet_page.dart';
 
@@ -38,9 +39,9 @@ class _IslandsPageState extends State<IslandsPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(35, 20, 36, 5),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
                             borderRadius: BorderRadius.circular(220),
@@ -124,21 +125,24 @@ class _IslandsPageState extends State<IslandsPage> {
                   alignment: const Alignment(0, -0.35),
                   children: [
                     //Aqui foi utilizado o Package carousel_slider, podendo fazer manualmente no futuro
-                    CarouselSlider(
-                      items: imageSliders,
-                      options: CarouselOptions(
-                        enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                        enlargeCenterPage: true,
-                        enableInfiniteScroll: false,
-                        viewportFraction: 1,
-                        aspectRatio: 96 / 65,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            current = index;
-                          });
-                        },
+                    Hero(
+                      tag: 'hero-island-page',
+                      child: CarouselSlider(
+                        items: imageSliders,
+                        options: CarouselOptions(
+                          enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                          enlargeCenterPage: true,
+                          enableInfiniteScroll: false,
+                          viewportFraction: 1,
+                          aspectRatio: 96 / 65,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              current = index;
+                            });
+                          },
+                        ),
+                        carouselController: _controller,
                       ),
-                      carouselController: _controller,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -218,6 +222,71 @@ class _IslandsPageState extends State<IslandsPage> {
                               _controller.nextPage();
                             }),
                       ],
+                    ),
+                    Align(
+                      alignment: const Alignment(0, 0),
+                      child: Visibility(
+                        visible: false,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(38),
+                            ),
+                          ),
+                          height: 62,
+                          width: 187,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 60,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color(0xFFD03363),
+                                    width: 3,
+                                  ),
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.play_arrow,
+                                  size: 30,
+                                  color: Color(0xFFD03363),
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Entrar na ilha',
+                                    style: GoogleFonts.mulish(
+                                      textStyle: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'João Nery',
+                                    style: GoogleFonts.dmSerifDisplay(
+                                      textStyle: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

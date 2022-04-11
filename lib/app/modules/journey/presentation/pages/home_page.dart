@@ -333,10 +333,13 @@ class _HomePageState extends ModularState<HomePage, HomeController>
       },
       child: Stack(
         children: [
-          Image.asset(
-            AppImages.rectangle1816,
-            width: double.maxFinite,
-            fit: BoxFit.cover,
+          Hero(
+            tag: 'hero-island-page',
+            child: Image.asset(
+              AppImages.rectangle1816,
+              width: double.maxFinite,
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16),
