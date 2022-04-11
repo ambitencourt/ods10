@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import '../widgets/image_sliders_widget.dart';
-import '../widgets/islands_bottomsheet_widget.dart';
 import 'islands_bottomsheet_page.dart';
 
 class IslandsPage extends StatefulWidget {
@@ -27,6 +26,8 @@ class _IslandsPageState extends State<IslandsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context).size;
+    DraggableScrollableController? dragController;
     return Scaffold(
       body: Stack(
         children: [
@@ -120,8 +121,9 @@ class _IslandsPageState extends State<IslandsPage> {
                   ),
                 ),
                 Stack(
-                  alignment: AlignmentDirectional.center,
+                  alignment: const Alignment(0, -0.35),
                   children: [
+                    //Aqui foi utilizado o Package carousel_slider, podendo fazer manualmente no futuro
                     CarouselSlider(
                       items: imageSliders,
                       options: CarouselOptions(
@@ -143,37 +145,75 @@ class _IslandsPageState extends State<IslandsPage> {
                       children: [
                         InkWell(
                           borderRadius: BorderRadius.circular(220),
-                          child: Container(
-                            width: 41,
-                            height: 41,
-                            decoration: const BoxDecoration(
-                                color: Color(0xFF256380),
-                                shape: BoxShape.circle),
-                            child: const Icon(
-                              Icons.arrow_back,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                          ),
+                          child: current == 0
+                              ? Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromARGB(20, 255, 255, 255),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_back,
+                                    size: 24,
+                                    color: Colors.black,
+                                  ),
+                                )
+                              : Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 2,
+                                    ),
+                                    color: const Color(0xFF256380),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_back,
+                                    size: 24,
+                                    color: Colors.white,
+                                  ),
+                                ),
                           onTap: () => _controller.previousPage(),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * .05,
+                          width: mediaQuery.width * .5,
                         ),
                         InkWell(
                             borderRadius: BorderRadius.circular(220),
-                            child: Container(
-                              width: 41,
-                              height: 41,
-                              decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
-                                  shape: BoxShape.circle),
-                              child: const Icon(
-                                Icons.arrow_forward,
-                                size: 16,
-                                color: Colors.white,
-                              ),
-                            ),
+                            child: current == 4
+                                ? Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromARGB(20, 255, 255, 255),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.arrow_forward,
+                                      size: 24,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                : Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                      color: const Color(0xFF256380),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.arrow_forward,
+                                      size: 24,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                             onTap: () {
                               _controller.nextPage();
                             }),
@@ -217,7 +257,7 @@ class _IslandsPageState extends State<IslandsPage> {
                       //   max: 30.0,
                       // ),
                       // Text('${_progressValue.round()}'),
-                      customSizedBox2(context),
+                      customSizedBox1(context),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: LinearProgressIndicator(
@@ -259,32 +299,83 @@ class _IslandsPageState extends State<IslandsPage> {
               ],
             ),
           ),
-          // maxWidth: MediaQuery.of(context).size.width * 1,
-          //   maxHeight: MediaQuery.of(context).size.height * .2,
-          DraggableScrollableSheet(
-            minChildSize: 0.1,
-            maxChildSize: 0.65,
-            initialChildSize: 0.1,
-            builder: (context, scrollController) {
-              return SingleChildScrollView(
-                controller: scrollController,
-                child: const Card(
-                  elevation: 15,
-                  shadowColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
+        ],
+      ),
+      bottomSheet: SizedBox(
+        height: 70,
+        child: InkWell(
+          onTap: () => openModal(context),
+          child: Card(
+            elevation: 15,
+            shadowColor: Colors.black,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(32),
+                topRight: Radius.circular(32),
+              ),
+            ),
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Lista de ilhas',
+                  style: GoogleFonts.mulish(
+                    textStyle: const TextStyle(
+                      fontSize: 20,
+                      color: Color(0xFF256380),
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  color: Colors.white,
-                  child: IslandsBottomSheet(),
                 ),
-              );
-            },
+                const Icon(
+                  Icons.expand_less,
+                  color: Color(0xFF256380),
+                  size: 24,
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
 }
+
+//old
+
+// InkWell(
+//   child: DraggableScrollableSheet(
+//     // controller:dragController.an(
+//     //   0.1,
+//     //   // duration: const Duration(milliseconds: 200),
+//     //   // curve: Curves.easeInOut,
+//     // ),
+
+//     minChildSize: 0.1,
+//     maxChildSize: 0.65,
+//     initialChildSize: 0.1,
+//     builder: (context, scrollController) {
+//       return SingleChildScrollView(
+//         controller: scrollController,
+//         child: const Card(
+//           elevation: 15,
+//           shadowColor: Colors.black,
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.only(
+//               topLeft: Radius.circular(32),
+//               topRight: Radius.circular(32),
+//             ),
+//           ),
+//           color: Colors.white,
+//           child: IslandsBottomSheet(),
+//         ),
+//       );
+//     },
+//   ),
+//   onTap: () {
+//     // setState(() {
+//     //   expand = !expand;
+//     // });
+//   },
+// ),
