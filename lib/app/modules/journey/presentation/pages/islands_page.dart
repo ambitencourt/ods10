@@ -1,11 +1,10 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 import '../widgets/image_sliders_widget.dart';
-import '../widgets/islands_bottomsheet_widget.dart';
 import 'islands_bottomsheet_page.dart';
 
 class IslandsPage extends StatefulWidget {

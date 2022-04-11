@@ -4,10 +4,11 @@ import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
-import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
+
+import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -214,11 +215,11 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                 //     ),
                 //   ],
                 // ),
-                Text('Tab 2'),
-                Text('Tab 2'),
-                Text('Tab 2'),
-                Text('Tab 2'),
-                Text('Tab 2'),
+                const Text('Tab 2'),
+                const Text('Tab 2'),
+                const Text('Tab 2'),
+                const Text('Tab 2'),
+                const Text('Tab 2'),
               ],
             ),
           ),
@@ -329,7 +330,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
   Widget _buildCentralImage(BuildContext context) {
     return InkWell(
       onTap: () {
-        Modular.to.pushNamed('/content/journey/islands-page');
+        Modular.to.pushNamed('/content/journey');
       },
       child: Stack(
         children: [
