@@ -3,6 +3,7 @@ import 'package:ods10/app/modules/auth/auth_module.dart';
 import 'package:ods10/app/modules/content/content_module.dart';
 
 import 'modules/home/home_module.dart';
+import 'modules/journey/journey_module.dart';
 
 class AppModule extends Module {
   @override
@@ -14,9 +15,14 @@ class AppModule extends Module {
           '/',
           module: AuthModule(),
         ),
+        // ModuleRoute(
+        //   '/home',
+        //   module: HomeModule(),
+        // ),
         ModuleRoute(
-          '/home',
-          module: HomeModule(),
+          '/journey',
+          transition: TransitionType.fadeIn,
+          module: JourneyModule(),
         ),
         ModuleRoute(
           '/content',
