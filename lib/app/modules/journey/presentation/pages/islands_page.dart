@@ -26,7 +26,7 @@ class _IslandsPageState extends State<IslandsPage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    DraggableScrollableController? dragController;
+    // DraggableScrollableController? dragController;
     return Scaffold(
       body: Stack(
         children: [
