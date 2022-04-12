@@ -16,10 +16,10 @@ class BottomNavibarController {
     store.setIndex(index);
     switch (index) {
       case 0:
-        Modular.to.navigate('/content/journey');
+        Modular.to.navigate('/journey');
         break;
       case 1:
-        Modular.to.navigate('/content/profile');
+        Modular.to.navigate('/profile');
         break;
       default:
     }

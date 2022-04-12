@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ods10/app/modules/content/controllers/bottom_navibar_controller.dart';
+import 'package:ods10/app/common/controllers/bottom_navibar_controller.dart';
 import 'package:ods10/app/modules/content/presentation/pages/content_page.dart';
 import 'package:ods10/app/modules/journey/journey_module.dart';
 import 'package:ods10/app/modules/profile/profile_module.dart';
