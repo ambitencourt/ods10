@@ -32,11 +32,6 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
                   ),
                 ),
               ),
-              const Icon(
-                Icons.expand_more,
-                color: Color(0xFF256380),
-                size: 24,
-              ),
             ],
           ),
           onTap: () => Navigator.of(context).pop(),

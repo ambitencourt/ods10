@@ -15,10 +15,10 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Future.delayed(
       const Duration(
-        seconds: 2,
+        seconds: 1,
       ),
       () {
-        Modular.to.navigate('/content/journey');
+        Modular.to.navigate('/home');
       },
     );
   }

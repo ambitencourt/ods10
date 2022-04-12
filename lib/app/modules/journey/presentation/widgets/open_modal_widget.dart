@@ -9,7 +9,7 @@ void openModal(context) {
     constraints: BoxConstraints(
       maxHeight: mediaQuery.height * .65,
     ),
-    elevation: 8,
+    elevation: 15,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32),
@@ -17,7 +17,32 @@ void openModal(context) {
       ),
     ),
     context: context,
-    builder: (context) =>
-        const SingleChildScrollView(child: IslandsBottomSheet()),
+    builder: (context) => SingleChildScrollView(
+        child: Stack(
+      alignment: const Alignment(0, -1.2),
+      children: [
+        Align(
+          alignment: const Alignment(0.8, 0),
+          child: Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              color: const Color(0xFF256380),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.expand_more,
+              size: 24,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        const IslandsBottomSheet(),
+      ],
+    )),
   );
 }
