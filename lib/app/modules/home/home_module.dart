@@ -5,9 +5,9 @@ import '../journey/presentation/pages/home_page.dart';
 
 class HomeModule extends Module {
   @override
-  List<Bind> get binds => [
-        Bind.factory((i) => HomeController()),
-      ];
+  // List<Bind> get binds => [
+  //       Bind.factory((i) => HomeController()),
+  //     ];
 
   @override
   List<ModularRoute> get routes => [
