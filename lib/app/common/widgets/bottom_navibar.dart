@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ods10/app/modules/content/controllers/bottom_navibar_controller.dart';
+import 'package:ods10/app/common/controllers/bottom_navibar_controller.dart';
 
 class BottomNavibar extends StatefulWidget {
   const BottomNavibar({Key? key}) : super(key: key);
