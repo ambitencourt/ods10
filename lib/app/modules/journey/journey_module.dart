@@ -1,7 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands_page.dart';
 
-import '../../home/presentation/home/home_controller.dart';
+import 'presentation/controllers/home_controller.dart';
 
 class JourneyModule extends Module {
   @override
@@ -13,6 +14,11 @@ class JourneyModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(
           '/',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => const HomePage(),
+        ),
+        ChildRoute(
+          '/islands',
           transition: TransitionType.fadeIn,
           child: (context, args) => const IslandsPage(),
         ),
