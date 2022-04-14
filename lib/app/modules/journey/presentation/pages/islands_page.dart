@@ -26,7 +26,7 @@ class _IslandsPageState extends State<IslandsPage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    // DraggableScrollableController? dragController;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -126,7 +126,7 @@ class _IslandsPageState extends State<IslandsPage> {
                     Hero(
                       tag: 'hero-island-page',
                       child: CarouselSlider(
-                        items: imageSliders,
+                        items: imageSlidersIsland,
                         options: CarouselOptions(
                           enlargeStrategy: CenterPageEnlargeStrategy.scale,
                           enlargeCenterPage: true,
@@ -291,7 +291,7 @@ class _IslandsPageState extends State<IslandsPage> {
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: imgList.asMap().entries.map((entry) {
+                    children: imgListIsland.asMap().entries.map((entry) {
                       return GestureDetector(
                         onTap: () => _controller.animateToPage(entry.key),
                         child: Container(
