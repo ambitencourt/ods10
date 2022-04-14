@@ -138,106 +138,110 @@ class _HomePageState extends ModularState<HomePage, HomeController>
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return Scaffold(
-        body: controller.store.loading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: NestedScrollView(
-                    headerSliverBuilder: (context, value) {
-                      return [
-                        SliverToBoxAdapter(
-                          child: _buildTopInfo(context),
-                        ),
-                        // SliverToBoxAdapter(
-                        //   child: PersonalTabs(
-                        //     tabMenu: tabMenu,
-                        //     onTabSelect: (index) {},
-                        //     tabController: controller.tabController,
-                        //   ),
-                        // ),
-                        SliverAppBar(
-                          pinned: true,
-                          backgroundColor: AppColors.background,
-                          collapsedHeight: 91,
-                          elevation: 0,
-                          centerTitle: false,
-                          flexibleSpace: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 20),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: 'Lista de ',
-                                      style: getRegularStyle(fontSize: 18),
-                                    ),
-                                    TextSpan(
-                                      text: 'Documentos',
-                                      style: getBoldStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              PersonalTabs(
-                                tabMenu: tabMenu,
-                                onTabSelect: (index) {},
-                                tabController: controller.tabController,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ];
-                    },
-                    body: TabBarView(
-                      controller: controller.tabController,
-                      children: <Widget>[
-                        Observer(builder: (_) {
-                          return ListView(
-                            children: [
-                              ...controller.store.docs
-                                  .map((e) => DocumentItemWidget(item: e)),
-                            ],
-                          );
-                        }),
-                        // CustomScrollView(
-                        //   slivers: [
-                        //     SliverList(
-                        //       delegate: SliverChildBuilderDelegate(
-                        //         (BuildContext context, int index) {
-                        //           // This builder is called for each child.
-                        //           // In this example, we just number each list item.
-                        //           return ListTile(
-                        //             title: Text('Item $index'),
-                        //           );
-                        //         },
-                        //       ),
-                        //     ),
-                        //     Column(
-                        //       children: [
-                        //         ...docs.map((e) => DocumentItemWidget(item: e)),
-                        //       ],
-                        //     ),
-                        //   ],
-                        // ),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                      ],
+    return Observer(
+      builder: (_) {
+        return Scaffold(
+          body:
+              // controller.store.loading
+              //     ? const Center(
+              //         child: CircularProgressIndicator(),
+              //       )
+              //     :
+              SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: NestedScrollView(
+                headerSliverBuilder: (context, value) {
+                  return [
+                    SliverToBoxAdapter(
+                      child: _buildTopInfo(context),
                     ),
-                  ),
+                    // SliverToBoxAdapter(
+                    //   child: PersonalTabs(
+                    //     tabMenu: tabMenu,
+                    //     onTabSelect: (index) {},
+                    //     tabController: controller.tabController,
+                    //   ),
+                    // ),
+                    SliverAppBar(
+                      pinned: true,
+                      backgroundColor: AppColors.background,
+                      collapsedHeight: 91,
+                      elevation: 0,
+                      centerTitle: false,
+                      flexibleSpace: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Lista de ',
+                                  style: getRegularStyle(fontSize: 18),
+                                ),
+                                TextSpan(
+                                  text: 'Documentos',
+                                  style: getBoldStyle(fontSize: 18),
+                                ),
+                              ],
+                            ),
+                          ),
+                          PersonalTabs(
+                            tabMenu: tabMenu,
+                            onTabSelect: (index) {},
+                            tabController: controller.tabController,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ];
+                },
+                body: TabBarView(
+                  controller: controller.tabController,
+                  children: <Widget>[
+                    Observer(builder: (_) {
+                      return ListView(
+                        children: [
+                          ...controller.store.docs
+                              .map((e) => DocumentItemWidget(item: e)),
+                        ],
+                      );
+                    }),
+                    // CustomScrollView(
+                    //   slivers: [
+                    //     SliverList(
+                    //       delegate: SliverChildBuilderDelegate(
+                    //         (BuildContext context, int index) {
+                    //           // This builder is called for each child.
+                    //           // In this example, we just number each list item.
+                    //           return ListTile(
+                    //             title: Text('Item $index'),
+                    //           );
+                    //         },
+                    //       ),
+                    //     ),
+                    //     Column(
+                    //       children: [
+                    //         ...docs.map((e) => DocumentItemWidget(item: e)),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
+                    Text('Tab 2'),
+                    Text('Tab 2'),
+                    Text('Tab 2'),
+                    Text('Tab 2'),
+                    Text('Tab 2'),
+                  ],
                 ),
               ),
-        bottomNavigationBar: const BottomNavibar(),
-      );
-    });
+            ),
+          ),
+          bottomNavigationBar: const BottomNavibar(),
+        );
+      },
+    );
   }
 
   Widget _buildTopInfo(BuildContext context) {
@@ -251,7 +255,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
           alignment: Alignment.centerRight,
           child: CircularButtom(
             child: const Icon(
-              Icons.quiz,
+              Icons.description_outlined,
             ),
             onPress: () {},
           ),

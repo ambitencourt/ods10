@@ -67,7 +67,7 @@ class _IslandsPageState extends State<IslandsPage> {
                                   color: Color(0xFF256380),
                                   shape: BoxShape.circle),
                               child: const Icon(
-                                Icons.help_outline,
+                                Icons.description_outlined,
                                 size: 24,
                                 color: Colors.white,
                               ),
