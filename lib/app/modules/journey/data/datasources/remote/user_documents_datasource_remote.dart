@@ -14,7 +14,7 @@ class UserDocumentsDataSourceRemote implements UserDocumentsDataSource {
   @override
   Future<List<DocumentEntity>> getUserDocuments(String id) async {
     List<DocumentEntity> docs = [];
-    final response = await api.get('user/$id/documents');
+    final response = await api.get('users/$id/documents');
 
     response.data.forEach((element) {
       UserDocumentsModel doc = UserDocumentsModel.fromJson(element);
