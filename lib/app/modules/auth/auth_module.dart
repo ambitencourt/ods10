@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ods10/app/modules/auth/presentation/onboarding/splash_page.dart';
+import 'package:ods10/app/modules/auth/presentation/pages/splash_page.dart';
 
 class AuthModule extends Module {
   @override
