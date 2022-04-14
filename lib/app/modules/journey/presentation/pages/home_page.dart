@@ -193,23 +193,65 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                         ),
                       ];
                     },
-                    body: TabBarView(
-                      controller: controller.tabController,
-                      children: <Widget>[
-                        Observer(builder: (_) {
-                          return ListView(
-                            children: [
-                              ...controller.store.docs
-                                  .map((e) => DocumentItemWidget(item: e)),
-                            ],
-                          );
-                        }),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                        Text('Tab 2'),
-                      ],
+                    body: Observer(
+                      builder: (_) {
+                        return TabBarView(
+                          controller: controller.tabController,
+                          children: <Widget>[
+                            ListView(
+                              children: [
+                                ...controller.store.docs
+                                    .map((e) => DocumentItemWidget(item: e)),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.status == 'missing'
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.status == 'requested'
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.status == 'received'
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.price == 0
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.price > 0
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),

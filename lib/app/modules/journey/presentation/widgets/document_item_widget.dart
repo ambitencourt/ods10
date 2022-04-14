@@ -44,9 +44,12 @@ class DocumentItemWidget extends StatelessWidget {
                 item.name,
                 style: getBoldStyle(fontSize: 18, color: AppColors.black),
               ),
-              subtitle: Text(
-                item.description,
-                style: getRegularStyle(fontSize: 12, color: AppColors.black),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  item.description,
+                  style: getRegularStyle(fontSize: 12, color: AppColors.black),
+                ),
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
