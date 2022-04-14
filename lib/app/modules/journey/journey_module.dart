@@ -3,8 +3,12 @@ import 'package:ods10/app/common/mapper/mapper.dart';
 import 'package:ods10/app/modules/journey/data/datasources/remote/user_documents_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/datasources/user_documents_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/repositories/get_user_documents_repository_imp.dart';
+import 'package:ods10/app/modules/journey/data/repositories/update_user_documents_repository_imp.dart';
 import 'package:ods10/app/modules/journey/domain/repositories/get_user_documents_repository.dart';
+import 'package:ods10/app/modules/journey/domain/repositories/update_user_documents_repository.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase%20_imp.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase_imp.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/document_details_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands_page.dart';
@@ -25,19 +29,32 @@ class JourneyModule extends Module {
 
         // DATABASES
         Bind.factory<UserDocumentsDataSource>(
-            (i) => UserDocumentsDataSourceRemote(i(), i())),
+            (i) => UserDocumentsDataSourceRemote(
+                  i<UserDocumentMapper>(),
+                  i(),
+                )),
 
         // REPOSITORIES
         Bind.factory<GetUserDocumentsRepository>(
             (i) => GetUserDocumentsRepositoryImp(i())),
+        Bind.factory<UpdateUserDocumentsRepository>(
+            (i) => UpdateUserDocumentsRepositoryImp(
+                  i(),
+                  i<UserDocumentMapper>(),
+                )),
 
         //USECASES
         Bind.factory<GetUserDocumentsUseCase>(
             (i) => GetUserDocumentsUseCaseImp(i())),
+        Bind.factory<UpdateUserDocumentsUseCase>(
+            (i) => UpdateUserDocumentsUseCaseImp(i())),
 
         // CONTROLLERS
-        Bind.factory((i) =>
-            HomeController(i<GetUserDocumentsUseCase>(), i<HomeStore>())),
+        Bind.factory((i) => HomeController(
+              i<HomeStore>(),
+              i<GetUserDocumentsUseCase>(),
+              i<UpdateUserDocumentsUseCase>(),
+            )),
       ];
 
   @override

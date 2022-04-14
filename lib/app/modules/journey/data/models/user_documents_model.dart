@@ -43,7 +43,7 @@ class Document {
     id = json['id'];
     name = json['name'];
     description = json['description'];
-    price = json['price'];
+    price = json['price'].toDouble();
     link = json['link'];
     location = json['location'];
     duration = json['duration'];

@@ -5,7 +5,6 @@ import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/common/widgets/bottom_navibar.dart';
-import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
@@ -41,93 +40,6 @@ class _HomePageState extends ModularState<HomePage, HomeController>
     ),
   ];
 
-  List<DocumentEntity> docs = [
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 0.0,
-      status: 'requested',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-  ];
-
   @override
   void initState() {
     controller.tabController =
@@ -138,109 +50,126 @@ class _HomePageState extends ModularState<HomePage, HomeController>
 
   @override
   Widget build(BuildContext context) {
-    return Observer(
-      builder: (_) {
-        return Scaffold(
-          body:
-              // controller.store.loading
-              //     ? const Center(
-              //         child: CircularProgressIndicator(),
-              //       )
-              //     :
-              SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: NestedScrollView(
-                headerSliverBuilder: (context, value) {
-                  return [
-                    SliverToBoxAdapter(
-                      child: _buildTopInfo(context),
-                    ),
-                    // SliverToBoxAdapter(
-                    //   child: PersonalTabs(
-                    //     tabMenu: tabMenu,
-                    //     onTabSelect: (index) {},
-                    //     tabController: controller.tabController,
-                    //   ),
-                    // ),
-                    SliverAppBar(
-                      pinned: true,
-                      backgroundColor: AppColors.background,
-                      collapsedHeight: 91,
-                      elevation: 0,
-                      centerTitle: false,
-                      flexibleSpace: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-                          RichText(
-                            text: TextSpan(
+    return Scaffold(
+      body:
+          // controller.store.loading
+          //     ? const Center(
+          //         child: CircularProgressIndicator(),
+          //       )
+          //     :
+          Observer(builder: (_) {
+        return controller.store.loading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: NestedScrollView(
+                    headerSliverBuilder: (context, value) {
+                      return [
+                        SliverToBoxAdapter(
+                          child: _buildTopInfo(context),
+                        ),
+                        SliverAppBar(
+                          pinned: true,
+                          backgroundColor: AppColors.background,
+                          collapsedHeight: 91,
+                          elevation: 0,
+                          centerTitle: false,
+                          flexibleSpace: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 20),
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Lista de ',
+                                      style: getRegularStyle(fontSize: 18),
+                                    ),
+                                    TextSpan(
+                                      text: 'Documentos',
+                                      style: getBoldStyle(fontSize: 18),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              PersonalTabs(
+                                tabMenu: tabMenu,
+                                onTabSelect: (index) {},
+                                tabController: controller.tabController,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ];
+                    },
+                    body: Observer(
+                      builder: (_) {
+                        return TabBarView(
+                          controller: controller.tabController,
+                          children: <Widget>[
+                            ListView(
                               children: [
-                                TextSpan(
-                                  text: 'Lista de ',
-                                  style: getRegularStyle(fontSize: 18),
-                                ),
-                                TextSpan(
-                                  text: 'Documentos',
-                                  style: getBoldStyle(fontSize: 18),
-                                ),
+                                ...controller.store.docs
+                                    .map((e) => DocumentItemWidget(item: e)),
                               ],
                             ),
-                          ),
-                          PersonalTabs(
-                            tabMenu: tabMenu,
-                            onTabSelect: (index) {},
-                            tabController: controller.tabController,
-                          ),
-                        ],
-                      ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.status == 'missing'
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.status == 'requested'
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.status == 'ready'
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.price == 0
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                            ListView(
+                              children: [
+                                ...controller.store.docs.map((e) {
+                                  return e.price > 0
+                                      ? DocumentItemWidget(item: e)
+                                      : Container();
+                                }),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     ),
-                  ];
-                },
-                body: TabBarView(
-                  controller: controller.tabController,
-                  children: <Widget>[
-                    Observer(builder: (_) {
-                      return ListView(
-                        children: [
-                          ...controller.store.docs
-                              .map((e) => DocumentItemWidget(item: e)),
-                        ],
-                      );
-                    }),
-                    // CustomScrollView(
-                    //   slivers: [
-                    //     SliverList(
-                    //       delegate: SliverChildBuilderDelegate(
-                    //         (BuildContext context, int index) {
-                    //           // This builder is called for each child.
-                    //           // In this example, we just number each list item.
-                    //           return ListTile(
-                    //             title: Text('Item $index'),
-                    //           );
-                    //         },
-                    //       ),
-                    //     ),
-                    //     Column(
-                    //       children: [
-                    //         ...docs.map((e) => DocumentItemWidget(item: e)),
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
-                    Text('Tab 2'),
-                    Text('Tab 2'),
-                    Text('Tab 2'),
-                    Text('Tab 2'),
-                    Text('Tab 2'),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ),
-          bottomNavigationBar: const BottomNavibar(),
-        );
-      },
+              );
+      }),
+      bottomNavigationBar: const BottomNavibar(),
     );
   }
 
@@ -326,21 +255,6 @@ class _HomePageState extends ModularState<HomePage, HomeController>
         ),
         const SizedBox(height: 10),
         _buildCentralImage(context),
-        // const SizedBox(height: 40),
-        // RichText(
-        //   text: TextSpan(
-        //     children: [
-        //       TextSpan(
-        //         text: 'Lista de ',
-        //         style: getRegularStyle(fontSize: 18),
-        //       ),
-        //       TextSpan(
-        //         text: 'Documentos',
-        //         style: getBoldStyle(fontSize: 18),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }
