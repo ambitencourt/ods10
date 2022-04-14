@@ -4,6 +4,7 @@ import 'package:ods10/app/modules/journey/data/datasources/remote/user_documents
 import 'package:ods10/app/modules/journey/data/datasources/user_documents_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/repositories/get_user_documents_repository_imp.dart';
 import 'package:ods10/app/modules/journey/domain/repositories/get_user_documents_repository.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase%20_imp.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands_page.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
@@ -28,6 +29,10 @@ class JourneyModule extends Module {
         // REPOSITORIES
         Bind.factory<GetUserDocumentsRepository>(
             (i) => GetUserDocumentsRepositoryImp(i())),
+
+        //USECASES
+        Bind.factory<GetUserDocumentsUseCase>(
+            (i) => GetUserDocumentsUseCaseImp(i())),
 
         // CONTROLLERS
         Bind.factory((i) =>
