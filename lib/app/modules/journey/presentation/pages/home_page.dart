@@ -7,7 +7,7 @@ import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/common/widgets/bottom_navibar.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/circular_buttom_widget.dart';
+import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
