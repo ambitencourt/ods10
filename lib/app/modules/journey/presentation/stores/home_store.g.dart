@@ -24,18 +24,18 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
-  final _$docsAtom = Atom(name: '_HomeStoreBase.docs');
+  final _$loadingStatusAtom = Atom(name: '_HomeStoreBase.loadingStatus');
 
   @override
-  List<DocumentEntity> get docs {
-    _$docsAtom.reportRead();
-    return super.docs;
+  bool get loadingStatus {
+    _$loadingStatusAtom.reportRead();
+    return super.loadingStatus;
   }
 
   @override
-  set docs(List<DocumentEntity> value) {
-    _$docsAtom.reportWrite(value, super.docs, () {
-      super.docs = value;
+  set loadingStatus(bool value) {
+    _$loadingStatusAtom.reportWrite(value, super.loadingStatus, () {
+      super.loadingStatus = value;
     });
   }
 
@@ -54,6 +54,17 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  void setLoadingStatus(bool value) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.setLoadingStatus');
+    try {
+      return super.setLoadingStatus(value);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDocumentsList(List<DocumentEntity> list) {
     final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
         name: '_HomeStoreBase.setDocumentsList');
@@ -65,10 +76,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  void updateDocumentItem(DocumentEntity doc) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.updateDocumentItem');
+    try {
+      return super.updateDocumentItem(doc);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 loading: ${loading},
-docs: ${docs}
+loadingStatus: ${loadingStatus}
     ''';
   }
 }

@@ -5,21 +5,24 @@ import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/line_divider.dart';
 import 'package:ods10/app/modules/journey/utils/get_status_tag_color.dart';
+import 'package:ods10/app/modules/journey/utils/show_modal_bottom_sheet.dart';
 import 'package:ods10/app/modules/journey/utils/translate_status.dart';
+
+import 'document_modal_item_widget.dart';
 
 class DocumentItemWidget extends StatelessWidget {
   final DocumentEntity item;
-  final VoidCallback? onTap;
   const DocumentItemWidget({
     Key? key,
     required this.item,
-    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap ?? () {},
+      onTap: () {
+        _showBottomSheet(context);
+      },
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Column(
@@ -48,6 +51,8 @@ class DocumentItemWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: Text(
                   item.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: getRegularStyle(fontSize: 12, color: AppColors.black),
                 ),
               ),
@@ -80,6 +85,13 @@ class DocumentItemWidget extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  _showBottomSheet(BuildContext context) {
+    showPersonalModalBottomSheet(
+      context,
+      DocumentModalItemWidget(document: item),
     );
   }
 }

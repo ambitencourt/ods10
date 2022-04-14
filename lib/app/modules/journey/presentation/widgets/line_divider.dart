@@ -10,7 +10,7 @@ class LineDivider extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: AppColors.ligthGrey.withOpacity(0.5),
+            color: AppColors.ligthGrey.withOpacity(0.7),
           ),
         ),
       ),

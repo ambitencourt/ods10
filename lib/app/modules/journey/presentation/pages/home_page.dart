@@ -5,7 +5,6 @@ import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/common/widgets/bottom_navibar.dart';
-import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
@@ -38,93 +37,6 @@ class _HomePageState extends ModularState<HomePage, HomeController>
     ),
     const Tab(
       text: "Pagos",
-    ),
-  ];
-
-  List<DocumentEntity> docs = [
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 0.0,
-      status: 'requested',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
-    ),
-    DocumentEntity(
-      id: 'asdas',
-      name: 'Certidão de Nascimento',
-      description:
-          'Informações extras sobre o documento de maneira resumida que consiga ocupar duas linhas, no máximo',
-      duration: '1',
-      link: 'asdasdas',
-      location: 'asdasd',
-      order: 0,
-      price: 1.0,
-      status: 'pending',
     ),
   ];
 
@@ -225,7 +137,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                             ListView(
                               children: [
                                 ...controller.store.docs.map((e) {
-                                  return e.status == 'received'
+                                  return e.status == 'ready'
                                       ? DocumentItemWidget(item: e)
                                       : Container();
                                 }),
@@ -343,21 +255,6 @@ class _HomePageState extends ModularState<HomePage, HomeController>
         ),
         const SizedBox(height: 10),
         _buildCentralImage(context),
-        // const SizedBox(height: 40),
-        // RichText(
-        //   text: TextSpan(
-        //     children: [
-        //       TextSpan(
-        //         text: 'Lista de ',
-        //         style: getRegularStyle(fontSize: 18),
-        //       ),
-        //       TextSpan(
-        //         text: 'Documentos',
-        //         style: getBoldStyle(fontSize: 18),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }

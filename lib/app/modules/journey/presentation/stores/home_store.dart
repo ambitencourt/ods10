@@ -12,10 +12,21 @@ abstract class _HomeStoreBase with Store {
   void setLoading(bool value) => loading = value;
 
   @observable
-  List<DocumentEntity> docs = [];
+  bool loadingStatus = false;
+
+  @action
+  void setLoadingStatus(bool value) => loadingStatus = value;
+
+  ObservableList<DocumentEntity> docs = ObservableList<DocumentEntity>();
 
   @action
   void setDocumentsList(List<DocumentEntity> list) {
-    docs = list;
+    docs = ObservableList<DocumentEntity>.of(list);
+  }
+
+  @action
+  void updateDocumentItem(DocumentEntity doc) {
+    final index = docs.indexWhere((element) => element.id == doc.id);
+    docs[index] = doc;
   }
 }

@@ -23,4 +23,20 @@ class UserDocumentsDataSourceRemote implements UserDocumentsDataSource {
 
     return docs;
   }
+
+  @override
+  Future<UserDocumentsModel> updateUserDocuments(
+    String id,
+    String docId,
+    String status,
+  ) async {
+    final response = await api.put(
+      'users/$id/documents',
+      data: {
+        "document": docId,
+        "status": status,
+      },
+    );
+    return UserDocumentsModel.fromJson(response.data);
+  }
 }
