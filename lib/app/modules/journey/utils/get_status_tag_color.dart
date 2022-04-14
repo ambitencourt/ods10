@@ -5,10 +5,10 @@ Color getStatusTagColor(String status) {
   switch (status) {
     case 'requested':
       return AppColors.requested;
-    case 'received':
-      return AppColors.received;
+    case 'ready':
+      return AppColors.ready;
     case 'missing':
-      return AppColors.pending;
+      return AppColors.missing;
     default:
       return AppColors.primary;
   }
