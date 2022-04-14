@@ -227,14 +227,6 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                             ],
                           ),
                         ),
-                        // Text(
-                        //   'O cartório só poderá exigir os documentos indicados pelo CNJ no provimento nº 73, de 2018.',
-                        //   textAlign: TextAlign.center,
-                        //   style: GoogleFonts.mulish(
-                        //     textStyle: const TextStyle(
-                        //         fontSize: 12, fontStyle: FontStyle.normal),
-                        //   ),
-                        // ),
                       ),
                     ],
                   ),
