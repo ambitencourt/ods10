@@ -6,6 +6,7 @@ import 'package:ods10/app/modules/journey/data/repositories/get_user_documents_r
 import 'package:ods10/app/modules/journey/domain/repositories/get_user_documents_repository.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands_page.dart';
+import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 
 import 'data/mappers/user_document_mapper.dart';
 import 'domain/usecases/get_user_documents_usecase.dart';
@@ -14,6 +15,9 @@ import 'presentation/controllers/home_controller.dart';
 class JourneyModule extends Module {
   @override
   List<Bind> get binds => [
+        //Stores
+        Bind.singleton<HomeStore>((i) => HomeStore()),
+
         //Mappers
         Bind.factory<Mapper>((i) => UserDocumentMapper()),
 
@@ -26,7 +30,8 @@ class JourneyModule extends Module {
             (i) => GetUserDocumentsRepositoryImp(i())),
 
         // CONTROLLERS
-        Bind.factory((i) => HomeController(i<GetUserDocumentsUseCase>())),
+        Bind.factory((i) =>
+            HomeController(i<GetUserDocumentsUseCase>(), i<HomeStore>())),
       ];
 
   @override
