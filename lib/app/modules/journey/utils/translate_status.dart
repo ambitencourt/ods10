@@ -4,7 +4,7 @@ String translateStatus(String status) {
       return 'Solicitado';
     case 'received':
       return 'Recebido';
-    case 'pending':
+    case 'missing':
       return 'Pendente';
     default:
       return '';

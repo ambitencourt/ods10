@@ -7,7 +7,7 @@ Color getStatusTagColor(String status) {
       return AppColors.requested;
     case 'received':
       return AppColors.received;
-    case 'pending':
+    case 'missing':
       return AppColors.pending;
     default:
       return AppColors.primary;

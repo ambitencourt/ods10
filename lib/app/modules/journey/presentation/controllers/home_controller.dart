@@ -17,5 +17,6 @@ class HomeController {
     List<DocumentEntity> docs =
         await _getUserDocumentsUseCase('99fed5de-575b-40ec-aee8-01258aa596be');
     store.setDocumentsList(docs);
+    store.setLoading(false);
   }
 }

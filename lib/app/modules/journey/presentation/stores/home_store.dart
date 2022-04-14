@@ -9,9 +9,7 @@ abstract class _HomeStoreBase with Store {
   bool loading = true;
 
   @action
-  void setLoading() {
-    loading = !loading;
-  }
+  void setLoading(bool value) => loading = value;
 
   @observable
   List<DocumentEntity> docs = [];
