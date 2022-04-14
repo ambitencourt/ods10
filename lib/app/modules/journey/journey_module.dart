@@ -5,6 +5,7 @@ import 'package:ods10/app/modules/journey/data/datasources/user_documents_dataso
 import 'package:ods10/app/modules/journey/data/repositories/get_user_documents_repository_imp.dart';
 import 'package:ods10/app/modules/journey/domain/repositories/get_user_documents_repository.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase%20_imp.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/document_details_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands_page.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
@@ -50,6 +51,11 @@ class JourneyModule extends Module {
           '/islands',
           transition: TransitionType.fadeIn,
           child: (context, args) => const IslandsPage(),
+        ),
+        ChildRoute(
+          '/details',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => const DocumentDetaills(),
         ),
       ];
 }

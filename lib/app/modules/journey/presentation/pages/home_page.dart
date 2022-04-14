@@ -257,7 +257,9 @@ class _HomePageState extends ModularState<HomePage, HomeController>
             child: const Icon(
               Icons.description_outlined,
             ),
-            onPress: () {},
+            onPress: () {
+              Modular.to.pushNamed('/journey/details');
+            },
           ),
         ),
         Row(
