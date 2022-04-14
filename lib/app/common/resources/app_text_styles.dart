@@ -6,11 +6,13 @@ TextStyle getBoldStyle({
   double fontSize = 16,
   FontWeight fontWeight = FontWeight.w700,
   Color color = AppColors.primary,
+  TextDecoration? decoration,
 }) {
   return GoogleFonts.ubuntu(
     fontSize: fontSize,
     fontWeight: fontWeight,
     color: color,
+    decoration: decoration,
   );
 }
 
