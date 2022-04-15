@@ -51,13 +51,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          // controller.store.loading
-          //     ? const Center(
-          //         child: CircularProgressIndicator(),
-          //       )
-          //     :
-          Observer(builder: (_) {
+      body: Observer(builder: (_) {
         return controller.store.loading
             ? const Center(
                 child: CircularProgressIndicator(),
