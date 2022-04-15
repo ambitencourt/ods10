@@ -24,6 +24,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$hasErrorAtom = Atom(name: '_HomeStoreBase.hasError');
+
+  @override
+  bool get hasError {
+    _$hasErrorAtom.reportRead();
+    return super.hasError;
+  }
+
+  @override
+  set hasError(bool value) {
+    _$hasErrorAtom.reportWrite(value, super.hasError, () {
+      super.hasError = value;
+    });
+  }
+
   final _$loadingStatusAtom = Atom(name: '_HomeStoreBase.loadingStatus');
 
   @override
@@ -48,6 +63,17 @@ mixin _$HomeStore on _HomeStoreBase, Store {
         name: '_HomeStoreBase.setLoading');
     try {
       return super.setLoading(value);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHasError(bool value) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.setHasError');
+    try {
+      return super.setHasError(value);
     } finally {
       _$_HomeStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -90,6 +116,7 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   String toString() {
     return '''
 loading: ${loading},
+hasError: ${hasError},
 loadingStatus: ${loadingStatus}
     ''';
   }

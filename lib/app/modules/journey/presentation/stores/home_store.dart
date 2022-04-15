@@ -12,6 +12,12 @@ abstract class _HomeStoreBase with Store {
   void setLoading(bool value) => loading = value;
 
   @observable
+  bool hasError = false;
+
+  @action
+  void setHasError(bool value) => hasError = value;
+
+  @observable
   bool loadingStatus = false;
 
   @action

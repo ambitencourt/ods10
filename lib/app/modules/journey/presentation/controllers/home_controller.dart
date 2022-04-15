@@ -18,11 +18,18 @@ class HomeController {
   );
 
   Future<void> getUserDocuments() async {
-    store.setLoading(true);
-    List<DocumentEntity> docs =
-        await _getUserDocumentsUseCase('99fed5de-575b-40ec-aee8-01258aa596be');
-    store.setDocumentsList(docs);
-    store.setLoading(false);
+    try {
+      store.setHasError(false);
+      store.setLoading(true);
+      List<DocumentEntity> docs = await _getUserDocumentsUseCase(
+          '99fed5de-575b-40ec-aee8-01258aa596be');
+      store.setDocumentsList(docs);
+    } catch (e) {
+      store.setHasError(true);
+      // rethrow;
+    } finally {
+      store.setLoading(false);
+    }
   }
 
   Future<DocumentEntity> updateUserDocuments(
