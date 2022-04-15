@@ -207,7 +207,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                     style: getRegularStyle(fontSize: 20),
                   ),
                   TextSpan(
-                    text: 'Clarice Linspector',
+                    text: controller.userStore.user?.name ?? '',
                     style: getBoldStyle(fontSize: 20),
                   ),
                 ],

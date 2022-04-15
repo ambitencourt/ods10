@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/mapper/mapper.dart';
+import 'package:ods10/app/common/stores/user_store.dart';
 import 'package:ods10/app/modules/journey/data/datasources/remote/user_documents_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/datasources/user_documents_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/repositories/get_user_documents_repository_imp.dart';
@@ -51,6 +52,7 @@ class JourneyModule extends Module {
 
         // CONTROLLERS
         Bind.factory((i) => HomeController(
+              i<UserStore>(),
               i<HomeStore>(),
               i<GetUserDocumentsUseCase>(),
               i<UpdateUserDocumentsUseCase>(),

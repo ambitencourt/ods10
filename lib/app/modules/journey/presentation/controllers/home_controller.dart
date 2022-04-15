@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ods10/app/common/stores/user_store.dart';
 
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/domain/enums/document_status_enum.dart';
@@ -8,10 +9,12 @@ import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 
 class HomeController {
   final HomeStore store;
+  final UserStore userStore;
   final GetUserDocumentsUseCase _getUserDocumentsUseCase;
   final UpdateUserDocumentsUseCase _updateUserDocumentsUseCase;
   late TabController tabController;
   HomeController(
+    this.userStore,
     this.store,
     this._getUserDocumentsUseCase,
     this._updateUserDocumentsUseCase,
