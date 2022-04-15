@@ -56,108 +56,111 @@ class _HomePageState extends ModularState<HomePage, HomeController>
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: NestedScrollView(
-                    headerSliverBuilder: (context, value) {
-                      return [
-                        SliverToBoxAdapter(
-                          child: _buildTopInfo(context),
-                        ),
-                        SliverAppBar(
-                          pinned: true,
-                          backgroundColor: AppColors.background,
-                          collapsedHeight: 91,
-                          elevation: 0,
-                          centerTitle: false,
-                          flexibleSpace: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 20),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: 'Lista de ',
-                                      style: getRegularStyle(fontSize: 18),
-                                    ),
-                                    TextSpan(
-                                      text: 'Documentos',
-                                      style: getBoldStyle(fontSize: 18),
-                                    ),
-                                  ],
+            : RefreshIndicator(
+                onRefresh: controller.getUserDocuments,
+                child: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: NestedScrollView(
+                      headerSliverBuilder: (context, value) {
+                        return [
+                          SliverToBoxAdapter(
+                            child: _buildTopInfo(context),
+                          ),
+                          SliverAppBar(
+                            pinned: true,
+                            backgroundColor: AppColors.background,
+                            collapsedHeight: 91,
+                            elevation: 0,
+                            centerTitle: false,
+                            flexibleSpace: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 20),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Lista de ',
+                                        style: getRegularStyle(fontSize: 18),
+                                      ),
+                                      TextSpan(
+                                        text: 'Documentos',
+                                        style: getBoldStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
                                 ),
+                                PersonalTabs(
+                                  tabMenu: tabMenu,
+                                  onTabSelect: (index) {},
+                                  tabController: controller.tabController,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ];
+                      },
+                      body: Observer(
+                        builder: (_) {
+                          return TabBarView(
+                            controller: controller.tabController,
+                            children: <Widget>[
+                              ListView(
+                                children: [
+                                  ...controller.store.docs
+                                      .map((e) => DocumentItemWidget(item: e)),
+                                ],
                               ),
-                              PersonalTabs(
-                                tabMenu: tabMenu,
-                                onTabSelect: (index) {},
-                                tabController: controller.tabController,
+                              ListView(
+                                children: [
+                                  ...controller.store.docs.map((e) {
+                                    return e.status == 'missing'
+                                        ? DocumentItemWidget(item: e)
+                                        : Container();
+                                  }),
+                                ],
+                              ),
+                              ListView(
+                                children: [
+                                  ...controller.store.docs.map((e) {
+                                    return e.status == 'requested'
+                                        ? DocumentItemWidget(item: e)
+                                        : Container();
+                                  }),
+                                ],
+                              ),
+                              ListView(
+                                children: [
+                                  ...controller.store.docs.map((e) {
+                                    return e.status == 'ready'
+                                        ? DocumentItemWidget(item: e)
+                                        : Container();
+                                  }),
+                                ],
+                              ),
+                              ListView(
+                                children: [
+                                  ...controller.store.docs.map((e) {
+                                    return e.price == 0
+                                        ? DocumentItemWidget(item: e)
+                                        : Container();
+                                  }),
+                                ],
+                              ),
+                              ListView(
+                                children: [
+                                  ...controller.store.docs.map((e) {
+                                    return e.price > 0
+                                        ? DocumentItemWidget(item: e)
+                                        : Container();
+                                  }),
+                                ],
                               ),
                             ],
-                          ),
-                        ),
-                      ];
-                    },
-                    body: Observer(
-                      builder: (_) {
-                        return TabBarView(
-                          controller: controller.tabController,
-                          children: <Widget>[
-                            ListView(
-                              children: [
-                                ...controller.store.docs
-                                    .map((e) => DocumentItemWidget(item: e)),
-                              ],
-                            ),
-                            ListView(
-                              children: [
-                                ...controller.store.docs.map((e) {
-                                  return e.status == 'missing'
-                                      ? DocumentItemWidget(item: e)
-                                      : Container();
-                                }),
-                              ],
-                            ),
-                            ListView(
-                              children: [
-                                ...controller.store.docs.map((e) {
-                                  return e.status == 'requested'
-                                      ? DocumentItemWidget(item: e)
-                                      : Container();
-                                }),
-                              ],
-                            ),
-                            ListView(
-                              children: [
-                                ...controller.store.docs.map((e) {
-                                  return e.status == 'ready'
-                                      ? DocumentItemWidget(item: e)
-                                      : Container();
-                                }),
-                              ],
-                            ),
-                            ListView(
-                              children: [
-                                ...controller.store.docs.map((e) {
-                                  return e.price == 0
-                                      ? DocumentItemWidget(item: e)
-                                      : Container();
-                                }),
-                              ],
-                            ),
-                            ListView(
-                              children: [
-                                ...controller.store.docs.map((e) {
-                                  return e.price > 0
-                                      ? DocumentItemWidget(item: e)
-                                      : Container();
-                                }),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
