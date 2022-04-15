@@ -13,12 +13,13 @@ class UserDocumentMapper implements Mapper<DocumentEntity, UserDocumentsModel> {
   toEntity(UserDocumentsModel object) => DocumentEntity(
         id: object.document.id,
         name: object.document.name,
-        description: object.document.description,
+        shortDescription: object.document.shortDescription,
+        fullDescription: object.document.fullDescription,
         price: object.document.price,
         link: object.document.link,
         location: object.document.location,
         duration: object.document.duration,
-        order: object.document.order,
+        // order: object.document.order,
         status: object.status,
       );
 }

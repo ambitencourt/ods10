@@ -50,7 +50,7 @@ class DocumentItemWidget extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Text(
-                  item.description,
+                  item.shortDescription,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: getRegularStyle(fontSize: 12, color: AppColors.black),

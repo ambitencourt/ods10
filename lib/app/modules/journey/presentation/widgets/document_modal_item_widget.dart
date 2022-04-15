@@ -71,7 +71,7 @@ class DocumentModalItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    document.description,
+                    document.shortDescription,
                     style: getRegularStyle(
                         fontSize: 14,
                         color: AppColors.ligthBlack,
