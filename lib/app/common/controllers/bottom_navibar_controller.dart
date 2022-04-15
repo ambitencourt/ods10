@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ods10/app/stores/bottom_navibar_store.dart';
+import 'package:ods10/app/common/stores/bottom_navibar_store.dart';
 
 class BottomNavibarController {
   BottomNavibarStore store;
