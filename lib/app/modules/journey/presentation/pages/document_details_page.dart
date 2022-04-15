@@ -1,13 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/text_widget.dart';
-
-import '../../../../common/resources/app_text_styles.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/Document%20Details/page1_detail.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../utils/links_util.dart';
 import '../widgets/image_sliders_widget.dart';
 import '../widgets/sizedbox_widget.dart';
+import 'Document Details/page2_detail.dart';
+import 'Document Details/page3_detail.dart';
+import 'Document Details/page4_detail.dart';
+import 'Document Details/page5_detail.dart';
+import 'Document Details/page6_detail.dart';
+import 'Document Details/page7_detail.dart';
 
 class DocumentDetaills extends StatefulWidget {
   const DocumentDetaills({Key? key}) : super(key: key);
@@ -19,9 +25,43 @@ class DocumentDetaills extends StatefulWidget {
 class _DocumentDetaillsState extends State<DocumentDetaills> {
   int current = 0;
   final CarouselController _controller = CarouselController();
+  late PageController pageController;
+
+  @override
+  void initState() {
+    pageController = PageController(
+      initialPage: current,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
+    double _progressValue = 0.0;
+    void _launchURLCNJ() async {
+      if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
+    }
+
+    nextButton() {
+      if (current == 5) {
+        return 'Pedir Gratuidade ';
+      } else if (current == 6) {
+        return 'Baixar Modelo';
+      } else {
+        return 'Próximo';
+      }
+    }
+
+    jumpToState() {
+      if (current == 5) {
+        return 'Não pedir Gratuidade ';
+      } else if (current == 6) {
+        return 'Atualizar estado';
+      } else {
+        return 'Pular explicação';
+      }
+    }
 
     return Scaffold(
       body: Stack(
@@ -72,83 +112,47 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                           ),
                         ],
                       ),
-                      customSizedBox2(context),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:
-                              imgListDocDetails.asMap().entries.map((entry) {
-                            return GestureDetector(
-                              onTap: () => _controller.animateToPage(entry.key),
-                              child: Container(
-                                width: 12.0,
-                                height: 12.0,
-                                margin: const EdgeInsets.symmetric(
-                                    vertical: 2.0, horizontal: 4.0),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: current == entry.key
-                                      ? const Color(0xFFD03363)
-                                      : const Color(0xFFB8B8B8),
-                                ),
-                              ),
-                            );
-                          }).toList(),
+                      customSizedBox3(context),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                        child: LinearProgressIndicator(
+                          minHeight: 5,
+                          backgroundColor: const Color(0xFFD2D2CC),
+                          value: current.toDouble() / 6,
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFFD03363)),
                         ),
                       ),
-                      customSizedBox2(context),
-                      CarouselSlider(
-                        items: imageSlidersDocDetails,
-                        options: CarouselOptions(
-                          enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                          enlargeCenterPage: true,
-                          enableInfiniteScroll: false,
-                          viewportFraction: 1,
-                          aspectRatio: 96 / 65,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              current = index;
-                            });
-                          },
-                        ),
-                        carouselController: _controller,
-                      ),
-                      customSizedBox2(context),
+                      customSizedBox3(context),
                       SizedBox(
-                        height: 27,
-                        width: 157,
-                        child: Text(
-                          'Boas vindas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                      customSizedBox4(context),
-                      SizedBox(
-                        width: 257,
-                        height: 108,
-                        child: Text(
-                          'Eu sou a Pam, sou travesti e vou te auxiliar no processo de gratuidade das custas do cartório, mas antes vou te explicar um pouco sobre isso.',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w500),
-                          ),
+                        height: mediaQuery.height * .5,
+                        child: PageView(
+                          controller: pageController,
+                          children: const [
+                            Page1Detail(),
+                            Page2Detail(),
+                            Page3Detail(),
+                            Page4Detail(),
+                            Page5Detail(),
+                            Page6Detail(),
+                            Page7Detail(),
+                          ],
+                          onPageChanged: (page) =>
+                              setState(() => current = page),
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            current == 5
+                                ? pageController.jumpToPage(6)
+                                : pageController.animateToPage(current + 1,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeIn);
+                          });
+                        },
                         child: Text(
-                          'Próximo',
+                          nextButton(),
                           textAlign: TextAlign.center,
                           style: GoogleFonts.mulish(
                             textStyle: const TextStyle(
@@ -172,7 +176,7 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                       ElevatedButton(
                         onPressed: () {},
                         child: Text(
-                          'Pular Explicação',
+                          jumpToState(),
                           textAlign: TextAlign.center,
                           style: GoogleFonts.mulish(
                             textStyle: const TextStyle(
@@ -223,6 +227,8 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => _launchURLCNJ(),
                               ),
                             ],
                           ),

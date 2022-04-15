@@ -17,7 +17,7 @@ final List<Widget> imageSlidersIsland = imgListIsland
 
 final List<String> imgListDocDetails = [
   'assets/images/cuate.png',
-  'assets/images/cuate.png',
+  'assets/images/island.png',
   'assets/images/cuate.png',
   'assets/images/cuate.png',
   'assets/images/cuate.png',
