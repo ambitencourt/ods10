@@ -9,8 +9,6 @@ import 'package:ods10/app/modules/auth/domain/usecases/get_user_usecase.dart';
 import 'package:ods10/app/modules/auth/domain/usecases/get_user_usecase_imp.dart';
 import 'package:ods10/app/modules/auth/presentation/controllers/splash_controller.dart';
 import 'package:ods10/app/modules/auth/presentation/pages/splash_page.dart';
-import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase%20_imp.dart';
-import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase.dart';
 
 class AuthModule extends Module {
   @override

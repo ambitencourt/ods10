@@ -86,7 +86,7 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                                   color: Color(0xFF256380),
                                   shape: BoxShape.circle),
                               child: const Icon(
-                                Icons.close,
+                                Icons.arrow_back,
                                 size: 24,
                                 color: Colors.white,
                               ),
