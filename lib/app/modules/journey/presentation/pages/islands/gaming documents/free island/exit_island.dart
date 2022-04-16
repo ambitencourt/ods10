@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/links_util.dart';
-import '../../../../widgets/sizedbox_widget.dart';
+import '../../../../widgets/islands/sizedbox_widget.dart';
 
 class Exitisland extends StatefulWidget {
   const Exitisland({Key? key}) : super(key: key);

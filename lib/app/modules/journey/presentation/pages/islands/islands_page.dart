@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/open_modal_widget.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_modal_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../../widgets/image_sliders_widget.dart';
+import '../../widgets/islands/image_sliders_widget.dart';
 
 class IslandsPage extends StatefulWidget {
   const IslandsPage({Key? key}) : super(key: key);
@@ -15,11 +15,8 @@ class IslandsPage extends StatefulWidget {
 
 class _IslandsPageState extends State<IslandsPage> {
   int current = 0;
-  double _progressValue = 0.0;
 
-  void _onChanged(double progressValue) {
-    _progressValue = progressValue;
-  }
+  double progressValue = 0.0;
 
   final CarouselController _controller = CarouselController();
 
@@ -330,7 +327,7 @@ class _IslandsPageState extends State<IslandsPage> {
                         child: LinearProgressIndicator(
                           minHeight: 5,
                           backgroundColor: const Color(0xFFD2D2CC),
-                          value: _progressValue / 30,
+                          value: progressValue / 30,
                           valueColor: const AlwaysStoppedAnimation<Color>(
                               Color(0xFFD03363)),
                         ),
@@ -353,7 +350,7 @@ class _IslandsPageState extends State<IslandsPage> {
                         ),
                         const Spacer(),
                         Text(
-                          '${_progressValue.round()}/30 documentos',
+                          '${progressValue.round()}/30 documentos',
                           style: GoogleFonts.mulish(
                               textStyle: const TextStyle(fontSize: 10),
                               fontWeight: FontWeight.w600,

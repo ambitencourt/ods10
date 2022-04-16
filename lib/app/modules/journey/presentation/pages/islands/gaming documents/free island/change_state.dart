@@ -5,7 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/links_util.dart';
-import '../../../../widgets/sizedbox_widget.dart';
+import '../../../../widgets/islands/modal_received_widget.dart';
+import '../../../../widgets/islands/sizedbox_widget.dart';
 
 class ChangeState extends StatefulWidget {
   const ChangeState({Key? key}) : super(key: key);
@@ -177,7 +178,7 @@ class _ChangeStateState extends State<ChangeState> {
                       ),
                       customSizedBox4(context),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => confirmReceived(context),
                         child: Text(
                           'Recebido',
                           textAlign: TextAlign.center,

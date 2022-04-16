@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 
 class IslandsBottomSheet extends StatefulWidget {
   const IslandsBottomSheet({Key? key}) : super(key: key);

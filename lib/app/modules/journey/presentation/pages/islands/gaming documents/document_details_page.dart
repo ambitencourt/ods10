@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../utils/links_util.dart';
-import '../../../widgets/sizedbox_widget.dart';
+import '../../../widgets/islands/sizedbox_widget.dart';
 import 'free island/free_model.dart';
 import 'free island/page1_detail.dart';
 import 'free island/page2_detail.dart';
@@ -94,11 +94,10 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                                 pageController.page!.toInt() > 0
                                     ? pageController.previousPage(
                                         duration:
-                                            const Duration(milliseconds: 200),
-                                        curve: Curves.easeInBack,
+                                            const Duration(milliseconds: 350),
+                                        curve: Curves.easeIn,
                                       )
                                     : Modular.to.pop();
-                                print(pageController.page);
                               }),
                           const Spacer(),
                           InkWell(
@@ -160,7 +159,6 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                                     pageController.page!.toInt() + 1,
                                     duration: const Duration(milliseconds: 300),
                                     curve: Curves.easeIn);
-                            print(pageController.page);
                           });
                         },
                         child: Text(

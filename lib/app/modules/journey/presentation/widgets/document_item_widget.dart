@@ -8,7 +8,7 @@ import 'package:ods10/app/modules/journey/utils/get_status_tag_color.dart';
 import 'package:ods10/app/modules/journey/utils/show_modal_bottom_sheet.dart';
 import 'package:ods10/app/modules/journey/utils/translate_status.dart';
 
-import 'document_modal_item_widget.dart';
+import 'islands/document_modal_item_widget.dart';
 
 class DocumentItemWidget extends StatelessWidget {
   final DocumentEntity item;

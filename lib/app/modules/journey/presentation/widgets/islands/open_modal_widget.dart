@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../pages/islands/islands_bottomsheet_page.dart';
+import '../../pages/islands/islands_bottomsheet_page.dart';
 
 void openModal(context) {
   final mediaQuery = MediaQuery.of(context).size;
