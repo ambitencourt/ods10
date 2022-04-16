@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/image_sliders_widget.dart';
-import '../../widgets/sizedbox_widget.dart';
+import '../../../../widgets/image_sliders_widget.dart';
+import '../../../../widgets/sizedbox_widget.dart';
 
-class Page3Detail extends StatelessWidget {
-  const Page3Detail({Key? key}) : super(key: key);
+class Page4Detail extends StatelessWidget {
+  const Page4Detail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class Page3Detail extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 27,
-            width: 157,
+            height: 31,
+            width: 254,
             child: Text(
-              'Ou seja',
+              'Existem algumas regras',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
@@ -38,7 +38,7 @@ class Page3Detail extends StatelessWidget {
             width: 257,
             height: 101,
             child: Text(
-              'Isso significa que você pode conseguir os documentos do cartório de maneira gratuita. Legal, né?',
+              'Para ter acesso a esse benefício você deve estar sem emprego, ou seu salário deve ser inferior a 3 salários mínimos.',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(

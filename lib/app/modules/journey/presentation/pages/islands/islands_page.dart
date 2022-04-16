@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../widgets/image_sliders_widget.dart';
+import '../../widgets/image_sliders_widget.dart';
 
 class IslandsPage extends StatefulWidget {
   const IslandsPage({Key? key}) : super(key: key);

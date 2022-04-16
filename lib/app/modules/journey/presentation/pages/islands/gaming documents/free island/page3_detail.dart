@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/image_sliders_widget.dart';
-import '../../widgets/sizedbox_widget.dart';
+import '../../../../widgets/image_sliders_widget.dart';
+import '../../../../widgets/sizedbox_widget.dart';
 
-class Page5Detail extends StatelessWidget {
-  const Page5Detail({Key? key}) : super(key: key);
+class Page3Detail extends StatelessWidget {
+  const Page3Detail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class Page5Detail extends StatelessWidget {
           ),
           SizedBox(
             height: 27,
-            width: 213,
+            width: 157,
             child: Text(
-              'Tem um porém',
+              'Ou seja',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
@@ -38,7 +38,7 @@ class Page5Detail extends StatelessWidget {
             width: 257,
             height: 101,
             child: Text(
-              'Nem todos os cartórios respeitam essa previsão legal. Então, caso você tenha algum problema com o cartório, procure a Defensoria Pública do seu estado.',
+              'Isso significa que você pode conseguir os documentos do cartório de maneira gratuita. Legal, né?',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(

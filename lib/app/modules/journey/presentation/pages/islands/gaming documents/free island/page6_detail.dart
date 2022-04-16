@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/image_sliders_widget.dart';
-import '../../widgets/sizedbox_widget.dart';
+import '../../../../widgets/image_sliders_widget.dart';
+import '../../../../widgets/sizedbox_widget.dart';
 
 class Page6Detail extends StatelessWidget {
   const Page6Detail({Key? key}) : super(key: key);

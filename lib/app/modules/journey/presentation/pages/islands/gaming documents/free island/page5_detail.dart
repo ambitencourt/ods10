@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/image_sliders_widget.dart';
-import '../../widgets/sizedbox_widget.dart';
+import '../../../../widgets/image_sliders_widget.dart';
+import '../../../../widgets/sizedbox_widget.dart';
 
-class Page1Detail extends StatelessWidget {
-  const Page1Detail({Key? key}) : super(key: key);
+class Page5Detail extends StatelessWidget {
+  const Page5Detail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class Page1Detail extends StatelessWidget {
           ),
           SizedBox(
             height: 27,
-            width: 157,
+            width: 213,
             child: Text(
-              'Boas vindas',
+              'Tem um porém',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
@@ -36,9 +36,9 @@ class Page1Detail extends StatelessWidget {
           customSizedBox4(context),
           SizedBox(
             width: 257,
-            height: 108,
+            height: 101,
             child: Text(
-              'Eu sou a Pam, sou travesti e vou te auxiliar no processo de gratuidade das custas do cartório, mas antes vou te explicar um pouco sobre isso.',
+              'Nem todos os cartórios respeitam essa previsão legal. Então, caso você tenha algum problema com o cartório, procure a Defensoria Pública do seu estado.',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
