@@ -8,18 +8,17 @@ import 'package:ods10/app/common/widgets/bottom_navibar.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class DocumentsList extends StatefulWidget {
+  const DocumentsList({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DocumentsList> createState() => _DocumentsListState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeController>
+class _DocumentsListState extends ModularState<DocumentsList, HomeController>
     with SingleTickerProviderStateMixin {
   List<Widget> tabMenu = [
     const Tab(
@@ -83,8 +82,30 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                       collapsedHeight: 91,
                       elevation: 0,
                       centerTitle: false,
-                      flexibleSpace: DocumentsStatusTab(
-                        tabController: controller.tabController,
+                      flexibleSpace: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Lista de ',
+                                  style: getRegularStyle(fontSize: 18),
+                                ),
+                                TextSpan(
+                                  text: 'Documentos',
+                                  style: getBoldStyle(fontSize: 18),
+                                ),
+                              ],
+                            ),
+                          ),
+                          PersonalTabs(
+                            tabMenu: tabMenu,
+                            onTabSelect: (index) {},
+                            tabController: controller.tabController,
+                          ),
+                        ],
                       ),
                     ),
                   ];
@@ -166,130 +187,17 @@ class _HomePageState extends ModularState<HomePage, HomeController>
       children: [
         const SizedBox(height: 10),
         Align(
-          alignment: Alignment.centerRight,
+          alignment: Alignment.centerLeft,
           child: CircularButtom(
             child: const Icon(
-              Icons.description_outlined,
+              Icons.close,
             ),
             onPress: () {
-              Modular.to.pushNamed('/journey/documents');
+              Modular.to.pushNamed('/journey');
             },
           ),
         ),
-        Row(
-          children: [
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Olá, ',
-                    style: getRegularStyle(fontSize: 20),
-                  ),
-                  TextSpan(
-                    text: controller.userStore.user?.name ?? '',
-                    style: getBoldStyle(fontSize: 20),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'Entenda como ',
-                style: getRegularStyle(fontSize: 32),
-              ),
-              TextSpan(
-                text: 'retificar',
-                style: getBoldStyle(fontSize: 32),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          color: AppColors.secondary,
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'prenome e gênero',
-              style: getBoldStyle(fontSize: 32, color: AppColors.white),
-            ),
-          ),
-        ),
-        const SizedBox(height: 30),
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'O ',
-                style: getRegularStyle(fontSize: 18),
-              ),
-              TextSpan(
-                text: 'passo a passo ',
-                style: getBoldStyle(fontSize: 18),
-              ),
-              TextSpan(
-                text: 'da retificação',
-                style: getRegularStyle(fontSize: 18),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        _buildCentralImage(context),
       ],
-    );
-  }
-
-  Widget _buildCentralImage(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Modular.to.pushNamed('/journey/tutorial');
-      },
-      child: Stack(
-        children: [
-          Hero(
-            tag: 'hero-island-page',
-            child: Image.asset(
-              AppImages.rectangle1816,
-              width: double.maxFinite,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 16),
-                Text(
-                  'Acompanhe sua documentação',
-                  style: getBoldStyle(
-                    color: AppColors.white,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Organize seus documentos e acompanhe o processo para a alteração do prenome e gênero com a ordem recomendada pelos nossos especialistas.',
-                  style: getBoldStyle(
-                    fontSize: 12,
-                    color: AppColors.white.withOpacity(0.7),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                LinearProgressIndicator(
-                  value: 0.5,
-                  backgroundColor: AppColors.white.withOpacity(0.4),
-                  color: AppColors.secondary,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

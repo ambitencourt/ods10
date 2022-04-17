@@ -3,24 +3,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../../../utils/links_util.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
+import 'page1_tutorial.dart';
+import 'page2_tutorial.dart';
+import 'page3_tutorial.dart';
 
-class ExitIsland extends StatefulWidget {
-  const ExitIsland({Key? key}) : super(key: key);
+class TutorialPage extends StatefulWidget {
+  const TutorialPage({Key? key}) : super(key: key);
 
   @override
-  State<ExitIsland> createState() => _ExitIslandState();
+  State<TutorialPage> createState() => _TutorialPageState();
 }
 
-class _ExitIslandState extends State<ExitIsland> {
+class _TutorialPageState extends State<TutorialPage> {
+  int current = 0;
+
+  late PageController pageController;
+
+  @override
+  void initState() {
+    pageController = PageController(
+      initialPage: current,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
 
     void _launchURLCNJ() async {
       if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
+    }
+
+    nextButton() {
+      if (current == 2) {
+        return 'Começar';
+      } else {
+        return 'Próximo';
+      }
     }
 
     return Scaffold(
@@ -52,7 +74,13 @@ class _ExitIslandState extends State<ExitIsland> {
                                 ),
                               ),
                               onTap: () {
-                                Modular.to.pop();
+                                pageController.page!.toInt() > 0
+                                    ? pageController.previousPage(
+                                        duration:
+                                            const Duration(milliseconds: 350),
+                                        curve: Curves.easeIn,
+                                      )
+                                    : Modular.to.pop();
                               }),
                           const Spacer(),
                           InkWell(
@@ -74,61 +102,46 @@ class _ExitIslandState extends State<ExitIsland> {
                         ],
                       ),
                       customSizedBox3(context),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: LinearProgressIndicator(
                           minHeight: 5,
-                          backgroundColor: Color(0xFFD2D2CC),
-                          value: 6,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),
-                        ),
-                      ),
-                      SizedBox(
-                        height: mediaQuery.height * .4,
-                        child: Image.asset(
-                          'assets/images/cuate.png',
-                        ),
-                      ),
-                      SizedBox(
-                        height: 27,
-                        width: 157,
-                        child: Text(
-                          'Tudo bem',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                            ),
-                          ),
+                          backgroundColor: const Color(0xFFD2D2CC),
+                          value: current.toDouble() / 2,
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFFD03363)),
                         ),
                       ),
                       customSizedBox3(context),
                       SizedBox(
-                        width: 257,
-                        height: 108,
-                        child: Text(
-                          'Você sempre pode voltar aqui se mudar de ideia. Estou à disposição. Até a próxima e boa sorte na sua retificação.',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w500),
-                          ),
+                        height: mediaQuery.height * .5,
+                        child: PageView(
+                          physics: const BouncingScrollPhysics(
+                              parent: AlwaysScrollableScrollPhysics()),
+                          controller: pageController,
+                          children: const [
+                            Page1Tutorial(),
+                            Page2Tutorial(),
+                            Page3Tutorial(),
+                          ],
+                          onPageChanged: (page) =>
+                              setState(() => current = page),
                         ),
                       ),
+                      customSizedBox1(context),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            Modular.to.pushNamed('/journey');
+                            current == 2
+                                ? Modular.to.pushNamed('/journey/islands')
+                                : pageController.animateToPage(
+                                    pageController.page!.toInt() + 1,
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: Curves.easeIn);
                           });
                         },
                         child: Text(
-                          'Sair',
+                          nextButton(),
                           textAlign: TextAlign.center,
                           style: GoogleFonts.mulish(
                             textStyle: const TextStyle(
@@ -148,7 +161,37 @@ class _ExitIslandState extends State<ExitIsland> {
                           ),
                         ),
                       ),
-                      customSizedBox1(context),
+                      customSizedBox4(context),
+                      ElevatedButton(
+                        onPressed: () {
+                          Modular.to.pushNamed('/journey/islands');
+                        },
+                        child: Text(
+                          'Pular tutorial',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.mulish(
+                            textStyle: const TextStyle(
+                              fontSize: 16,
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFFD03363),
+                            ),
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(225, 44),
+                            primary: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(31),
+                              ),
+                            ),
+                            side: const BorderSide(
+                              width: 1.0,
+                              color: Color(0xFFD03363),
+                            )),
+                      ),
+                      customSizedBox2(context),
                       SizedBox(
                         width: 297,
                         height: 32,

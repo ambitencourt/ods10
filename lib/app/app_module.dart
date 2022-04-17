@@ -5,6 +5,7 @@ import 'package:ods10/app/common/stores/user_store.dart';
 import 'package:ods10/app/modules/auth/auth_module.dart';
 import 'common/controllers/bottom_navibar_controller.dart';
 import 'common/stores/bottom_navibar_store.dart';
+
 import 'modules/journey/journey_module.dart';
 import 'modules/profile/profile_module.dart';
 

@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -23,7 +22,7 @@ class DocumentDetaills extends StatefulWidget {
 
 class _DocumentDetaillsState extends State<DocumentDetaills> {
   int current = 0;
-  final CarouselController _controller = CarouselController();
+
   late PageController pageController;
 
   @override
@@ -37,7 +36,7 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    double _progressValue = 0.0;
+
     void _launchURLCNJ() async {
       if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
     }

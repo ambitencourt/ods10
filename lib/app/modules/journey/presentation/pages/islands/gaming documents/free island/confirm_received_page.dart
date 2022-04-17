@@ -16,7 +16,6 @@ class ConfirmReceivedPage extends StatefulWidget {
 class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context).size;
     void _launchURLFAQ() async {
       if (!await launch(urlFAQ)) throw 'Tente novamente mais tarde $urlFAQ';
     }

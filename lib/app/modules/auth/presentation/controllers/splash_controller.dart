@@ -1,4 +1,3 @@
-import 'package:ods10/app/common/entities/user_entity.dart';
 import 'package:ods10/app/common/stores/user_store.dart';
 import 'package:ods10/app/modules/auth/domain/usecases/get_user_usecase.dart';
 

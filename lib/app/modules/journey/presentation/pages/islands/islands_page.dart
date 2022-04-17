@@ -48,25 +48,24 @@ class _IslandsPageState
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () => Modular.to.pop(),
+                            onTap: () => Modular.to.pushNamed('/journey'),
                           ),
                           const Spacer(),
                           InkWell(
-                            borderRadius: BorderRadius.circular(220),
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
-                                  shape: BoxShape.circle),
-                              child: const Icon(
-                                Icons.description_outlined,
-                                size: 24,
-                                color: Colors.white,
+                              borderRadius: BorderRadius.circular(220),
+                              child: Container(
+                                width: 60,
+                                height: 60,
+                                decoration: const BoxDecoration(
+                                    color: Color(0xFF256380),
+                                    shape: BoxShape.circle),
+                                child: const Icon(
+                                  Icons.description_outlined,
+                                  size: 24,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            onTap: () {},
-                          ),
+                              onTap: () {}),
                         ],
                       ),
                       customSizedBox4(context),
@@ -122,7 +121,7 @@ class _IslandsPageState
                         items: imageSlidersIsland,
                         options: CarouselOptions(
                           enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                          enlargeCenterPage: true,
+                          enlargeCenterPage: false,
                           enableInfiniteScroll: false,
                           viewportFraction: 1,
                           aspectRatio: 96 / 65,
@@ -402,41 +401,3 @@ class _IslandsPageState
     );
   }
 }
-
-//old
-
-// InkWell(
-//   child: DraggableScrollableSheet(
-//     // controller:dragController.an(
-//     //   0.1,
-//     //   // duration: const Duration(milliseconds: 200),
-//     //   // curve: Curves.easeInOut,
-//     // ),
-
-//     minChildSize: 0.1,
-//     maxChildSize: 0.65,
-//     initialChildSize: 0.1,
-//     builder: (context, scrollController) {
-//       return SingleChildScrollView(
-//         controller: scrollController,
-//         child: const Card(
-//           elevation: 15,
-//           shadowColor: Colors.black,
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.only(
-//               topLeft: Radius.circular(32),
-//               topRight: Radius.circular(32),
-//             ),
-//           ),
-//           color: Colors.white,
-//           child: IslandsBottomSheet(),
-//         ),
-//       );
-//     },
-//   ),
-//   onTap: () {
-//     // setState(() {
-//     //   expand = !expand;
-//     // });
-//   },
-// ),
