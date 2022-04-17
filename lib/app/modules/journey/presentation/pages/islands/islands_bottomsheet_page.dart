@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class IslandsBottomSheet extends StatefulWidget {
   const IslandsBottomSheet({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
       child: Column(
         children: [
           const SizedBox(
-            height: 24,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,101 +37,128 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
               const Icon(
                 Icons.expand_more,
                 size: 24,
-                color: Colors.black,
+                color: Color(0xFF2B2B2B),
               ),
             ],
           ),
-          customSizedBox3(context),
+          customSizedBox1(context),
           //Linha1
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .11,
+                CircularPercentIndicator(
+                  percent: 1,
+                  lineWidth: 6,
+                  animation: true,
+                  animationDuration: 500,
+                  center: CircleAvatar(
+                    backgroundImage: const AssetImage(
+                      'assets/images/island.png',
                     ),
-                    customSizedBox4(context),
-                    Text(
+                    radius: mediaQuery.width * .105,
+                  ),
+                  radius: mediaQuery.width * .12,
+                  footer: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Text(
                       'Pedido de gratuidade',
                       style: GoogleFonts.mulish(
                         textStyle: TextStyle(
-                          fontSize: mediaQuery.width * .025,
+                          fontSize: mediaQuery.width * .027,
                           color: const Color(0xFF256380),
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
-                  ],
+                  ),
+                  backgroundColor: const Color(0xFFE0E0E0),
+                  progressColor: const Color(0xFFD03363),
                 ),
-                Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .11,
+                CircularPercentIndicator(
+                  percent: 0.5,
+                  lineWidth: 6,
+                  animation: true,
+                  animationDuration: 500,
+                  center: CircleAvatar(
+                    backgroundImage: const AssetImage(
+                      'assets/images/island.png',
                     ),
-                    customSizedBox4(context),
-                    Text(
-                      'Ilha João Nery',
+                    radius: mediaQuery.width * .105,
+                  ),
+                  radius: mediaQuery.width * .12,
+                  footer: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Text(
+                      'Ilha 2',
                       style: GoogleFonts.mulish(
                         textStyle: TextStyle(
-                          fontSize: mediaQuery.width * .03,
+                          fontSize: mediaQuery.width * .027,
                           color: const Color(0xFF256380),
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
-                  ],
+                  ),
+                  backgroundColor: const Color(0xFFE0E0E0),
+                  progressColor: const Color(0xFFD03363),
                 ),
-                Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .11,
+                CircularPercentIndicator(
+                  percent: 0.25,
+                  lineWidth: 6,
+                  animation: true,
+                  animationDuration: 500,
+                  center: CircleAvatar(
+                    backgroundImage: const AssetImage(
+                      'assets/images/island.png',
                     ),
-                    customSizedBox4(context),
-                    Text(
-                      'Ilha João Nery',
+                    radius: mediaQuery.width * .105,
+                  ),
+                  radius: mediaQuery.width * .12,
+                  footer: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                    child: Text(
+                      'Ilha 3',
                       style: GoogleFonts.mulish(
                         textStyle: TextStyle(
-                          fontSize: mediaQuery.width * .03,
+                          fontSize: mediaQuery.width * .027,
                           color: const Color(0xFF256380),
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
-                  ],
+                  ),
+                  backgroundColor: const Color(0xFFE0E0E0),
+                  progressColor: const Color(0xFFD03363),
                 ),
               ],
             ),
           ),
-
+          customSizedBox2(context),
           //Linha2
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .11,
+                CircularPercentIndicator(
+                  percent: 0.45,
+                  lineWidth: 6,
+                  animation: true,
+                  animationDuration: 500,
+                  center: CircleAvatar(
+                    backgroundImage: const AssetImage(
+                      'assets/images/island.png',
                     ),
-                    customSizedBox4(context),
-                    Text(
-                      'Ilha João Nery',
+                    radius: mediaQuery.width * .105,
+                  ),
+                  radius: mediaQuery.width * .12,
+                  footer: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Text(
+                      'Ilha 4',
                       style: GoogleFonts.mulish(
                         textStyle: TextStyle(
                           fontSize: mediaQuery.width * .03,
@@ -139,8 +167,38 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
                         ),
                       ),
                     ),
-                  ],
+                  ),
+                  backgroundColor: const Color(0xFFE0E0E0),
+                  progressColor: const Color(0xFFD03363),
                 ),
+                // CircularPercentIndicator(
+                //   percent: 0.75,
+                //   lineWidth: 6,
+                //   animation: true,
+                //   animationDuration: 500,
+                //   center: CircleAvatar(
+                //     backgroundImage: const AssetImage(
+                //       'assets/images/island.png',
+                //     ),
+                //     radius: mediaQuery.width * .105,
+                //   ),
+                //   radius: mediaQuery.width * .12,
+                //   footer: Padding(
+                //     padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                //     child: Text(
+                //       'Requerimento',
+                //       style: GoogleFonts.mulish(
+                //         textStyle: TextStyle(
+                //           fontSize: mediaQuery.width * .03,
+                //           color: const Color(0xFF256380),
+                //           fontWeight: FontWeight.w700,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                //   backgroundColor: const Color(0xFFE0E0E0),
+                //   progressColor: const Color(0xFFD03363),
+                // ),
                 Column(
                   children: [
                     Container(
@@ -159,7 +217,7 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
                     ),
                     customSizedBox4(context),
                     Text(
-                      'Ilha João Nery',
+                      'Requerimento',
                       style: GoogleFonts.mulish(
                         textStyle: TextStyle(
                           fontSize: mediaQuery.width * .03,
@@ -172,6 +230,9 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: mediaQuery.height * .2,
           ),
         ],
       ),

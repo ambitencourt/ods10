@@ -78,7 +78,7 @@ class _ExitIslandState extends State<ExitIsland> {
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: LinearProgressIndicator(
                           minHeight: 5,
-                          backgroundColor: const Color(0xFFD2D2CC),
+                          backgroundColor: Color(0xFFD2D2CC),
                           value: 6,
                           valueColor:
                               AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),

@@ -36,7 +36,7 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    double _progressValue = 0.0;
+
     void _launchURLCNJ() async {
       if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
     }
