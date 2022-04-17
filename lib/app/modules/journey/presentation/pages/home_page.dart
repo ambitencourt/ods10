@@ -203,11 +203,13 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                   ),
                 ),
                 const SizedBox(height: 10),
-                LinearProgressIndicator(
-                  value: 0.5,
-                  backgroundColor: AppColors.white.withOpacity(0.4),
-                  color: AppColors.secondary,
-                ),
+                Observer(builder: (_) {
+                  return LinearProgressIndicator(
+                    value: controller.docsStore.percentDone,
+                    backgroundColor: AppColors.white.withOpacity(0.4),
+                    color: AppColors.secondary,
+                  );
+                }),
               ],
             ),
           ),
