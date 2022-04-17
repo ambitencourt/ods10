@@ -13,11 +13,15 @@ import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_u
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/change_state.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/exit_island.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/tutorial/tutorial_page.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 
 import 'data/mappers/user_document_mapper.dart';
+
 import 'domain/usecases/get_user_documents_usecase.dart';
+
 import 'presentation/controllers/home_controller.dart';
+
 import 'presentation/pages/islands/gaming documents/document_details_page.dart';
 import 'presentation/pages/islands/islands_page.dart';
 
@@ -69,6 +73,11 @@ class JourneyModule extends Module {
           child: (context, args) => const HomePage(),
         ),
         ChildRoute(
+          '/tutorial',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => const TutorialPage(),
+        ),
+        ChildRoute(
           '/islands',
           transition: TransitionType.fadeIn,
           child: (context, args) => const IslandsPage(),
@@ -86,7 +95,7 @@ class JourneyModule extends Module {
         ChildRoute(
           '/exit-island',
           transition: TransitionType.fadeIn,
-          child: (context, args) => const Exitisland(),
+          child: (context, args) => const ExitIsland(),
         ),
       ];
 }

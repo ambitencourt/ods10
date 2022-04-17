@@ -193,7 +193,8 @@ class _HomePageState extends ModularState<HomePage, HomeController>
               Icons.description_outlined,
             ),
             onPress: () {
-              Modular.to.pushNamed('/journey/details');
+              //TODO falta criar a tela de documentos(Inicio documentos)
+              Modular.to.pushNamed('/journey');
             },
           ),
         ),
@@ -268,7 +269,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
   Widget _buildCentralImage(BuildContext context) {
     return InkWell(
       onTap: () {
-        Modular.to.pushNamed('/journey/islands');
+        Modular.to.pushNamed('/journey/tutorial');
       },
       child: Stack(
         children: [

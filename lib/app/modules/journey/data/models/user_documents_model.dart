@@ -39,7 +39,6 @@ class Document {
   late final String link;
   late final String location;
   late final String duration;
-  //late final int order;
 
   Document.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -50,7 +49,6 @@ class Document {
     link = json['link'] ?? '';
     location = json['location'] ?? '';
     duration = json['duration'] ?? '';
-    // order = json['order'];
   }
 
   Map<String, dynamic> toJson() {
@@ -63,7 +61,7 @@ class Document {
     _data['link'] = link;
     _data['location'] = location;
     _data['duration'] = duration;
-    //   _data['order'] = order;
+
     return _data;
   }
 }

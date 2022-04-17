@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ods10/app/common/stores/user_store.dart';
-
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/domain/enums/document_status_enum.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase.dart';

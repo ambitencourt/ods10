@@ -3,24 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../utils/links_util.dart';
-import '../../../widgets/islands/sizedbox_widget.dart';
-import 'free island/free_model.dart';
-import 'free island/page1_detail.dart';
-import 'free island/page2_detail.dart';
-import 'free island/page3_detail.dart';
-import 'free island/page4_detail.dart';
-import 'free island/page5_detail.dart';
-import 'free island/page6_detail.dart';
+import '../../../../../utils/links_util.dart';
+import '../../../../widgets/islands/sizedbox_widget.dart';
+import 'page1_tutorial.dart';
+import 'page2_tutorial.dart';
+import 'page3_tutorial.dart';
 
-class DocumentDetaills extends StatefulWidget {
-  const DocumentDetaills({Key? key}) : super(key: key);
+class TutorialPage extends StatefulWidget {
+  const TutorialPage({Key? key}) : super(key: key);
 
   @override
-  State<DocumentDetaills> createState() => _DocumentDetaillsState();
+  State<TutorialPage> createState() => _TutorialPageState();
 }
 
-class _DocumentDetaillsState extends State<DocumentDetaills> {
+class _TutorialPageState extends State<TutorialPage> {
   int current = 0;
 
   late PageController pageController;
@@ -36,28 +32,16 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    double _progressValue = 0.0;
+
     void _launchURLCNJ() async {
       if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
     }
 
     nextButton() {
-      if (current == 5) {
-        return 'Pedir Gratuidade ';
-      } else if (current == 6) {
-        return 'Baixar Modelo';
+      if (current == 2) {
+        return 'Começar';
       } else {
         return 'Próximo';
-      }
-    }
-
-    jumpToState() {
-      if (current == 5) {
-        return 'Não pedir Gratuidade ';
-      } else if (current == 6) {
-        return 'Atualizar estado';
-      } else {
-        return 'Pular explicação';
       }
     }
 
@@ -123,7 +107,7 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                         child: LinearProgressIndicator(
                           minHeight: 5,
                           backgroundColor: const Color(0xFFD2D2CC),
-                          value: current.toDouble() / 6,
+                          value: current.toDouble() / 2,
                           valueColor: const AlwaysStoppedAnimation<Color>(
                               Color(0xFFD03363)),
                         ),
@@ -136,13 +120,9 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                               parent: AlwaysScrollableScrollPhysics()),
                           controller: pageController,
                           children: const [
-                            Page1Detail(),
-                            Page2Detail(),
-                            Page3Detail(),
-                            Page4Detail(),
-                            Page5Detail(),
-                            Page6Detail(),
-                            FreeModel(),
+                            Page1Tutorial(),
+                            Page2Tutorial(),
+                            Page3Tutorial(),
                           ],
                           onPageChanged: (page) =>
                               setState(() => current = page),
@@ -152,11 +132,11 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            current == 5
-                                ? pageController.jumpToPage(6)
+                            current == 2
+                                ? Modular.to.pushNamed('/journey/islands')
                                 : pageController.animateToPage(
                                     pageController.page!.toInt() + 1,
-                                    duration: const Duration(milliseconds: 300),
+                                    duration: const Duration(milliseconds: 200),
                                     curve: Curves.easeIn);
                           });
                         },
@@ -184,12 +164,10 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                       customSizedBox4(context),
                       ElevatedButton(
                         onPressed: () {
-                          pageController.page!.toInt() != 6
-                              ? Modular.to.pushNamed('/journey/exit-island')
-                              : Modular.to.pushNamed('/journey/change-state');
+                          Modular.to.pushNamed('/journey/islands');
                         },
                         child: Text(
-                          jumpToState(),
+                          'Pular tutorial',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.mulish(
                             textStyle: const TextStyle(

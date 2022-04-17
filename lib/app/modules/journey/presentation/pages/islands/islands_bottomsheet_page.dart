@@ -53,7 +53,7 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
                   ),
                   customSizedBox4(context),
                   Text(
-                    'Pedido de Gratuidade',
+                    '',
                     style: GoogleFonts.mulish(
                       textStyle: TextStyle(
                         fontSize: mediaQuery.width * .025,

@@ -7,7 +7,6 @@ class DocumentEntity {
   String link;
   String location;
   String duration;
-  // int order;
   String status;
 
   DocumentEntity({
@@ -19,7 +18,6 @@ class DocumentEntity {
     required this.link,
     required this.location,
     required this.duration,
-    //  required this.order,
     required this.status,
   });
 }

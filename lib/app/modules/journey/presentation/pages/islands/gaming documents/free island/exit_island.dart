@@ -7,14 +7,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../../utils/links_util.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
-class Exitisland extends StatefulWidget {
-  const Exitisland({Key? key}) : super(key: key);
+class ExitIsland extends StatefulWidget {
+  const ExitIsland({Key? key}) : super(key: key);
 
   @override
-  State<Exitisland> createState() => _ExitislandState();
+  State<ExitIsland> createState() => _ExitIslandState();
 }
 
-class _ExitislandState extends State<Exitisland> {
+class _ExitIslandState extends State<ExitIsland> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
