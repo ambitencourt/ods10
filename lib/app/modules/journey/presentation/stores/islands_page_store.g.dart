@@ -39,6 +39,51 @@ mixin _$IslandsPageStore on _IslandsPageStoreBase, Store {
     });
   }
 
+  final _$loadingAtom = Atom(name: '_IslandsPageStoreBase.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  final _$hasErrorAtom = Atom(name: '_IslandsPageStoreBase.hasError');
+
+  @override
+  bool get hasError {
+    _$hasErrorAtom.reportRead();
+    return super.hasError;
+  }
+
+  @override
+  set hasError(bool value) {
+    _$hasErrorAtom.reportWrite(value, super.hasError, () {
+      super.hasError = value;
+    });
+  }
+
+  final _$loadingStatusAtom = Atom(name: '_IslandsPageStoreBase.loadingStatus');
+
+  @override
+  bool get loadingStatus {
+    _$loadingStatusAtom.reportRead();
+    return super.loadingStatus;
+  }
+
+  @override
+  set loadingStatus(bool value) {
+    _$loadingStatusAtom.reportWrite(value, super.loadingStatus, () {
+      super.loadingStatus = value;
+    });
+  }
+
   final _$_IslandsPageStoreBaseActionController =
       ActionController(name: '_IslandsPageStoreBase');
 
@@ -65,10 +110,46 @@ mixin _$IslandsPageStore on _IslandsPageStoreBase, Store {
   }
 
   @override
+  void setLoading(bool value) {
+    final _$actionInfo = _$_IslandsPageStoreBaseActionController.startAction(
+        name: '_IslandsPageStoreBase.setLoading');
+    try {
+      return super.setLoading(value);
+    } finally {
+      _$_IslandsPageStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHasError(bool value) {
+    final _$actionInfo = _$_IslandsPageStoreBaseActionController.startAction(
+        name: '_IslandsPageStoreBase.setHasError');
+    try {
+      return super.setHasError(value);
+    } finally {
+      _$_IslandsPageStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLoadingStatus(bool value) {
+    final _$actionInfo = _$_IslandsPageStoreBaseActionController.startAction(
+        name: '_IslandsPageStoreBase.setLoadingStatus');
+    try {
+      return super.setLoadingStatus(value);
+    } finally {
+      _$_IslandsPageStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 current: ${current},
-progressValue: ${progressValue}
+progressValue: ${progressValue},
+loading: ${loading},
+hasError: ${hasError},
+loadingStatus: ${loadingStatus}
     ''';
   }
 }
