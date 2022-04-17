@@ -13,6 +13,7 @@ import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_u
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/change_state.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/exit_island.dart';
+import 'package:ods10/app/modules/journey/presentation/stores/documents_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 
 import 'data/mappers/user_document_mapper.dart';
@@ -25,7 +26,8 @@ class JourneyModule extends Module {
   @override
   List<Bind> get binds => [
         //Stores
-        Bind.singleton<HomeStore>((i) => HomeStore()),
+        Bind.factory<HomeStore>((i) => HomeStore()),
+        Bind.singleton<DocumentsStore>((i) => DocumentsStore()),
 
         //Mappers
         Bind.factory<Mapper>((i) => UserDocumentMapper()),
@@ -54,8 +56,9 @@ class JourneyModule extends Module {
 
         // CONTROLLERS
         Bind.factory((i) => HomeController(
-              i<UserStore>(),
               i<HomeStore>(),
+              i<DocumentsStore>(),
+              i<UserStore>(),
               i<GetUserDocumentsUseCase>(),
               i<UpdateUserDocumentsUseCase>(),
             )),
