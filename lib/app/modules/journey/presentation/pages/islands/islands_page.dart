@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -13,13 +14,8 @@ class IslandsPage extends StatefulWidget {
   State<IslandsPage> createState() => _IslandsPageState();
 }
 
-class _IslandsPageState extends State<IslandsPage> {
-  int current = 0;
-
-  double progressValue = 0.0;
-
-  final CarouselController _controller = CarouselController();
-
+class _IslandsPageState
+    extends ModularState<IslandsPage, IslandsPageController> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -131,12 +127,10 @@ class _IslandsPageState extends State<IslandsPage> {
                           viewportFraction: 1,
                           aspectRatio: 96 / 65,
                           onPageChanged: (index, reason) {
-                            setState(() {
-                              current = index;
-                            });
+                            controller.islandsPageStore.setCurrentIndex(index);
                           },
                         ),
-                        carouselController: _controller,
+                        carouselController: controller.carouselController,
                       ),
                     ),
                     Row(
@@ -144,7 +138,7 @@ class _IslandsPageState extends State<IslandsPage> {
                       children: [
                         InkWell(
                           borderRadius: BorderRadius.circular(220),
-                          child: current == 0
+                          child: controller.islandsPageStore.current == 0
                               ? Container(
                                   width: 60,
                                   height: 60,
@@ -175,14 +169,15 @@ class _IslandsPageState extends State<IslandsPage> {
                                     color: Colors.white,
                                   ),
                                 ),
-                          onTap: () => _controller.previousPage(),
+                          onTap: () =>
+                              controller.carouselController.previousPage(),
                         ),
                         SizedBox(
                           width: mediaQuery.width * .5,
                         ),
                         InkWell(
                             borderRadius: BorderRadius.circular(220),
-                            child: current == 4
+                            child: controller.islandsPageStore.current == 4
                                 ? Container(
                                     width: 60,
                                     height: 60,
@@ -214,7 +209,7 @@ class _IslandsPageState extends State<IslandsPage> {
                                     ),
                                   ),
                             onTap: () {
-                              _controller.nextPage();
+                              controller.carouselController.nextPage();
                             }),
                       ],
                     ),
@@ -290,7 +285,8 @@ class _IslandsPageState extends State<IslandsPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: imgListIsland.asMap().entries.map((entry) {
                       return GestureDetector(
-                        onTap: () => _controller.animateToPage(entry.key),
+                        onTap: () => controller.carouselController
+                            .animateToPage(entry.key),
                         child: Container(
                           width: 12.0,
                           height: 12.0,
@@ -298,9 +294,10 @@ class _IslandsPageState extends State<IslandsPage> {
                               vertical: 2.0, horizontal: 4.0),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: current == entry.key
-                                ? const Color(0xFFD03363)
-                                : const Color(0xFFB8B8B8),
+                            color:
+                                controller.islandsPageStore.current == entry.key
+                                    ? const Color(0xFFD03363)
+                                    : const Color(0xFFB8B8B8),
                           ),
                         ),
                       );
@@ -327,7 +324,7 @@ class _IslandsPageState extends State<IslandsPage> {
                         child: LinearProgressIndicator(
                           minHeight: 5,
                           backgroundColor: const Color(0xFFD2D2CC),
-                          value: progressValue / 30,
+                          value: controller.islandsPageStore.progressValue / 30,
                           valueColor: const AlwaysStoppedAnimation<Color>(
                               Color(0xFFD03363)),
                         ),
@@ -350,7 +347,7 @@ class _IslandsPageState extends State<IslandsPage> {
                         ),
                         const Spacer(),
                         Text(
-                          '${progressValue.round()}/30 documentos',
+                          '${controller.islandsPageStore.progressValue.round()}/30 documentos',
                           style: GoogleFonts.mulish(
                               textStyle: const TextStyle(fontSize: 10),
                               fontWeight: FontWeight.w600,
