@@ -1,11 +1,11 @@
 class IslandEntity {
   String id;
   String name;
-  String descriptio;
+  String description;
 
   IslandEntity({
     required this.id,
     required this.name,
-    required this.descriptio,
+    required this.description,
   });
 }
