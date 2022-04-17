@@ -68,7 +68,7 @@ class _IslandsPageState
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () => Modular.to.pushNamed('/journey'),
+                            onTap: () => Modular.to.pop(),
                           ),
                           const Spacer(),
                           InkWell(

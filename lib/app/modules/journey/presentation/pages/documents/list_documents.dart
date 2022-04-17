@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
-import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
-import 'package:ods10/app/common/widgets/bottom_navibar.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
@@ -79,6 +77,7 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
                     SliverAppBar(
                       pinned: true,
                       backgroundColor: AppColors.background,
+                      automaticallyImplyLeading: false,
                       collapsedHeight: 91,
                       elevation: 0,
                       centerTitle: false,
@@ -175,7 +174,6 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
           ),
         );
       }),
-      bottomNavigationBar: const BottomNavibar(),
     );
   }
 
