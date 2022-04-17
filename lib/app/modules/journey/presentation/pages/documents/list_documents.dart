@@ -6,6 +6,8 @@ import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
@@ -81,93 +83,15 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
                       collapsedHeight: 91,
                       elevation: 0,
                       centerTitle: false,
-                      flexibleSpace: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Lista de ',
-                                  style: getRegularStyle(fontSize: 18),
-                                ),
-                                TextSpan(
-                                  text: 'Documentos',
-                                  style: getBoldStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ),
-                          PersonalTabs(
-                            tabMenu: tabMenu,
-                            onTabSelect: (index) {},
-                            tabController: controller.tabController,
-                          ),
-                        ],
+                      flexibleSpace: DocumentsStatusTab(
+                        tabController: controller.tabController,
                       ),
                     ),
                   ];
                 },
-                body: Observer(
-                  builder: (_) {
-                    return TabBarView(
-                      controller: controller.tabController,
-                      children: <Widget>[
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs
-                                .map((e) => DocumentItemWidget(item: e)),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.status == 'missing'
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.status == 'requested'
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.status == 'ready'
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.price == 0
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.price > 0
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
+                body: DocumentsTabBarView(
+                  items: controller.docsStore.docs,
+                  tabController: controller.tabController,
                 ),
               ),
             ),
