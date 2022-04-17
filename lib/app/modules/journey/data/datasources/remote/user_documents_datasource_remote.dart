@@ -3,7 +3,7 @@ import 'package:ods10/app/common/mapper/mapper.dart';
 import 'package:ods10/app/modules/journey/data/models/user_documents_model.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 
-import '../user_documents_datasource_remote.dart';
+import '../user_documents_datasource.dart';
 
 class UserDocumentsDataSourceRemote implements UserDocumentsDataSource {
   final Mapper _mapper;

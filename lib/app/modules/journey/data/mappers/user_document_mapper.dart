@@ -25,6 +25,6 @@ class UserDocumentMapper implements Mapper<DocumentEntity, UserDocumentsModel> {
         island: IslandEntity(
             id: object.document.island.id,
             name: object.document.island.name,
-            descriptio: object.document.island.description),
+            description: object.document.island.description),
       );
 }
