@@ -21,7 +21,6 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
     try {
       await controller.getUser();
     } catch (e) {
-      print(e);
       //TODO navigate user to erro page or login
     } finally {
       Future.delayed(
@@ -29,7 +28,7 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
           seconds: 1,
         ),
         () {
-          Modular.to.navigate('/journey');
+          Modular.to.navigate('/journey/');
         },
       );
     }
