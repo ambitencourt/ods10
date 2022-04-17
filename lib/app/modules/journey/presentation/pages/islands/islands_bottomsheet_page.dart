@@ -13,13 +13,14 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        const SizedBox(
-          height: 24,
-        ),
-        InkWell(
-          child: Row(
+    return InkWell(
+      onTap: () => Navigator.of(context).pop(),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 24,
+          ),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -32,180 +33,148 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
                   ),
                 ),
               ),
-            ],
-          ),
-          onTap: () => Navigator.of(context).pop(),
-        ),
-        customSizedBox3(context),
-        //Linha1
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      'assets/images/island.png',
-                    ),
-                    radius: mediaQuery.width * .11,
-                  ),
-                  customSizedBox4(context),
-                  Text(
-                    '',
-                    style: GoogleFonts.mulish(
-                      textStyle: TextStyle(
-                        fontSize: mediaQuery.width * .025,
-                        color: const Color(0xFF256380),
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      'assets/images/island.png',
-                    ),
-                    radius: mediaQuery.width * .11,
-                  ),
-                  customSizedBox4(context),
-                  Text(
-                    'Ilha João Nery',
-                    style: GoogleFonts.mulish(
-                      textStyle: TextStyle(
-                        fontSize: mediaQuery.width * .03,
-                        color: const Color(0xFF256380),
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      'assets/images/island.png',
-                    ),
-                    radius: mediaQuery.width * .11,
-                  ),
-                  customSizedBox4(context),
-                  Text(
-                    'Ilha João Nery',
-                    style: GoogleFonts.mulish(
-                      textStyle: TextStyle(
-                        fontSize: mediaQuery.width * .03,
-                        color: const Color(0xFF256380),
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ],
+              const Icon(
+                Icons.expand_more,
+                size: 24,
+                color: Colors.black,
               ),
             ],
           ),
-        ),
+          customSizedBox3(context),
+          //Linha1
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
+                      ),
+                      radius: mediaQuery.width * .11,
+                    ),
+                    customSizedBox4(context),
+                    Text(
+                      'Pedido de gratuidade',
+                      style: GoogleFonts.mulish(
+                        textStyle: TextStyle(
+                          fontSize: mediaQuery.width * .025,
+                          color: const Color(0xFF256380),
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
+                      ),
+                      radius: mediaQuery.width * .11,
+                    ),
+                    customSizedBox4(context),
+                    Text(
+                      'Ilha João Nery',
+                      style: GoogleFonts.mulish(
+                        textStyle: TextStyle(
+                          fontSize: mediaQuery.width * .03,
+                          color: const Color(0xFF256380),
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
+                      ),
+                      radius: mediaQuery.width * .11,
+                    ),
+                    customSizedBox4(context),
+                    Text(
+                      'Ilha João Nery',
+                      style: GoogleFonts.mulish(
+                        textStyle: TextStyle(
+                          fontSize: mediaQuery.width * .03,
+                          color: const Color(0xFF256380),
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
 
-        //Linha2
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      'assets/images/island.png',
+          //Linha2
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
+                      ),
+                      radius: mediaQuery.width * .11,
                     ),
-                    radius: mediaQuery.width * .11,
-                  ),
-                  customSizedBox4(context),
-                  Text(
-                    'Ilha João Nery',
-                    style: GoogleFonts.mulish(
-                      textStyle: TextStyle(
-                        fontSize: mediaQuery.width * .03,
-                        color: const Color(0xFF256380),
-                        fontWeight: FontWeight.w700,
+                    customSizedBox4(context),
+                    Text(
+                      'Ilha João Nery',
+                      style: GoogleFonts.mulish(
+                        textStyle: TextStyle(
+                          fontSize: mediaQuery.width * .03,
+                          color: const Color(0xFF256380),
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      'assets/images/island.png',
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      height: mediaQuery.width * .23,
+                      width: mediaQuery.width * .22,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFF7C7C7C),
+                      ),
+                      child: Icon(
+                        Icons.lock,
+                        color: Colors.white,
+                        size: mediaQuery.width * .16,
+                      ),
+                      alignment: Alignment.center,
                     ),
-                    radius: mediaQuery.width * .11,
-                  ),
-                  customSizedBox4(context),
-                  Text(
-                    'Ilha João Nery',
-                    style: GoogleFonts.mulish(
-                      textStyle: TextStyle(
-                        fontSize: mediaQuery.width * .03,
-                        color: const Color(0xFF256380),
-                        fontWeight: FontWeight.w700,
+                    customSizedBox4(context),
+                    Text(
+                      'Ilha João Nery',
+                      style: GoogleFonts.mulish(
+                        textStyle: TextStyle(
+                          fontSize: mediaQuery.width * .03,
+                          color: const Color(0xFF256380),
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        //Linha3
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  // CircleAvatar(
-                  //   backgroundImage: const AssetImage(
-                  //     'assets/images/lock.png',
-                  //   ),
-                  //   radius: mediaQuery.width * .11,
-                  // ),
-                  Container(
-                    height: mediaQuery.width * .25,
-                    width: mediaQuery.width * .25,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xFF7C7C7C),
-                    ),
-                    child: Icon(
-                      Icons.lock,
-                      color: Colors.white,
-                      size: mediaQuery.width * .16,
-                    ),
-                    alignment: Alignment.center,
-                  ),
-                  customSizedBox4(context),
-                  Text(
-                    'Ilha João Nery',
-                    style: GoogleFonts.mulish(
-                      textStyle: TextStyle(
-                        fontSize: mediaQuery.width * .03,
-                        color: const Color(0xFF256380),
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
