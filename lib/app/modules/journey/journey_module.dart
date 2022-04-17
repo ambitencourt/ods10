@@ -10,6 +10,7 @@ import 'package:ods10/app/modules/journey/domain/repositories/update_user_docume
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase%20_imp.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase_imp.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/documents/list_documents.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/change_state.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/exit_island.dart';
@@ -71,6 +72,11 @@ class JourneyModule extends Module {
           '/',
           transition: TransitionType.fadeIn,
           child: (context, args) => const HomePage(),
+        ),
+        ChildRoute(
+          '/documents',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => const DocumentsList(),
         ),
         ChildRoute(
           '/tutorial',

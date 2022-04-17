@@ -52,7 +52,7 @@ class _IslandsPageState extends State<IslandsPage> {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () => Modular.to.pop(),
+                            onTap: () => Modular.to.pushNamed('/journey'),
                           ),
                           const Spacer(),
                           InkWell(
@@ -125,7 +125,7 @@ class _IslandsPageState extends State<IslandsPage> {
                         items: imageSlidersIsland,
                         options: CarouselOptions(
                           enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                          enlargeCenterPage: true,
+                          enlargeCenterPage: false,
                           enableInfiniteScroll: false,
                           viewportFraction: 1,
                           aspectRatio: 96 / 65,
