@@ -21,16 +21,19 @@ import 'data/mappers/user_document_mapper.dart';
 
 import 'domain/usecases/get_user_documents_usecase.dart';
 
+import 'presentation/controllers/docs_controller.dart';
 import 'presentation/controllers/home_controller.dart';
 
 import 'presentation/pages/islands/gaming documents/document_details_page.dart';
 import 'presentation/pages/islands/islands_page.dart';
+import 'presentation/stores/docs_store.dart';
 
 class JourneyModule extends Module {
   @override
   List<Bind> get binds => [
         //Stores
         Bind.singleton<HomeStore>((i) => HomeStore()),
+        Bind.singleton<DocsStore>((i) => DocsStore()),
 
         //Mappers
         Bind.factory<Mapper>((i) => UserDocumentMapper()),
@@ -61,6 +64,12 @@ class JourneyModule extends Module {
         Bind.factory((i) => HomeController(
               i<UserStore>(),
               i<HomeStore>(),
+              i<GetUserDocumentsUseCase>(),
+              i<UpdateUserDocumentsUseCase>(),
+            )),
+        Bind.factory((i) => DocsController(
+              i<UserStore>(),
+              i<DocsStore>(),
               i<GetUserDocumentsUseCase>(),
               i<UpdateUserDocumentsUseCase>(),
             )),

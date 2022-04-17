@@ -34,7 +34,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
       text: "Recebidos",
     ),
     const Tab(
-      text: "gratuitos",
+      text: "Gratuitos",
     ),
     const Tab(
       text: "Pagos",
@@ -77,6 +77,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                       child: _buildTopInfo(context),
                     ),
                     SliverAppBar(
+                      automaticallyImplyLeading: false,
                       pinned: true,
                       backgroundColor: AppColors.background,
                       collapsedHeight: 91,
@@ -85,7 +86,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                       flexibleSpace: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 18),
                           RichText(
                             text: TextSpan(
                               children: [
@@ -95,7 +96,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                                 ),
                                 TextSpan(
                                   text: 'Documentos',
-                                  style: getBoldStyle(fontSize: 18),
+                                  style: getBoldStyleW900(fontSize: 18),
                                 ),
                               ],
                             ),

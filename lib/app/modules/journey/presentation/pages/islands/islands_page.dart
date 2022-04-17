@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../widgets/islands/image_sliders_widget.dart';
 
 class IslandsPage extends StatefulWidget {
@@ -69,7 +70,8 @@ class _IslandsPageState extends State<IslandsPage> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onTap: () {}),
+                              onTap: () =>
+                                  Modular.to.pushNamed('/journey/documents')),
                         ],
                       ),
                       customSizedBox4(context),
@@ -217,69 +219,139 @@ class _IslandsPageState extends State<IslandsPage> {
                             }),
                       ],
                     ),
-                    Align(
-                      alignment: const Alignment(0, 0),
+                    //TODO Criar lógica para as ilhas
+                    Positioned(
+                      top: 150,
                       child: Visibility(
-                        visible: false,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(38),
-                            ),
-                          ),
-                          height: 62,
-                          width: 187,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xFFD03363),
-                                    width: 3,
-                                  ),
+                        visible: current > 0,
+                        child: current != 4
+                            ? Container(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.rectangle,
                                   color: Colors.white,
-                                  shape: BoxShape.circle,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(38),
+                                  ),
                                 ),
-                                child: const Icon(
-                                  Icons.play_arrow,
-                                  size: 30,
-                                  color: Color(0xFFD03363),
+                                height: 62,
+                                width: 187,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      CircularPercentIndicator(
+                                        percent: 0.5,
+                                        lineWidth: 5,
+                                        animation: true,
+                                        animationDuration: 500,
+                                        center: const Icon(
+                                          Icons.play_arrow,
+                                          size: 30,
+                                          color: Color(0xFFD03363),
+                                        ),
+                                        radius: mediaQuery.width * .07,
+                                        backgroundColor:
+                                            const Color(0xFFE0E0E0),
+                                        progressColor: const Color(0xFFD03363),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Entrar na ilha',
+                                            style: GoogleFonts.mulish(
+                                              textStyle: const TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            'João Nery',
+                                            style: GoogleFonts.dmSerifDisplay(
+                                              textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  color: Colors.white12,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(38),
+                                  ),
+                                ),
+                                height: 62,
+                                width: 187,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      CircularPercentIndicator(
+                                        percent: 0,
+                                        lineWidth: 5,
+                                        animation: true,
+                                        animationDuration: 500,
+                                        center: const Icon(
+                                          Icons.lock,
+                                          size: 30,
+                                          color: Colors.black,
+                                        ),
+                                        radius: mediaQuery.width * .07,
+                                        backgroundColor:
+                                            const Color(0xFFC8C8C8),
+                                        progressColor: const Color(0xFFD03363),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Entrar na ilha',
+                                            style: GoogleFonts.mulish(
+                                              textStyle: const TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            'Requerimento',
+                                            style: GoogleFonts.dmSerifDisplay(
+                                              textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Entrar na ilha',
-                                    style: GoogleFonts.mulish(
-                                      textStyle: const TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'João Nery',
-                                    style: GoogleFonts.dmSerifDisplay(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        //TODO Aqui finaliza a lógica provisória
                       ),
                     ),
                   ],

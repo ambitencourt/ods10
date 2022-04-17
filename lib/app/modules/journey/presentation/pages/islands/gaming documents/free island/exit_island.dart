@@ -69,7 +69,8 @@ class _ExitIslandState extends State<ExitIsland> {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () =>
+                                Modular.to.pushNamed('/journey/documents'),
                           ),
                         ],
                       ),
@@ -124,7 +125,7 @@ class _ExitIslandState extends State<ExitIsland> {
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            Modular.to.pushNamed('/journey');
+                            Modular.to.pushNamed('/journey/islands');
                           });
                         },
                         child: Text(

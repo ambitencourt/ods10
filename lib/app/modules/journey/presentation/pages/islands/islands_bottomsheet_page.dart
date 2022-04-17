@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -49,33 +50,36 @@ class _IslandsBottomSheetState extends State<IslandsBottomSheet> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircularPercentIndicator(
-                  percent: 1,
-                  lineWidth: 6,
-                  animation: true,
-                  animationDuration: 500,
-                  center: CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      'assets/images/island.png',
+                InkWell(
+                  onTap: () => Modular.to.pushNamed('/journey/details'),
+                  child: CircularPercentIndicator(
+                    percent: 1,
+                    lineWidth: 6,
+                    animation: true,
+                    animationDuration: 500,
+                    center: CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
+                      ),
+                      radius: mediaQuery.width * .105,
                     ),
-                    radius: mediaQuery.width * .105,
-                  ),
-                  radius: mediaQuery.width * .12,
-                  footer: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: Text(
-                      'Pedido de gratuidade',
-                      style: GoogleFonts.mulish(
-                        textStyle: TextStyle(
-                          fontSize: mediaQuery.width * .027,
-                          color: const Color(0xFF256380),
-                          fontWeight: FontWeight.w700,
+                    radius: mediaQuery.width * .12,
+                    footer: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Text(
+                        'Pedido de gratuidade',
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                            fontSize: mediaQuery.width * .027,
+                            color: const Color(0xFF256380),
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
+                    backgroundColor: const Color(0xFFE0E0E0),
+                    progressColor: const Color(0xFFD03363),
                   ),
-                  backgroundColor: const Color(0xFFE0E0E0),
-                  progressColor: const Color(0xFFD03363),
                 ),
                 CircularPercentIndicator(
                   percent: 0.5,
