@@ -193,7 +193,7 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
               Icons.close,
             ),
             onPress: () {
-              Modular.to.pushNamed('/journey');
+              Modular.to.pop();
             },
           ),
         ),
