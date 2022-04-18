@@ -72,20 +72,22 @@ class _IslandsPageState
                           ),
                           const Spacer(),
                           InkWell(
-                              borderRadius: BorderRadius.circular(220),
-                              child: Container(
-                                width: 60,
-                                height: 60,
-                                decoration: const BoxDecoration(
-                                    color: Color(0xFF256380),
-                                    shape: BoxShape.circle),
-                                child: const Icon(
-                                  Icons.description_outlined,
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
+                            borderRadius: BorderRadius.circular(220),
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: const BoxDecoration(
+                                  color: Color(0xFF256380),
+                                  shape: BoxShape.circle),
+                              child: const Icon(
+                                Icons.description_outlined,
+                                size: 24,
+                                color: Colors.white,
                               ),
-                              onTap: () {}),
+                            ),
+                            onTap: () =>
+                                Modular.to.pushNamed('/journey/documents'),
+                          ),
                         ],
                       ),
                       customSizedBox4(context),

@@ -97,7 +97,8 @@ class _TutorialPageState extends State<TutorialPage> {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () =>
+                                Modular.to.pushNamed('/journey/documents'),
                           ),
                         ],
                       ),
