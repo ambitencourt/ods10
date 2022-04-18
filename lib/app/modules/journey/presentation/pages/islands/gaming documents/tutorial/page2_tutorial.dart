@@ -38,7 +38,7 @@ class Page2Tutorial extends StatelessWidget {
             width: 257,
             height: 124,
             child: Text(
-              'Os documentos estão divididos em ilhas e, à medida que você você receber cada documento e atualizar o status para "recebido" conseguirá, conseguirá avançar no seu processo de retificação',
+              'Os documentos estão divididos em ilhas e, à medida que você receber cada documento e atualizar o status para "recebido", conseguirá avançar no seu processo de retificação',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(

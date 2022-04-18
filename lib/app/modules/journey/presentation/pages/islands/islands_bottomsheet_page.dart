@@ -18,16 +18,14 @@ class _IslandsBottomSheetState
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    return InkWell(
-      onTap: () => Navigator.of(context).pop(),
-      child: Observer(
-        builder: (_) {
-          return Column(
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
+    return Observer(
+      builder: (_) {
+        return Column(
+          children: [
+            const SizedBox(height: 30),
+            InkWell(
+              onTap: () => Navigator.of(context).pop(),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -47,203 +45,201 @@ class _IslandsBottomSheetState
                   ),
                 ],
               ),
-              customSizedBox1(context),
-              //Linha1
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircularPercentIndicator(
-                      percent: controller.islandsStore.percentDone[0],
-                      lineWidth: 6,
-                      animation: true,
-                      animationDuration: 500,
-                      center: CircleAvatar(
-                        backgroundImage: const AssetImage(
-                          'assets/images/island.png',
-                        ),
-                        radius: mediaQuery.width * .105,
+            ),
+            customSizedBox1(context),
+            //Linha1
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircularPercentIndicator(
+                    percent: controller.islandsStore.percentDone[0],
+                    lineWidth: 6,
+                    animation: true,
+                    animationDuration: 500,
+                    center: CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
                       ),
-                      radius: mediaQuery.width * .12,
-                      footer: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Text(
-                          controller.islandsStore.islands[0].name,
-                          style: GoogleFonts.mulish(
-                            textStyle: TextStyle(
-                              fontSize: mediaQuery.width * .027,
-                              color: const Color(0xFF256380),
-                              fontWeight: FontWeight.w700,
-                            ),
+                      radius: mediaQuery.width * .105,
+                    ),
+                    radius: mediaQuery.width * .12,
+                    footer: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Text(
+                        controller.islandsStore.islands[0].name,
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                            fontSize: mediaQuery.width * .027,
+                            color: const Color(0xFF256380),
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      backgroundColor: const Color(0xFFE0E0E0),
-                      progressColor: const Color(0xFFD03363),
                     ),
-                    CircularPercentIndicator(
-                      percent: controller.islandsStore.percentDone[1],
-                      lineWidth: 6,
-                      animation: true,
-                      animationDuration: 500,
-                      center: CircleAvatar(
-                        backgroundImage: const AssetImage(
-                          'assets/images/island.png',
-                        ),
-                        radius: mediaQuery.width * .105,
+                    backgroundColor: const Color(0xFFE0E0E0),
+                    progressColor: const Color(0xFFD03363),
+                  ),
+                  CircularPercentIndicator(
+                    percent: controller.islandsStore.percentDone[1],
+                    lineWidth: 6,
+                    animation: true,
+                    animationDuration: 500,
+                    center: CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
                       ),
-                      radius: mediaQuery.width * .12,
-                      footer: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Text(
-                          controller.islandsStore.islands[1].name,
-                          style: GoogleFonts.mulish(
-                            textStyle: TextStyle(
-                              fontSize: mediaQuery.width * .027,
-                              color: const Color(0xFF256380),
-                              fontWeight: FontWeight.w700,
-                            ),
+                      radius: mediaQuery.width * .105,
+                    ),
+                    radius: mediaQuery.width * .12,
+                    footer: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Text(
+                        controller.islandsStore.islands[1].name,
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                            fontSize: mediaQuery.width * .027,
+                            color: const Color(0xFF256380),
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      backgroundColor: const Color(0xFFE0E0E0),
-                      progressColor: const Color(0xFFD03363),
                     ),
-                    CircularPercentIndicator(
-                      percent: controller.islandsStore.percentDone[2],
-                      lineWidth: 6,
-                      animation: true,
-                      animationDuration: 500,
-                      center: CircleAvatar(
-                        backgroundImage: const AssetImage(
-                          'assets/images/island.png',
-                        ),
-                        radius: mediaQuery.width * .105,
+                    backgroundColor: const Color(0xFFE0E0E0),
+                    progressColor: const Color(0xFFD03363),
+                  ),
+                  CircularPercentIndicator(
+                    percent: controller.islandsStore.percentDone[2],
+                    lineWidth: 6,
+                    animation: true,
+                    animationDuration: 500,
+                    center: CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
                       ),
-                      radius: mediaQuery.width * .12,
-                      footer: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: Text(
-                          controller.islandsStore.islands[2].name,
-                          style: GoogleFonts.mulish(
-                            textStyle: TextStyle(
-                              fontSize: mediaQuery.width * .027,
-                              color: const Color(0xFF256380),
-                              fontWeight: FontWeight.w700,
-                            ),
+                      radius: mediaQuery.width * .105,
+                    ),
+                    radius: mediaQuery.width * .12,
+                    footer: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                      child: Text(
+                        controller.islandsStore.islands[2].name,
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                            fontSize: mediaQuery.width * .027,
+                            color: const Color(0xFF256380),
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      backgroundColor: const Color(0xFFE0E0E0),
-                      progressColor: const Color(0xFFD03363),
                     ),
-                  ],
-                ),
+                    backgroundColor: const Color(0xFFE0E0E0),
+                    progressColor: const Color(0xFFD03363),
+                  ),
+                ],
               ),
-              customSizedBox2(context),
-              //Linha2
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CircularPercentIndicator(
-                      percent: controller.islandsStore.percentDone[3],
-                      lineWidth: 6,
-                      animation: true,
-                      animationDuration: 500,
-                      center: CircleAvatar(
-                        backgroundImage: const AssetImage(
-                          'assets/images/island.png',
-                        ),
-                        radius: mediaQuery.width * .105,
+            ),
+            customSizedBox2(context),
+            //Linha2
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircularPercentIndicator(
+                    percent: controller.islandsStore.percentDone[3],
+                    lineWidth: 6,
+                    animation: true,
+                    animationDuration: 500,
+                    center: CircleAvatar(
+                      backgroundImage: const AssetImage(
+                        'assets/images/island.png',
                       ),
-                      radius: mediaQuery.width * .12,
-                      footer: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Text(
-                          controller.islandsStore.islands[3].name,
-                          style: GoogleFonts.mulish(
-                            textStyle: TextStyle(
-                              fontSize: mediaQuery.width * .027,
-                              color: const Color(0xFF256380),
-                              fontWeight: FontWeight.w700,
-                            ),
+                      radius: mediaQuery.width * .105,
+                    ),
+                    radius: mediaQuery.width * .12,
+                    footer: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Text(
+                        controller.islandsStore.islands[3].name,
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                            fontSize: mediaQuery.width * .027,
+                            color: const Color(0xFF256380),
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      backgroundColor: const Color(0xFFE0E0E0),
-                      progressColor: const Color(0xFFD03363),
                     ),
-                    // CircularPercentIndicator(
-                    //   percent: 0.75,
-                    //   lineWidth: 6,
-                    //   animation: true,
-                    //   animationDuration: 500,
-                    //   center: CircleAvatar(
-                    //     backgroundImage: const AssetImage(
-                    //       'assets/images/island.png',
-                    //     ),
-                    //     radius: mediaQuery.width * .105,
-                    //   ),
-                    //   radius: mediaQuery.width * .12,
-                    //   footer: Padding(
-                    //     padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    //     child: Text(
-                    //       'Requerimento',
-                    //       style: GoogleFonts.mulish(
-                    //         textStyle: TextStyle(
-                    //           fontSize: mediaQuery.width * .03,
-                    //           color: const Color(0xFF256380),
-                    //           fontWeight: FontWeight.w700,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    //   backgroundColor: const Color(0xFFE0E0E0),
-                    //   progressColor: const Color(0xFFD03363),
-                    // ),
-                    Column(
-                      children: [
-                        Container(
-                          height: mediaQuery.width * .23,
-                          width: mediaQuery.width * .22,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFF7C7C7C),
-                          ),
-                          child: Icon(
-                            Icons.lock,
-                            color: Colors.white,
-                            size: mediaQuery.width * .16,
-                          ),
-                          alignment: Alignment.center,
+                    backgroundColor: const Color(0xFFE0E0E0),
+                    progressColor: const Color(0xFFD03363),
+                  ),
+                  // CircularPercentIndicator(
+                  //   percent: 0.75,
+                  //   lineWidth: 6,
+                  //   animation: true,
+                  //   animationDuration: 500,
+                  //   center: CircleAvatar(
+                  //     backgroundImage: const AssetImage(
+                  //       'assets/images/island.png',
+                  //     ),
+                  //     radius: mediaQuery.width * .105,
+                  //   ),
+                  //   radius: mediaQuery.width * .12,
+                  //   footer: Padding(
+                  //     padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  //     child: Text(
+                  //       'Requerimento',
+                  //       style: GoogleFonts.mulish(
+                  //         textStyle: TextStyle(
+                  //           fontSize: mediaQuery.width * .03,
+                  //           color: const Color(0xFF256380),
+                  //           fontWeight: FontWeight.w700,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   backgroundColor: const Color(0xFFE0E0E0),
+                  //   progressColor: const Color(0xFFD03363),
+                  // ),
+                  Column(
+                    children: [
+                      Container(
+                        height: mediaQuery.width * .23,
+                        width: mediaQuery.width * .22,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF7C7C7C),
                         ),
-                        customSizedBox4(context),
-                        Text(
-                          'Requerimento',
-                          style: GoogleFonts.mulish(
-                            textStyle: TextStyle(
-                              fontSize: mediaQuery.width * .03,
-                              color: const Color(0xFF256380),
-                              fontWeight: FontWeight.w700,
-                            ),
+                        child: Icon(
+                          Icons.lock,
+                          color: Colors.white,
+                          size: mediaQuery.width * .16,
+                        ),
+                        alignment: Alignment.center,
+                      ),
+                      customSizedBox4(context),
+                      Text(
+                        'Requerimento',
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                            fontSize: mediaQuery.width * .03,
+                            color: const Color(0xFF256380),
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              SizedBox(
-                height: mediaQuery.height * .2,
-              ),
-            ],
-          );
-        },
-      ),
+            ),
+            const SizedBox(height: 24),
+          ],
+        );
+      },
     );
   }
 }

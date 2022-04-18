@@ -113,7 +113,8 @@ class _DocumentDetaillsState extends State<DocumentDetaills> {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () =>
+                                Modular.to.pushNamed('/journey/documents'),
                           ),
                         ],
                       ),

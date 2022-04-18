@@ -16,6 +16,13 @@ mixin _$IslandsStore on _IslandsStoreBase, Store {
       (_$percentDoneComputed ??= Computed<List<double>>(() => super.percentDone,
               name: '_IslandsStoreBase.percentDone'))
           .value;
+  Computed<List<int>>? _$docsReadyComputed;
+
+  @override
+  List<int> get docsReady =>
+      (_$docsReadyComputed ??= Computed<List<int>>(() => super.docsReady,
+              name: '_IslandsStoreBase.docsReady'))
+          .value;
   Computed<List<DocumentEntity>>? _$docsComputed;
 
   @override
@@ -42,6 +49,7 @@ mixin _$IslandsStore on _IslandsStoreBase, Store {
   String toString() {
     return '''
 percentDone: ${percentDone},
+docsReady: ${docsReady},
 docs: ${docs}
     ''';
   }

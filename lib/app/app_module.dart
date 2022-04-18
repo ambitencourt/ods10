@@ -29,12 +29,12 @@ class AppModule extends Module {
         //   module: HomeModule(),
         // ),
         ModuleRoute(
-          '/journey',
+          '/journey/',
           transition: TransitionType.fadeIn,
           module: JourneyModule(),
         ),
         ModuleRoute(
-          '/profile',
+          '/profile/',
           module: ProfileModule(),
         ),
         // ModuleRoute(

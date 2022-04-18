@@ -29,6 +29,21 @@ abstract class _IslandsStoreBase with Store {
   }
 
   @computed
+  List<int> get docsReady {
+    List<int> docsReady = [];
+    for (var island in islands) {
+      int docsDone = 0;
+
+      for (var document in island.documents!) {
+        if (document.status == 'ready') docsDone++;
+      }
+      docsReady.add(docsDone);
+      docsDone = 0;
+    }
+    return docsReady;
+  }
+
+  @computed
   List<DocumentEntity> get docs {
     List<DocumentEntity> docsList = [];
     for (var element in islands) {

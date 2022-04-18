@@ -20,13 +20,14 @@ class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
       if (!await launch(urlFAQ)) throw 'Tente novamente mais tarde $urlFAQ';
     }
 
-    return Column(
-      children: [
-        const SizedBox(
-          height: 30,
-        ),
-        InkWell(
-          child: Row(
+    return InkWell(
+      onTap: () => Navigator.of(context).pop(),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
@@ -45,117 +46,116 @@ class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
               ),
             ],
           ),
-          onTap: () => Navigator.of(context).pop(),
-        ),
-        customSizedBox4(context),
-        SizedBox(
-          width: 257,
-          height: 123,
-          child: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(children: [
-              TextSpan(
-                text:
-                    'Que maravilha. Isso significa que você já está em posse do documento que garante a gratuidade de todo o processo. ',
-                style: GoogleFonts.mulish(
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
+          customSizedBox4(context),
+          SizedBox(
+            width: 257,
+            height: 123,
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: [
+                TextSpan(
+                  text:
+                      'Que maravilha. Isso significa que você já está em posse do documento que garante a gratuidade de todo o processo. ',
+                  style: GoogleFonts.mulish(
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-              ),
-              TextSpan(
-                text: 'Você confirma o recebimento desse documento?',
-                style: GoogleFonts.mulish(
-                  textStyle: const TextStyle(
+                TextSpan(
+                  text: 'Você confirma o recebimento desse documento?',
+                  style: GoogleFonts.mulish(
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+          ),
+          customSizedBox3(context),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {});
+            },
+            child: Text(
+              'Confirmar',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.mulish(
+                textStyle: const TextStyle(
                     fontSize: 16,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w700,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ]),
-          ),
-        ),
-        customSizedBox3(context),
-        ElevatedButton(
-          onPressed: () {
-            setState(() {});
-          },
-          child: Text(
-            'Confirmar',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.mulish(
-              textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontStyle: FontStyle.normal,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
-          ),
-          style: ElevatedButton.styleFrom(
-            fixedSize: const Size(225, 44),
-            primary: const Color(0xFFD03363),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(31),
+                    color: Colors.white),
               ),
             ),
-          ),
-        ),
-        customSizedBox4(context),
-        ElevatedButton(
-          onPressed: () {},
-          child: Text(
-            'Não recebi ainda',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.mulish(
-              textStyle: const TextStyle(
-                fontSize: 16,
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.w700,
-                color: Color(0xFFD03363),
-              ),
-            ),
-          ),
-          style: ElevatedButton.styleFrom(
+            style: ElevatedButton.styleFrom(
               fixedSize: const Size(225, 44),
-              primary: Colors.white,
+              primary: const Color(0xFFD03363),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(31),
                 ),
               ),
-              side: const BorderSide(
-                width: 1.0,
-                color: Color(0xFFD03363),
-              )),
-        ),
-        customSizedBox4(context),
-        RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'Tive um problema com esse documento',
-                style: GoogleFonts.mulish(
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    color: Color(0xFFD03363),
-                    decoration: TextDecoration.underline,
+            ),
+          ),
+          customSizedBox4(context),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text(
+              'Não recebi ainda',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.mulish(
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFFD03363),
+                ),
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+                fixedSize: const Size(225, 44),
+                primary: Colors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(31),
                   ),
                 ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () => _launchURLFAQ(),
-              ),
-            ],
+                side: const BorderSide(
+                  width: 1.0,
+                  color: Color(0xFFD03363),
+                )),
           ),
-        ),
-        customSizedBox4(context),
-      ],
+          customSizedBox4(context),
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Tive um problema com esse documento',
+                  style: GoogleFonts.mulish(
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      color: Color(0xFFD03363),
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => _launchURLFAQ(),
+                ),
+              ],
+            ),
+          ),
+          customSizedBox4(context),
+        ],
+      ),
     );
   }
 }

@@ -382,7 +382,7 @@ class _IslandsPageState
                           ),
                           const Spacer(),
                           Text(
-                            '${controller.islandsPageStore.progressValue.round()}/30 documentos',
+                            '${controller.islandsStore.percentDone[controller.islandsPageStore.current]}/${controller.islandsStore.islands[controller.islandsPageStore.current].documents!.length} documentos',
                             style: GoogleFonts.mulish(
                                 textStyle: const TextStyle(fontSize: 10),
                                 fontWeight: FontWeight.w600,

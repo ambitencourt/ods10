@@ -37,7 +37,7 @@ class DocumentsStatusTab extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 20),
+        const SizedBox(height: 18),
         RichText(
           text: TextSpan(
             children: [
