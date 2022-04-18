@@ -49,7 +49,11 @@ class JourneyModule extends Module {
 
         //Mappers
         Bind.factory<Mapper>((i) => UserDocumentMapper()),
-        Bind.factory<Mapper>((i) => UserIslandsMapper()),
+        Bind.factory<Mapper>(
+          (i) => UserIslandsMapper(
+            i<UserDocumentMapper>(),
+          ),
+        ),
 
         // DATABASES
         Bind.factory<UserDocumentsDataSource>(
@@ -99,6 +103,7 @@ class JourneyModule extends Module {
               i<UpdateUserDocumentsUseCase>(),
             )),
         Bind.factory((i) => IslandsPageController(
+              i<UserStore>(),
               i<IslandsStore>(),
               i<IslandsPageStore>(),
               i<GetUserIslandsUseCase>(),

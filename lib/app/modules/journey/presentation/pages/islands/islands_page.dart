@@ -43,35 +43,21 @@ class _IslandsPageState
           if (controller.islandsPageStore.hasError) {
             return GeneralError(onTryAgain: _getIslands);
           }
-          return SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(35, 20, 36, 5),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            borderRadius: BorderRadius.circular(220),
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
-                                  shape: BoxShape.circle),
-                              child: const Icon(
-                                Icons.close,
-                                size: 24,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () => Modular.to.pop(),
-                          ),
-                          const Spacer(),
-                          InkWell(
+          return RefreshIndicator(
+            onRefresh: controller.getIslands,
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(35, 20, 36, 5),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
                               borderRadius: BorderRadius.circular(220),
                               child: Container(
                                 width: 60,
@@ -80,129 +66,112 @@ class _IslandsPageState
                                     color: Color(0xFF256380),
                                     shape: BoxShape.circle),
                                 child: const Icon(
-                                  Icons.description_outlined,
+                                  Icons.close,
                                   size: 24,
                                   color: Colors.white,
                                 ),
                               ),
-                              onTap: () {}),
-                        ],
-                      ),
-                      customSizedBox4(context),
-                      SizedBox(
-                        height: 27,
-                        width: 157,
-                        child: Text(
-                          'Boas vindas ao',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.dmSerifDisplay(
-                            textStyle: const TextStyle(
-                                fontSize: 20,
-                                fontStyle: FontStyle.italic,
-                                color: Color(0xFF256380)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 335,
-                        height: 49,
-                        child: Text(
-                          controller
-                              .islandsStore
-                              .islands[controller.islandsPageStore.current]
-                              .name,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.dmSerifDisplay(
-                            textStyle: const TextStyle(
-                                fontSize: 36, fontStyle: FontStyle.normal),
-                          ),
-                        ),
-                      ),
-                      customSizedBox3(context),
-                      SizedBox(
-                        width: 335,
-                        height: 36,
-                        child: Text(
-                          controller
-                              .islandsStore
-                              .islands[controller.islandsPageStore.current]
-                              .description,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                                fontSize: 14, fontStyle: FontStyle.normal),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Stack(
-                  alignment: const Alignment(0, -0.35),
-                  children: [
-                    //Aqui foi utilizado o Package carousel_slider, podendo fazer manualmente no futuro
-                    Hero(
-                      tag: 'hero-island-page',
-                      child: CarouselSlider(
-                        items: imageSlidersIsland,
-                        options: CarouselOptions(
-                          enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                          enlargeCenterPage: false,
-                          enableInfiniteScroll: false,
-                          viewportFraction: 1,
-                          aspectRatio: 96 / 65,
-                          onPageChanged: (index, reason) {
-                            controller.islandsPageStore.setCurrentIndex(index);
-                          },
-                        ),
-                        carouselController: controller.carouselController,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(220),
-                          child: controller.islandsPageStore.current == 0
-                              ? Container(
+                              onTap: () => Modular.to.pop(),
+                            ),
+                            const Spacer(),
+                            InkWell(
+                                borderRadius: BorderRadius.circular(220),
+                                child: Container(
                                   width: 60,
                                   height: 60,
                                   decoration: const BoxDecoration(
-                                    color: Color.fromARGB(20, 255, 255, 255),
-                                    shape: BoxShape.circle,
-                                  ),
+                                      color: Color(0xFF256380),
+                                      shape: BoxShape.circle),
                                   child: const Icon(
-                                    Icons.arrow_back,
-                                    size: 24,
-                                    color: Colors.black,
-                                  ),
-                                )
-                              : Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 2,
-                                    ),
-                                    color: const Color(0xFF256380),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: const Icon(
-                                    Icons.arrow_back,
+                                    Icons.description_outlined,
                                     size: 24,
                                     color: Colors.white,
                                   ),
                                 ),
-                          onTap: () =>
-                              controller.carouselController.previousPage(),
+                                onTap: () async {
+                                  await Modular.to
+                                      .pushNamed('/journey/documents');
+                                  controller.getIslands();
+                                }),
+                          ],
+                        ),
+                        customSizedBox4(context),
+                        SizedBox(
+                          height: 27,
+                          width: 157,
+                          child: Text(
+                            'Boas vindas ao',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.dmSerifDisplay(
+                              textStyle: const TextStyle(
+                                  fontSize: 20,
+                                  fontStyle: FontStyle.italic,
+                                  color: Color(0xFF256380)),
+                            ),
+                          ),
                         ),
                         SizedBox(
-                          width: mediaQuery.width * .5,
+                          width: 335,
+                          height: 49,
+                          child: Text(
+                            controller
+                                .islandsStore
+                                .islands[controller.islandsPageStore.current]
+                                .name,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.dmSerifDisplay(
+                              textStyle: const TextStyle(
+                                  fontSize: 36, fontStyle: FontStyle.normal),
+                            ),
+                          ),
                         ),
-                        InkWell(
+                        customSizedBox3(context),
+                        SizedBox(
+                          width: 335,
+                          height: 36,
+                          child: Text(
+                            controller
+                                .islandsStore
+                                .islands[controller.islandsPageStore.current]
+                                .description,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.mulish(
+                              textStyle: const TextStyle(
+                                  fontSize: 14, fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Stack(
+                    alignment: const Alignment(0, -0.35),
+                    children: [
+                      //Aqui foi utilizado o Package carousel_slider, podendo fazer manualmente no futuro
+                      Hero(
+                        tag: 'hero-island-page',
+                        child: CarouselSlider(
+                          items: imageSlidersIsland,
+                          options: CarouselOptions(
+                            enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                            enlargeCenterPage: false,
+                            enableInfiniteScroll: false,
+                            viewportFraction: 1,
+                            aspectRatio: 96 / 65,
+                            onPageChanged: (index, reason) {
+                              controller.islandsPageStore
+                                  .setCurrentIndex(index);
+                            },
+                          ),
+                          carouselController: controller.carouselController,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
                             borderRadius: BorderRadius.circular(220),
-                            child: controller.islandsPageStore.current == 4
+                            child: controller.islandsPageStore.current == 0
                                 ? Container(
                                     width: 60,
                                     height: 60,
@@ -211,7 +180,7 @@ class _IslandsPageState
                                       shape: BoxShape.circle,
                                     ),
                                     child: const Icon(
-                                      Icons.arrow_forward,
+                                      Icons.arrow_back,
                                       size: 24,
                                       color: Colors.black,
                                     ),
@@ -228,161 +197,203 @@ class _IslandsPageState
                                       shape: BoxShape.circle,
                                     ),
                                     child: const Icon(
-                                      Icons.arrow_forward,
+                                      Icons.arrow_back,
                                       size: 24,
                                       color: Colors.white,
                                     ),
                                   ),
-                            onTap: () {
-                              controller.carouselController.nextPage();
-                            }),
-                      ],
-                    ),
-                    Align(
-                      alignment: const Alignment(0, 0),
-                      child: Visibility(
-                        visible: false,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(38),
+                            onTap: () =>
+                                controller.carouselController.previousPage(),
+                          ),
+                          SizedBox(
+                            width: mediaQuery.width * .5,
+                          ),
+                          InkWell(
+                              borderRadius: BorderRadius.circular(220),
+                              child: controller.islandsPageStore.current == 4
+                                  ? Container(
+                                      width: 60,
+                                      height: 60,
+                                      decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(20, 255, 255, 255),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        size: 24,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  : Container(
+                                      width: 60,
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        color: const Color(0xFF256380),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        size: 24,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                              onTap: () {
+                                controller.carouselController.nextPage();
+                              }),
+                        ],
+                      ),
+                      Align(
+                        alignment: const Alignment(0, 0),
+                        child: Visibility(
+                          visible: false,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(38),
+                              ),
+                            ),
+                            height: 62,
+                            width: 187,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: const Color(0xFFD03363),
+                                      width: 3,
+                                    ),
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.play_arrow,
+                                    size: 30,
+                                    color: Color(0xFFD03363),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Entrar na ilha',
+                                      style: GoogleFonts.mulish(
+                                        textStyle: const TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'João Nery',
+                                      style: GoogleFonts.dmSerifDisplay(
+                                        textStyle: const TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          height: 62,
-                          width: 187,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xFFD03363),
-                                    width: 3,
-                                  ),
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.play_arrow,
-                                  size: 30,
-                                  color: Color(0xFFD03363),
-                                ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Entrar na ilha',
-                                    style: GoogleFonts.mulish(
-                                      textStyle: const TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'João Nery',
-                                    style: GoogleFonts.dmSerifDisplay(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: imgListIsland.asMap().entries.map((entry) {
-                      return GestureDetector(
-                        onTap: () => controller.carouselController
-                            .animateToPage(entry.key),
-                        child: Container(
-                          width: 12.0,
-                          height: 12.0,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 2.0, horizontal: 4.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color:
-                                controller.islandsPageStore.current == entry.key
-                                    ? const Color(0xFFD03363)
-                                    : const Color(0xFFB8B8B8),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                Center(
-                  child: Column(
-                    children: [
-                      // Slider(
-                      //   value: _progressValue,
-                      //   onChanged: (double _progressValue) {
-                      //     setState(() {
-                      //       _onChanged(_progressValue);
-                      //     });
-                      //   },
-                      //   min: 0.0,
-                      //   max: 30.0,
-                      // ),
-                      // Text('${_progressValue.round()}'),
-                      customSizedBox1(context),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: LinearProgressIndicator(
-                          minHeight: 5,
-                          backgroundColor: const Color(0xFFD2D2CC),
-                          value: controller.islandsPageStore.progressValue / 30,
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color(0xFFD03363)),
-                        ),
-                      ),
-                      customSizedBox4(context),
                     ],
                   ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  Center(
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: imgListIsland.asMap().entries.map((entry) {
+                        return GestureDetector(
+                          onTap: () => controller.carouselController
+                              .animateToPage(entry.key),
+                          child: Container(
+                            width: 12.0,
+                            height: 12.0,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 2.0, horizontal: 4.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: controller.islandsPageStore.current ==
+                                      entry.key
+                                  ? const Color(0xFFD03363)
+                                  : const Color(0xFFB8B8B8),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  Center(
+                    child: Column(
                       children: [
-                        Text(
-                          'Desbloquear Ilha Erika Hilton',
-                          style: GoogleFonts.mulish(
-                              textStyle: const TextStyle(fontSize: 10),
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
+                        // Slider(
+                        //   value: _progressValue,
+                        //   onChanged: (double _progressValue) {
+                        //     setState(() {
+                        //       _onChanged(_progressValue);
+                        //     });
+                        //   },
+                        //   min: 0.0,
+                        //   max: 30.0,
+                        // ),
+                        // Text('${_progressValue.round()}'),
+                        customSizedBox1(context),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: LinearProgressIndicator(
+                            minHeight: 5,
+                            backgroundColor: const Color(0xFFD2D2CC),
+                            value:
+                                controller.islandsPageStore.progressValue / 30,
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                                Color(0xFFD03363)),
+                          ),
                         ),
-                        const Spacer(),
-                        Text(
-                          '${controller.islandsPageStore.progressValue.round()}/30 documentos',
-                          style: GoogleFonts.mulish(
-                              textStyle: const TextStyle(fontSize: 10),
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
+                        customSizedBox4(context),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Desbloquear Ilha Erika Hilton',
+                            style: GoogleFonts.mulish(
+                                textStyle: const TextStyle(fontSize: 10),
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black),
+                          ),
+                          const Spacer(),
+                          Text(
+                            '${controller.islandsPageStore.progressValue.round()}/30 documentos',
+                            style: GoogleFonts.mulish(
+                                textStyle: const TextStyle(fontSize: 10),
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

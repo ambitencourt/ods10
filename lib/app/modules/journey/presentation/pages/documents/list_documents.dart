@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
-import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
-import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
 class DocumentsList extends StatefulWidget {
   const DocumentsList({Key? key}) : super(key: key);
@@ -20,31 +17,9 @@ class DocumentsList extends StatefulWidget {
 
 class _DocumentsListState extends ModularState<DocumentsList, HomeController>
     with SingleTickerProviderStateMixin {
-  List<Widget> tabMenu = [
-    const Tab(
-      text: "Todos",
-    ),
-    const Tab(
-      text: "Pendentes",
-    ),
-    const Tab(
-      text: "Solicitados",
-    ),
-    const Tab(
-      text: "Recebidos",
-    ),
-    const Tab(
-      text: "gratuitos",
-    ),
-    const Tab(
-      text: "Pagos",
-    ),
-  ];
-
   @override
   void initState() {
-    controller.tabController =
-        TabController(length: tabMenu.length, vsync: this);
+    controller.tabController = TabController(length: 6, vsync: this);
     _getDocs();
     super.initState();
   }
