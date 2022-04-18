@@ -1,5 +1,5 @@
 import 'package:ods10/app/common/mapper/mapper.dart';
-import 'package:ods10/app/modules/journey/data/datasources/user_documents_datasource_remote.dart';
+import 'package:ods10/app/modules/journey/data/datasources/user_documents_datasource.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/domain/repositories/update_user_documents_repository.dart';
 

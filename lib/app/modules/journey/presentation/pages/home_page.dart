@@ -9,6 +9,7 @@ import 'package:ods10/app/modules/journey/presentation/controllers/home_controll
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
@@ -21,6 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController>
     with SingleTickerProviderStateMixin {
+<<<<<<< HEAD
   List<Widget> tabMenu = [
     const Tab(
       text: "Todos",
@@ -42,10 +44,11 @@ class _HomePageState extends ModularState<HomePage, HomeController>
     ),
   ];
 
+=======
+>>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
   @override
   void initState() {
-    controller.tabController =
-        TabController(length: tabMenu.length, vsync: this);
+    controller.tabController = TabController(length: 6, vsync: this);
     _getDocs();
     super.initState();
   }
@@ -117,65 +120,9 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                     ),
                   ];
                 },
-                body: Observer(
-                  builder: (_) {
-                    return TabBarView(
-                      controller: controller.tabController,
-                      children: <Widget>[
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs
-                                .map((e) => DocumentItemWidget(item: e)),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.status == 'missing'
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.status == 'requested'
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.status == 'ready'
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.price == 0
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                        ListView(
-                          children: [
-                            ...controller.docsStore.docs.map((e) {
-                              return e.price > 0
-                                  ? DocumentItemWidget(item: e)
-                                  : Container();
-                            }),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
+                body: DocumentsTabBarView(
+                  items: controller.docsStore.docs,
+                  tabController: controller.tabController,
                 ),
               ),
             ),
@@ -308,11 +255,13 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                   ),
                 ),
                 const SizedBox(height: 10),
-                LinearProgressIndicator(
-                  value: 0.5,
-                  backgroundColor: AppColors.white.withOpacity(0.4),
-                  color: AppColors.secondary,
-                ),
+                Observer(builder: (_) {
+                  return LinearProgressIndicator(
+                    value: controller.docsStore.percentDone,
+                    backgroundColor: AppColors.white.withOpacity(0.4),
+                    color: AppColors.secondary,
+                  );
+                }),
               ],
             ),
           ),
