@@ -32,33 +32,20 @@ import 'data/mappers/user_document_mapper.dart';
 
 import 'domain/usecases/get_user_documents_usecase.dart';
 
-import 'presentation/controllers/docs_controller.dart';
 import 'presentation/controllers/home_controller.dart';
 
 import 'presentation/pages/islands/gaming documents/document_details_page.dart';
 import 'presentation/pages/islands/islands_page.dart';
-<<<<<<< HEAD
-import 'presentation/stores/docs_store.dart';
-=======
 import 'presentation/stores/islands_store.dart';
->>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
 
 class JourneyModule extends Module {
   @override
   List<Bind> get binds => [
         //Stores
-<<<<<<< HEAD
-        Bind.singleton<HomeStore>((i) => HomeStore()),
-        Bind.singleton<DocsStore>((i) => DocsStore()),
-=======
         Bind.factory<HomeStore>((i) => HomeStore()),
         Bind.factory<IslandsPageStore>((i) => IslandsPageStore()),
         Bind.singleton<DocumentsStore>((i) => DocumentsStore()),
-<<<<<<< HEAD
->>>>>>> de79ec1a23b4b9873f62a77216bccbc11674196c
-=======
         Bind.singleton<IslandsStore>((i) => IslandsStore()),
->>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
 
         //Mappers
         Bind.factory<Mapper>((i) => UserDocumentMapper()),
@@ -111,18 +98,10 @@ class JourneyModule extends Module {
               i<GetUserDocumentsUseCase>(),
               i<UpdateUserDocumentsUseCase>(),
             )),
-<<<<<<< HEAD
-        Bind.factory((i) => DocsController(
-              i<UserStore>(),
-              i<DocsStore>(),
-              i<GetUserDocumentsUseCase>(),
-              i<UpdateUserDocumentsUseCase>(),
-=======
         Bind.factory((i) => IslandsPageController(
               i<IslandsStore>(),
               i<IslandsPageStore>(),
               i<GetUserIslandsUseCase>(),
->>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
             )),
       ];
 
