@@ -22,30 +22,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController>
     with SingleTickerProviderStateMixin {
-<<<<<<< HEAD
-  List<Widget> tabMenu = [
-    const Tab(
-      text: "Todos",
-    ),
-    const Tab(
-      text: "Pendentes",
-    ),
-    const Tab(
-      text: "Solicitados",
-    ),
-    const Tab(
-      text: "Recebidos",
-    ),
-    const Tab(
-      text: "Gratuitos",
-    ),
-    const Tab(
-      text: "Pagos",
-    ),
-  ];
-
-=======
->>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
   @override
   void initState() {
     controller.tabController = TabController(length: 6, vsync: this);
@@ -81,41 +57,13 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                       child: _buildTopInfo(context),
                     ),
                     SliverAppBar(
-                      automaticallyImplyLeading: false,
                       pinned: true,
                       backgroundColor: AppColors.background,
                       collapsedHeight: 91,
                       elevation: 0,
                       centerTitle: false,
-<<<<<<< HEAD
-                      flexibleSpace: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 18),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Lista de ',
-                                  style: getRegularStyle(fontSize: 18),
-                                ),
-                                TextSpan(
-                                  text: 'Documentos',
-                                  style: getBoldStyleW900(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ),
-                          PersonalTabs(
-                            tabMenu: tabMenu,
-                            onTabSelect: (index) {},
-                            tabController: controller.tabController,
-                          ),
-                        ],
-=======
                       flexibleSpace: DocumentsStatusTab(
                         tabController: controller.tabController,
->>>>>>> de79ec1a23b4b9873f62a77216bccbc11674196c
                       ),
                     ),
                   ];
