@@ -70,7 +70,8 @@ class _ChangeStateState extends State<ChangeState> {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () =>
+                                Modular.to.pushNamed('/journey/documents'),
                           ),
                         ],
                       ),
