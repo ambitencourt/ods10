@@ -1,5 +1,5 @@
+import 'package:mobx/mobx.dart';
 import 'package:ods10/app/common/mapper/mapper.dart';
-import 'package:ods10/app/modules/journey/data/mappers/user_document_mapper.dart';
 import 'package:ods10/app/modules/journey/data/models/user_documents_model.dart';
 import 'package:ods10/app/modules/journey/data/models/user_islands_model.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
@@ -20,8 +20,8 @@ class UserIslandsMapper implements Mapper<IslandEntity, UserIslandsModel> {
         id: object.id,
         name: object.name,
         description: object.description,
-        documents: List.from(object.documents)
+        documents: ObservableList<DocumentEntity>.of(List.from(object.documents)
             .map((e) => _mapper.toEntity(e))
-            .toList(),
+            .toList()),
       );
 }
