@@ -8,6 +8,7 @@ import 'package:ods10/app/common/widgets/bottom_navibar.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/document_item_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
 
@@ -83,6 +84,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                       collapsedHeight: 91,
                       elevation: 0,
                       centerTitle: false,
+<<<<<<< HEAD
                       flexibleSpace: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -107,6 +109,10 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                             tabController: controller.tabController,
                           ),
                         ],
+=======
+                      flexibleSpace: DocumentsStatusTab(
+                        tabController: controller.tabController,
+>>>>>>> de79ec1a23b4b9873f62a77216bccbc11674196c
                       ),
                     ),
                   ];
@@ -118,13 +124,13 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                       children: <Widget>[
                         ListView(
                           children: [
-                            ...controller.store.docs
+                            ...controller.docsStore.docs
                                 .map((e) => DocumentItemWidget(item: e)),
                           ],
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.status == 'missing'
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -133,7 +139,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.status == 'requested'
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -142,7 +148,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.status == 'ready'
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -151,7 +157,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.price == 0
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -160,7 +166,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.price > 0
                                   ? DocumentItemWidget(item: e)
                                   : Container();

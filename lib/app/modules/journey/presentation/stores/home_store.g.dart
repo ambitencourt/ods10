@@ -91,28 +91,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
-  void setDocumentsList(List<DocumentEntity> list) {
-    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
-        name: '_HomeStoreBase.setDocumentsList');
-    try {
-      return super.setDocumentsList(list);
-    } finally {
-      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateDocumentItem(DocumentEntity doc) {
-    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
-        name: '_HomeStoreBase.updateDocumentItem');
-    try {
-      return super.updateDocumentItem(doc);
-    } finally {
-      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 loading: ${loading},

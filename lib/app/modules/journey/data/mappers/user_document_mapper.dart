@@ -1,6 +1,7 @@
 import 'package:ods10/app/common/mapper/mapper.dart';
 import 'package:ods10/app/modules/journey/data/models/user_documents_model.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
+import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
 
 class UserDocumentMapper implements Mapper<DocumentEntity, UserDocumentsModel> {
   @override
@@ -21,5 +22,9 @@ class UserDocumentMapper implements Mapper<DocumentEntity, UserDocumentsModel> {
         duration: object.document.duration,
         // order: object.document.order,
         status: object.status,
+        island: IslandEntity(
+            id: object.document.island.id,
+            name: object.document.island.name,
+            descriptio: object.document.island.description),
       );
 }

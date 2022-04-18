@@ -118,13 +118,13 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
                       children: <Widget>[
                         ListView(
                           children: [
-                            ...controller.store.docs
+                            ...controller.docsStore.docs
                                 .map((e) => DocumentItemWidget(item: e)),
                           ],
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.status == 'missing'
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -133,7 +133,7 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.status == 'requested'
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -142,7 +142,7 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.status == 'ready'
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -151,7 +151,7 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.price == 0
                                   ? DocumentItemWidget(item: e)
                                   : Container();
@@ -160,7 +160,7 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
                         ),
                         ListView(
                           children: [
-                            ...controller.store.docs.map((e) {
+                            ...controller.docsStore.docs.map((e) {
                               return e.price > 0
                                   ? DocumentItemWidget(item: e)
                                   : Container();

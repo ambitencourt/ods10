@@ -60,7 +60,7 @@ class DocumentModalItemWidget extends StatelessWidget {
                 ),
                 _buildInfo(
                   title: 'Tempo estimado',
-                  value: document.duration,
+                  value: document.duration ?? 'indefinido',
                 ),
               ],
             ),
