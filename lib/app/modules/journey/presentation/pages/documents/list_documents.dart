@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -41,6 +43,12 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
           return GeneralError(onTryAgain: _getDocs);
         }
         return RefreshIndicator(
+          notificationPredicate: (notification) {
+            if (notification is OverscrollNotification || Platform.isIOS) {
+              return notification.depth == 2;
+            }
+            return notification.depth == 0;
+          },
           onRefresh: controller.getUserDocuments,
           child: SafeArea(
             child: Padding(
@@ -65,7 +73,7 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
                   ];
                 },
                 body: DocumentsTabBarView(
-                  items: controller.docsStore.docs,
+                  items: controller.islandsStore.docs,
                   tabController: controller.tabController,
                 ),
               ),

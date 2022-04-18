@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -45,12 +47,20 @@ class _HomePageState extends ModularState<HomePage, HomeController>
         if (controller.store.hasError) {
           return GeneralError(onTryAgain: _getDocs);
         }
-        return RefreshIndicator(
-          onRefresh: controller.getUserDocuments,
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: RefreshIndicator(
+              notificationPredicate: (notification) {
+                // with NestedScrollView local(depth == 2) OverscrollNotification are not sent
+                if (notification is OverscrollNotification || Platform.isIOS) {
+                  return notification.depth == 2;
+                }
+                return notification.depth == 0;
+              },
+              onRefresh: controller.getUserDocuments,
               child: NestedScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 headerSliverBuilder: (context, value) {
                   return [
                     SliverToBoxAdapter(
@@ -69,7 +79,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                   ];
                 },
                 body: DocumentsTabBarView(
-                  items: controller.docsStore.docs,
+                  items: controller.islandsStore.docs,
                   tabController: controller.tabController,
                 ),
               ),
@@ -205,7 +215,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                 const SizedBox(height: 10),
                 Observer(builder: (_) {
                   return LinearProgressIndicator(
-                    value: controller.docsStore.percentDone,
+                    value: controller.islandsStore.totalPercentDone,
                     backgroundColor: AppColors.white.withOpacity(0.4),
                     color: AppColors.secondary,
                   );

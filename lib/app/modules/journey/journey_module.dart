@@ -97,10 +97,10 @@ class JourneyModule extends Module {
         // CONTROLLERS
         Bind.factory((i) => HomeController(
               i<HomeStore>(),
-              i<DocumentsStore>(),
+              i<IslandsStore>(),
               i<UserStore>(),
-              i<GetUserDocumentsUseCase>(),
               i<UpdateUserDocumentsUseCase>(),
+              i<GetUserIslandsUseCase>(),
             )),
         Bind.factory((i) => IslandsPageController(
               i<UserStore>(),

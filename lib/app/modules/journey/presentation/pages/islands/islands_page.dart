@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_modal_widget.dart';
@@ -56,44 +57,27 @@ class _IslandsPageState
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            InkWell(
-                              borderRadius: BorderRadius.circular(220),
-                              child: Container(
-                                width: 60,
-                                height: 60,
-                                decoration: const BoxDecoration(
-                                    color: Color(0xFF256380),
-                                    shape: BoxShape.circle),
-                                child: const Icon(
-                                  Icons.close,
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
+                            CircularButtom(
+                              child: const Icon(
+                                Icons.close,
                               ),
-                              onTap: () => Modular.to.pop(),
+                              onPress: () {
+                                Modular.to.pop();
+                              },
                             ),
-                            const Spacer(),
-                            InkWell(
-                                borderRadius: BorderRadius.circular(220),
-                                child: Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFF256380),
-                                      shape: BoxShape.circle),
-                                  child: const Icon(
-                                    Icons.description_outlined,
-                                    size: 24,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () async {
-                                  await Modular.to
-                                      .pushNamed('/journey/documents');
-                                  controller.getIslands();
-                                }),
+                            // const Spacer(),
+                            CircularButtom(
+                              child: const Icon(
+                                Icons.description_outlined,
+                              ),
+                              onPress: () async {
+                                await Modular.to
+                                    .pushNamed('/journey/documents');
+                                // controller.getIslands();
+                              },
+                            ),
                           ],
                         ),
                         customSizedBox4(context),

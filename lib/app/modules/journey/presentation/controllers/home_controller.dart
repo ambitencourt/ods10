@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
+
 import 'package:ods10/app/common/stores/user_store.dart';
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
+import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
 import 'package:ods10/app/modules/journey/domain/enums/document_status_enum.dart';
-import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/get_user_islands.usecase.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase.dart';
-import 'package:ods10/app/modules/journey/presentation/stores/documents_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
+import 'package:ods10/app/modules/journey/presentation/stores/islands_store.dart';
 
 class HomeController {
   final HomeStore store;
-  final DocumentsStore docsStore;
+  final IslandsStore islandsStore;
   final UserStore userStore;
-  final GetUserDocumentsUseCase _getUserDocumentsUseCase;
   final UpdateUserDocumentsUseCase _updateUserDocumentsUseCase;
+  final GetUserIslandsUseCase _getUserIslandsUseCase;
   late TabController tabController;
   HomeController(
     this.store,
-    this.docsStore,
+    this.islandsStore,
     this.userStore,
-    this._getUserDocumentsUseCase,
     this._updateUserDocumentsUseCase,
+    this._getUserIslandsUseCase,
   );
 
   Future<void> getUserDocuments() async {
     try {
       store.setHasError(false);
       store.setLoading(true);
-      List<DocumentEntity> docs =
-          await _getUserDocumentsUseCase(userStore.user!.id);
-      docsStore.setDocumentsList(docs);
+      // List<DocumentEntity> docs =
+      //     await _getUserDocumentsUseCase(userStore.user!.id);
+      // docsStore.setDocumentsList(docs);
+      List<IslandEntity> islands =
+          await _getUserIslandsUseCase(userStore.user!.id);
+      islandsStore.setIslandsList(islands);
     } catch (e) {
       store.setHasError(true);
       // rethrow;
@@ -44,7 +49,8 @@ class HomeController {
     store.setLoadingStatus(true);
     DocumentEntity docUpdated =
         await _updateUserDocumentsUseCase(userStore.user!.id, docId, status);
-    docsStore.updateDocumentItem(docUpdated);
+    islandsStore.updateDocumentItem(docUpdated);
+    // docsStore.updateDocumentItem(docUpdated);
     store.setLoadingStatus(false);
     return docUpdated;
   }
