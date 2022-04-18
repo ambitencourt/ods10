@@ -35,6 +35,7 @@ class _IslandsPageState
     return Scaffold(
       body: Observer(
         builder: (_) {
+          final index = controller.islandsPageStore.current;
           if (controller.islandsPageStore.loading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -382,7 +383,7 @@ class _IslandsPageState
                           ),
                           const Spacer(),
                           Text(
-                            '${controller.islandsStore.percentDone[controller.islandsPageStore.current]}/${controller.islandsStore.islands[controller.islandsPageStore.current].documents!.length} documentos',
+                            '${controller.islandsStore.docsReady[index]}/${controller.islandsStore.islands[index].documents!.length} documentos',
                             style: GoogleFonts.mulish(
                                 textStyle: const TextStyle(fontSize: 10),
                                 fontWeight: FontWeight.w600,
