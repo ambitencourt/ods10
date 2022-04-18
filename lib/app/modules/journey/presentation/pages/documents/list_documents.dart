@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
-<<<<<<< HEAD
-import 'package:ods10/app/common/resources/app_text_styles.dart';
-import 'package:ods10/app/common/widgets/bottom_navibar.dart';
-=======
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
->>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
-
-import '../../controllers/docs_controller.dart';
 
 class DocumentsList extends StatefulWidget {
   const DocumentsList({Key? key}) : super(key: key);
@@ -22,7 +15,7 @@ class DocumentsList extends StatefulWidget {
   State<DocumentsList> createState() => _DocumentsListState();
 }
 
-class _DocumentsListState extends ModularState<DocumentsList, DocsController>
+class _DocumentsListState extends ModularState<DocumentsList, HomeController>
     with SingleTickerProviderStateMixin {
   List<Widget> tabMenu = [
     const Tab(
@@ -38,7 +31,7 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
       text: "Recebidos",
     ),
     const Tab(
-      text: "Gratuitos",
+      text: "gratuitos",
     ),
     const Tab(
       text: "Pagos",
@@ -81,42 +74,14 @@ class _DocumentsListState extends ModularState<DocumentsList, DocsController>
                       child: _buildTopInfo(context),
                     ),
                     SliverAppBar(
-                      automaticallyImplyLeading: false,
                       pinned: true,
                       backgroundColor: AppColors.background,
                       automaticallyImplyLeading: false,
                       collapsedHeight: 91,
                       elevation: 0,
                       centerTitle: false,
-<<<<<<< HEAD
-                      flexibleSpace: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 18),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Lista de ',
-                                  style: getRegularStyle(fontSize: 18),
-                                ),
-                                TextSpan(
-                                  text: 'Documentos',
-                                  style: getBoldStyleW900(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ),
-                          PersonalTabs(
-                            tabMenu: tabMenu,
-                            onTabSelect: (index) {},
-                            tabController: controller.tabController,
-                          ),
-                        ],
-=======
                       flexibleSpace: DocumentsStatusTab(
                         tabController: controller.tabController,
->>>>>>> 3765474ec2e8e4efd0c2cd0daa04b7d09e451375
                       ),
                     ),
                   ];
