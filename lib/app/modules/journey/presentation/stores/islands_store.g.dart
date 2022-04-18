@@ -31,6 +31,22 @@ mixin _$IslandsStore on _IslandsStoreBase, Store {
               name: '_IslandsStoreBase.docs'))
           .value;
 
+  final _$totalPercentDoneAtom =
+      Atom(name: '_IslandsStoreBase.totalPercentDone');
+
+  @override
+  double get totalPercentDone {
+    _$totalPercentDoneAtom.reportRead();
+    return super.totalPercentDone;
+  }
+
+  @override
+  set totalPercentDone(double value) {
+    _$totalPercentDoneAtom.reportWrite(value, super.totalPercentDone, () {
+      super.totalPercentDone = value;
+    });
+  }
+
   final _$_IslandsStoreBaseActionController =
       ActionController(name: '_IslandsStoreBase');
 
@@ -46,8 +62,31 @@ mixin _$IslandsStore on _IslandsStoreBase, Store {
   }
 
   @override
+  void updateDocumentItem(DocumentEntity doc) {
+    final _$actionInfo = _$_IslandsStoreBaseActionController.startAction(
+        name: '_IslandsStoreBase.updateDocumentItem');
+    try {
+      return super.updateDocumentItem(doc);
+    } finally {
+      _$_IslandsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic updatePercentDone() {
+    final _$actionInfo = _$_IslandsStoreBaseActionController.startAction(
+        name: '_IslandsStoreBase.updatePercentDone');
+    try {
+      return super.updatePercentDone();
+    } finally {
+      _$_IslandsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+totalPercentDone: ${totalPercentDone},
 percentDone: ${percentDone},
 docsReady: ${docsReady},
 docs: ${docs}
