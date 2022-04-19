@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/mapper/mapper.dart';
 import 'package:ods10/app/common/stores/user_store.dart';
+import 'package:ods10/app/modules/journey/data/datasources/local/preferences_datasource_local.dart';
+import 'package:ods10/app/modules/journey/data/datasources/preferences_datasource.dart';
 import 'package:ods10/app/modules/journey/data/datasources/remote/user_documents_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/datasources/remote/user_islands_datasource_remote.dart';
 import 'package:ods10/app/modules/journey/data/datasources/user_documents_datasource.dart';
@@ -16,9 +18,12 @@ import 'package:ods10/app/modules/journey/domain/repositories/user_islands_repos
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_documents_usecase%20_imp.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_islands.usecase.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/get_user_islands.usecase_imp.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/set_tutorial_completed_usecase.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/set_tutorial_completed_usecase_imp.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase.dart';
 import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase_imp.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_controller.dart';
+import 'package:ods10/app/modules/journey/presentation/controllers/tutorial_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/documents/list_documents.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/change_state.dart';
@@ -26,9 +31,13 @@ import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20do
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/tutorial/tutorial_page.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_page_store.dart';
+import 'package:ods10/app/modules/journey/presentation/stores/tutorial_page_store.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/mappers/user_document_mapper.dart';
 
+import 'domain/usecases/get_tutorial_completed_usecase.dart';
+import 'domain/usecases/get_tutorial_completed_usecase_imp.dart';
 import 'domain/usecases/get_user_documents_usecase.dart';
 
 import 'presentation/controllers/home_controller.dart';
@@ -42,6 +51,7 @@ class JourneyModule extends Module {
   List<Bind> get binds => [
         //Stores
         Bind.factory<HomeStore>((i) => HomeStore()),
+        Bind.factory<TutoriaPageStore>((i) => TutoriaPageStore()),
         Bind.factory<IslandsPageStore>((i) => IslandsPageStore()),
         Bind.singleton<IslandsStore>((i) => IslandsStore()),
 
@@ -67,6 +77,9 @@ class JourneyModule extends Module {
           ),
         ),
 
+        Bind.factory<PreferencesDataSource>(
+            (i) => PreferencesDataSourceLocal(i<SharedPreferences>())),
+
         // REPOSITORIES
         Bind.factory<GetUserDocumentsRepository>(
             (i) => GetUserDocumentsRepositoryImp(i())),
@@ -80,6 +93,7 @@ class JourneyModule extends Module {
         Bind.factory<UserIslandsRepository>(
           (i) => UserIslandsRepositoryImp(
             i<UserIslandsDataSource>(),
+            i<PreferencesDataSource>(),
             i<UserIslandsMapper>(),
           ),
         ),
@@ -92,6 +106,12 @@ class JourneyModule extends Module {
         Bind.factory<GetUserIslandsUseCase>(
             (i) => GetUserIslandsUseCaseImp(i())),
 
+        Bind.factory<SetTutorialCompletedUseCase>(
+            (i) => SetTutorialCompletedUseCaseImp(i())),
+
+        Bind.factory<GetTutorialCompletedUseCase>(
+            (i) => GetTutorialCompletedUseCaseImp(i())),
+
         // CONTROLLERS
         Bind.factory((i) => HomeController(
               i<HomeStore>(),
@@ -99,12 +119,19 @@ class JourneyModule extends Module {
               i<UserStore>(),
               i<UpdateUserDocumentsUseCase>(),
               i<GetUserIslandsUseCase>(),
+              i<GetTutorialCompletedUseCase>(),
             )),
         Bind.factory((i) => IslandsPageController(
               i<UserStore>(),
               i<IslandsStore>(),
               i<IslandsPageStore>(),
               i<GetUserIslandsUseCase>(),
+            )),
+
+        Bind.factory((i) => TutorialPageController(
+              i<TutoriaPageStore>(),
+              i<GetTutorialCompletedUseCase>(),
+              i<SetTutorialCompletedUseCase>(),
             )),
       ];
 

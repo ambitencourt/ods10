@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../../../../utils/links_util.dart';
+import 'package:ods10/app/modules/journey/presentation/controllers/tutorial_page_controller.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 import 'page1_tutorial.dart';
 import 'page2_tutorial.dart';
@@ -16,32 +16,26 @@ class TutorialPage extends StatefulWidget {
   State<TutorialPage> createState() => _TutorialPageState();
 }
 
-class _TutorialPageState extends State<TutorialPage> {
-  int current = 0;
-
-  late PageController pageController;
-
-  @override
-  void initState() {
-    pageController = PageController(
-      initialPage: current,
-    );
-    super.initState();
-  }
-
+class _TutorialPageState
+    extends ModularState<TutorialPage, TutorialPageController> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
 
-    void _launchURLCNJ() async {
-      if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
+    _launchURLCNJ() {
+      try {
+        controller.launchURLCNJ();
+      } catch (e) {
+        Scaffold.of(context).showBottomSheet((context) => Text(e.toString()));
+        // TODO show error bottomsheet
+      }
     }
 
-    nextButton() {
-      if (current == 2) {
-        return 'Começar';
-      } else {
-        return 'Próximo';
+    Future<void> tryToCompleteTutorial() async {
+      try {
+        await controller.completeTutorial();
+      } finally {
+        Modular.to.pushReplacementNamed('/journey/islands');
       }
     }
 
@@ -74,8 +68,8 @@ class _TutorialPageState extends State<TutorialPage> {
                                 ),
                               ),
                               onTap: () {
-                                pageController.page!.toInt() > 0
-                                    ? pageController.previousPage(
+                                controller.pageController.page!.toInt() > 0
+                                    ? controller.pageController.previousPage(
                                         duration:
                                             const Duration(milliseconds: 350),
                                         curve: Curves.easeIn,
@@ -108,7 +102,7 @@ class _TutorialPageState extends State<TutorialPage> {
                         child: LinearProgressIndicator(
                           minHeight: 5,
                           backgroundColor: const Color(0xFFD2D2CC),
-                          value: current.toDouble() / 2,
+                          value: controller.tutorialStore.percentCompleted,
                           valueColor: const AlwaysStoppedAnimation<Color>(
                               Color(0xFFD03363)),
                         ),
@@ -116,56 +110,64 @@ class _TutorialPageState extends State<TutorialPage> {
                       customSizedBox3(context),
                       SizedBox(
                         height: mediaQuery.height * .5,
-                        child: PageView(
-                          physics: const BouncingScrollPhysics(
-                              parent: AlwaysScrollableScrollPhysics()),
-                          controller: pageController,
-                          children: const [
-                            Page1Tutorial(),
-                            Page2Tutorial(),
-                            Page3Tutorial(),
-                          ],
-                          onPageChanged: (page) =>
-                              setState(() => current = page),
-                        ),
+                        child: Observer(builder: (_) {
+                          return PageView(
+                            physics: const BouncingScrollPhysics(
+                                parent: AlwaysScrollableScrollPhysics()),
+                            controller: controller.pageController,
+                            children: const [
+                              Page1Tutorial(),
+                              Page2Tutorial(),
+                              Page3Tutorial(),
+                            ],
+                            onPageChanged:
+                                controller.tutorialStore.setCurrentIndex,
+                          );
+                        }),
                       ),
                       customSizedBox1(context),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            current == 2
-                                ? Modular.to.pushNamed('/journey/islands')
-                                : pageController.animateToPage(
-                                    pageController.page!.toInt() + 1,
-                                    duration: const Duration(milliseconds: 200),
-                                    curve: Curves.easeIn);
-                          });
-                        },
-                        child: Text(
-                          nextButton(),
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(225, 44),
-                          primary: const Color(0xFFD03363),
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(31),
+                      Observer(builder: (_) {
+                        return ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              controller.tutorialStore.current == 2
+                                  ? tryToCompleteTutorial()
+                                  : controller.pageController.animateToPage(
+                                      controller.pageController.page!.toInt() +
+                                          1,
+                                      duration:
+                                          const Duration(milliseconds: 200),
+                                      curve: Curves.easeIn);
+                            });
+                          },
+                          child: Text(
+                            controller.tutorialStore.current == 2
+                                ? 'Começar'
+                                : 'Próximo',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.mulish(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white),
                             ),
                           ),
-                        ),
-                      ),
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(225, 44),
+                            primary: const Color(0xFFD03363),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(31),
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
                       customSizedBox4(context),
                       ElevatedButton(
                         onPressed: () {
-                          Modular.to.pushNamed('/journey/islands');
+                          tryToCompleteTutorial();
                         },
                         child: Text(
                           'Pular tutorial',
