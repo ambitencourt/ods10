@@ -98,17 +98,17 @@ class _HomePageState extends ModularState<HomePage, HomeController>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 10),
-        Align(
-          alignment: Alignment.centerRight,
-          child: CircularButtom(
-            child: const Icon(
-              Icons.description_outlined,
-            ),
-            onPress: () {
-              Modular.to.pushNamed('/journey/documents');
-            },
-          ),
-        ),
+        // Align(
+        //   alignment: Alignment.centerRight,
+        //   child: CircularButtom(
+        //     child: const Icon(
+        //       Icons.description_outlined,
+        //     ),
+        //     onPress: () {
+        //       Modular.to.pushNamed('/journey/documents');
+        //     },
+        //   ),
+        // ),
         Row(
           children: [
             RichText(

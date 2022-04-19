@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
+import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/auth/presentation/controllers/splash_controller.dart';
 
 class SplashPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
     } finally {
       Future.delayed(
         const Duration(
-          seconds: 1,
+          seconds: 2,
         ),
         () {
           Modular.to.navigate('/journey/');
@@ -36,11 +37,14 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.background,
-      child: const Center(
-        child: Text(
-          'ODS SPLASH',
+    return Scaffold(
+      body: Container(
+        color: AppColors.primary,
+        child: Center(
+          child: Text(
+            'Re.tifica',
+            style: getBoldStyle(fontSize: 50, color: AppColors.secondary),
+          ),
         ),
       ),
     );
