@@ -154,82 +154,19 @@ class _IslandsPageState
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          InkWell(
-                            borderRadius: BorderRadius.circular(220),
-                            child: controller.islandsPageStore.current == 0
-                                ? Container(
-                                    width: 60,
-                                    height: 60,
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromARGB(20, 255, 255, 255),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_back,
-                                      size: 24,
-                                      color: Colors.black,
-                                    ),
-                                  )
-                                : Container(
-                                    width: 60,
-                                    height: 60,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 2,
-                                      ),
-                                      color: const Color(0xFF256380),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_back,
-                                      size: 24,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                            onTap: () =>
-                                controller.carouselController.previousPage(),
+                          _buildButtonArrows(
+                            context,
+                            isTransparent:
+                                controller.islandsPageStore.current == 0,
+                            onTap: controller.carouselController.previousPage,
                           ),
-                          SizedBox(
-                            width: mediaQuery.width * .5,
+                          SizedBox(width: mediaQuery.width * .5),
+                          _buildButtonArrows(
+                            context,
+                            isTransparent:
+                                controller.islandsPageStore.current == 4,
+                            onTap: controller.carouselController.nextPage,
                           ),
-                          InkWell(
-                              borderRadius: BorderRadius.circular(220),
-                              child: controller.islandsPageStore.current == 4
-                                  ? Container(
-                                      width: 60,
-                                      height: 60,
-                                      decoration: const BoxDecoration(
-                                        color:
-                                            Color.fromARGB(20, 255, 255, 255),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.arrow_forward,
-                                        size: 24,
-                                        color: Colors.black,
-                                      ),
-                                    )
-                                  : Container(
-                                      width: 60,
-                                      height: 60,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 2,
-                                        ),
-                                        color: const Color(0xFF256380),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.arrow_forward,
-                                        size: 24,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                              onTap: () {
-                                controller.carouselController.nextPage();
-                              }),
                         ],
                       ),
                       Align(
@@ -425,6 +362,45 @@ class _IslandsPageState
           ),
         );
       }),
+    );
+  }
+
+  Widget _buildButtonArrows(BuildContext context,
+      {required bool isTransparent, required VoidCallback onTap}) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(220),
+      child: isTransparent
+          ? Container(
+              width: 60,
+              height: 60,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(20, 255, 255, 255),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.arrow_forward,
+                size: 24,
+                color: Colors.black,
+              ),
+            )
+          : Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2,
+                ),
+                color: const Color(0xFF256380),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.arrow_forward,
+                size: 24,
+                color: Colors.white,
+              ),
+            ),
+      onTap: onTap,
     );
   }
 }
