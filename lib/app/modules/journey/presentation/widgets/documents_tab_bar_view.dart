@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
-
 import 'document_item_widget.dart';
 
 class DocumentsTabBarView extends StatelessWidget {

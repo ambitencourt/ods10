@@ -47,6 +47,21 @@ mixin _$IslandsStore on _IslandsStoreBase, Store {
     });
   }
 
+  final _$totalDocsDoneAtom = Atom(name: '_IslandsStoreBase.totalDocsDone');
+
+  @override
+  int get totalDocsDone {
+    _$totalDocsDoneAtom.reportRead();
+    return super.totalDocsDone;
+  }
+
+  @override
+  set totalDocsDone(int value) {
+    _$totalDocsDoneAtom.reportWrite(value, super.totalDocsDone, () {
+      super.totalDocsDone = value;
+    });
+  }
+
   final _$_IslandsStoreBaseActionController =
       ActionController(name: '_IslandsStoreBase');
 
@@ -87,6 +102,7 @@ mixin _$IslandsStore on _IslandsStoreBase, Store {
   String toString() {
     return '''
 totalPercentDone: ${totalPercentDone},
+totalDocsDone: ${totalDocsDone},
 percentDone: ${percentDone},
 docsReady: ${docsReady},
 docs: ${docs}

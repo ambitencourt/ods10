@@ -47,14 +47,13 @@ class _IslandsPageState
           }
           return RefreshIndicator(
             onRefresh: controller.getIslands,
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-              child: Column(
+            child: SafeArea(
+              child: ListView(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 20, 36, 5),
+                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,52 +72,46 @@ class _IslandsPageState
                                 Icons.description_outlined,
                               ),
                               onPress: () async {
-                                await Modular.to
-                                    .pushNamed('/journey/documents');
+                                await Modular.to.pushNamed(
+                                  '/journey/documents',
+                                );
                                 // controller.getIslands();
                               },
                             ),
                           ],
                         ),
                         customSizedBox4(context),
-                        SizedBox(
-                          height: 27,
-                          width: 157,
-                          child: Text(
-                            'Boas vindas ao',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.dmSerifDisplay(
-                              textStyle: const TextStyle(
-                                  fontSize: 20,
-                                  fontStyle: FontStyle.italic,
-                                  color: Color(0xFF256380)),
-                            ),
+                        Text(
+                          controller.islandsPageStore.current == 0
+                              ? 'Boas vindas ao Arquipélago'
+                              : 'Boas vindas a ilha',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSerifDisplay(
+                            textStyle: const TextStyle(
+                                fontSize: 20,
+                                fontStyle: FontStyle.italic,
+                                color: Color(0xFF256380)),
                           ),
                         ),
-                        SizedBox(
-                          width: 335,
-                          height: 49,
-                          child: Text(
-                            controller
-                                .islandsStore
-                                .islands[controller.islandsPageStore.current]
-                                .name,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.dmSerifDisplay(
-                              textStyle: const TextStyle(
-                                  fontSize: 36, fontStyle: FontStyle.normal),
-                            ),
+                        const SizedBox(height: 5),
+                        Text(
+                          index == 0
+                              ? 'Re.tificando'
+                              : controller.islandsStore.islands[index - 1].name,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSerifDisplay(
+                            textStyle: const TextStyle(
+                                fontSize: 36, fontStyle: FontStyle.normal),
                           ),
                         ),
                         customSizedBox3(context),
                         SizedBox(
-                          width: 335,
-                          height: 36,
+                          height: 80,
                           child: Text(
-                            controller
-                                .islandsStore
-                                .islands[controller.islandsPageStore.current]
-                                .description,
+                            index == 0
+                                ? 'Arraste para o lado ou veja a lista de ilhas abaixo. Selecione uma das ilhas e comece a explorar.'
+                                : controller.islandsStore.islands[index - 1]
+                                    .description,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.mulish(
                               textStyle: const TextStyle(
@@ -129,6 +122,7 @@ class _IslandsPageState
                       ],
                     ),
                   ),
+                  const SizedBox.shrink(),
                   Stack(
                     alignment: const Alignment(0, -0.35),
                     children: [
@@ -140,6 +134,7 @@ class _IslandsPageState
                           options: CarouselOptions(
                             enlargeStrategy: CenterPageEnlargeStrategy.scale,
                             enlargeCenterPage: false,
+                            initialPage: index,
                             enableInfiniteScroll: false,
                             viewportFraction: 1,
                             aspectRatio: 96 / 65,
@@ -156,6 +151,7 @@ class _IslandsPageState
                         children: [
                           _buildButtonArrows(
                             context,
+                            backArrow: true,
                             isTransparent:
                                 controller.islandsPageStore.current == 0,
                             onTap: controller.carouselController.previousPage,
@@ -164,7 +160,7 @@ class _IslandsPageState
                           _buildButtonArrows(
                             context,
                             isTransparent:
-                                controller.islandsPageStore.current == 4,
+                                controller.islandsPageStore.current == 5,
                             onTap: controller.carouselController.nextPage,
                           ),
                         ],
@@ -304,7 +300,9 @@ class _IslandsPageState
                           ),
                           const Spacer(),
                           Text(
-                            '${controller.islandsStore.docsReady[index]}/${controller.islandsStore.islands[index].documents!.length} documentos',
+                            index == 0
+                                ? '${controller.islandsStore.totalDocsDone}/${controller.islandsStore.docs.length} documentos'
+                                : '${controller.islandsStore.docsReady[index - 1]}/${controller.islandsStore.islands[index - 1].documents!.length} documentos',
                             style: GoogleFonts.mulish(
                                 textStyle: const TextStyle(fontSize: 10),
                                 fontWeight: FontWeight.w600,
@@ -365,8 +363,12 @@ class _IslandsPageState
     );
   }
 
-  Widget _buildButtonArrows(BuildContext context,
-      {required bool isTransparent, required VoidCallback onTap}) {
+  Widget _buildButtonArrows(
+    BuildContext context, {
+    required bool isTransparent,
+    required VoidCallback onTap,
+    bool backArrow = false,
+  }) {
     return InkWell(
       borderRadius: BorderRadius.circular(220),
       child: isTransparent
@@ -377,8 +379,8 @@ class _IslandsPageState
                 color: Color.fromARGB(20, 255, 255, 255),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.arrow_forward,
+              child: Icon(
+                backArrow ? Icons.arrow_back : Icons.arrow_forward,
                 size: 24,
                 color: Colors.black,
               ),
@@ -394,8 +396,8 @@ class _IslandsPageState
                 color: const Color(0xFF256380),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.arrow_forward,
+              child: Icon(
+                backArrow ? Icons.arrow_back : Icons.arrow_forward,
                 size: 24,
                 color: Colors.white,
               ),

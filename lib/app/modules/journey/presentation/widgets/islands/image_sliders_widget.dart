@@ -6,6 +6,7 @@ final List<String> imgListIsland = [
   'assets/images/island.png',
   'assets/images/island.png',
   'assets/images/island.png',
+  'assets/images/island.png',
 ];
 final List<Widget> imageSlidersIsland = imgListIsland
     .map((item) => Image.asset(

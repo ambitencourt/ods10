@@ -29,6 +29,9 @@ abstract class _IslandsStoreBase with Store {
   @observable
   double totalPercentDone = 0.0;
 
+  @observable
+  int totalDocsDone = 0;
+
   @action
   updatePercentDone() {
     int docsDone = 0;
@@ -39,6 +42,7 @@ abstract class _IslandsStoreBase with Store {
         if (document.status == 'ready') docsDone++;
       }
     }
+    totalDocsDone = docsDone;
     totalPercentDone = docsDone / totalDocs;
   }
 
