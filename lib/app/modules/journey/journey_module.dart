@@ -120,7 +120,9 @@ class JourneyModule extends Module {
         ChildRoute(
           '/documents',
           transition: TransitionType.fadeIn,
-          child: (context, args) => const DocumentsList(),
+          child: (context, args) => DocumentsList(
+            islandId: args.data,
+          ),
         ),
         ChildRoute(
           '/tutorial',

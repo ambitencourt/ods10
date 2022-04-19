@@ -3,15 +3,20 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:ods10/app/common/resources/app_colors.dart';
-import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 
 class DocumentsList extends StatefulWidget {
-  const DocumentsList({Key? key}) : super(key: key);
+  final Map? islandId;
+  const DocumentsList({
+    Key? key,
+    this.islandId,
+  }) : super(key: key);
 
   @override
   State<DocumentsList> createState() => _DocumentsListState();
@@ -32,6 +37,7 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
 
   @override
   Widget build(BuildContext context) {
+    String? id = widget.islandId?['islandId'];
     return Scaffold(
       body: Observer(builder: (_) {
         if (controller.store.loading) {
@@ -73,7 +79,11 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
                   ];
                 },
                 body: DocumentsTabBarView(
-                  items: controller.islandsStore.docs,
+                  items: id != null
+                      ? controller.islandsStore.docs
+                          .where((element) => element.island.id == id)
+                          .toList()
+                      : controller.islandsStore.docs,
                   tabController: controller.tabController,
                 ),
               ),
