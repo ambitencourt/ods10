@@ -23,7 +23,6 @@ import 'package:ods10/app/modules/journey/presentation/pages/documents/list_docu
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/change_state.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/free%20island/exit_island.dart';
-import 'package:ods10/app/modules/journey/presentation/stores/documents_store.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/tutorial/tutorial_page.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_page_store.dart';
@@ -44,7 +43,6 @@ class JourneyModule extends Module {
         //Stores
         Bind.factory<HomeStore>((i) => HomeStore()),
         Bind.factory<IslandsPageStore>((i) => IslandsPageStore()),
-        Bind.singleton<DocumentsStore>((i) => DocumentsStore()),
         Bind.singleton<IslandsStore>((i) => IslandsStore()),
 
         //Mappers
