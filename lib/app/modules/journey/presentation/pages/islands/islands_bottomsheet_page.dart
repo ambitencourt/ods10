@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -54,89 +55,20 @@ class _IslandsBottomSheetState
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CircularPercentIndicator(
+                  _buildIslandCircle(
+                    context,
                     percent: controller.islandsStore.percentDone[0],
-                    lineWidth: 6,
-                    animation: true,
-                    animationDuration: 500,
-                    center: CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .105,
-                    ),
-                    radius: mediaQuery.width * .12,
-                    footer: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Text(
-                        controller.islandsStore.islands[0].name,
-                        style: GoogleFonts.mulish(
-                          textStyle: TextStyle(
-                            fontSize: mediaQuery.width * .027,
-                            color: const Color(0xFF256380),
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                    backgroundColor: const Color(0xFFE0E0E0),
-                    progressColor: const Color(0xFFD03363),
+                    island: controller.islandsStore.islands[0],
                   ),
-                  CircularPercentIndicator(
+                  _buildIslandCircle(
+                    context,
                     percent: controller.islandsStore.percentDone[1],
-                    lineWidth: 6,
-                    animation: true,
-                    animationDuration: 500,
-                    center: CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .105,
-                    ),
-                    radius: mediaQuery.width * .12,
-                    footer: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Text(
-                        controller.islandsStore.islands[1].name,
-                        style: GoogleFonts.mulish(
-                          textStyle: TextStyle(
-                            fontSize: mediaQuery.width * .027,
-                            color: const Color(0xFF256380),
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                    backgroundColor: const Color(0xFFE0E0E0),
-                    progressColor: const Color(0xFFD03363),
+                    island: controller.islandsStore.islands[1],
                   ),
-                  CircularPercentIndicator(
+                  _buildIslandCircle(
+                    context,
                     percent: controller.islandsStore.percentDone[2],
-                    lineWidth: 6,
-                    animation: true,
-                    animationDuration: 500,
-                    center: CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .105,
-                    ),
-                    radius: mediaQuery.width * .12,
-                    footer: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                      child: Text(
-                        controller.islandsStore.islands[2].name,
-                        style: GoogleFonts.mulish(
-                          textStyle: TextStyle(
-                            fontSize: mediaQuery.width * .027,
-                            color: const Color(0xFF256380),
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                    backgroundColor: const Color(0xFFE0E0E0),
-                    progressColor: const Color(0xFFD03363),
+                    island: controller.islandsStore.islands[2],
                   ),
                 ],
               ),
@@ -148,33 +80,10 @@ class _IslandsBottomSheetState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CircularPercentIndicator(
+                  _buildIslandCircle(
+                    context,
                     percent: controller.islandsStore.percentDone[3],
-                    lineWidth: 6,
-                    animation: true,
-                    animationDuration: 500,
-                    center: CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/island.png',
-                      ),
-                      radius: mediaQuery.width * .105,
-                    ),
-                    radius: mediaQuery.width * .12,
-                    footer: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Text(
-                        controller.islandsStore.islands[3].name,
-                        style: GoogleFonts.mulish(
-                          textStyle: TextStyle(
-                            fontSize: mediaQuery.width * .027,
-                            color: const Color(0xFF256380),
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                    backgroundColor: const Color(0xFFE0E0E0),
-                    progressColor: const Color(0xFFD03363),
+                    island: controller.islandsStore.islands[3],
                   ),
                   // CircularPercentIndicator(
                   //   percent: 0.75,
@@ -240,6 +149,48 @@ class _IslandsBottomSheetState
           ],
         );
       },
+    );
+  }
+
+  Widget _buildIslandCircle(
+    BuildContext context, {
+    required double percent,
+    required IslandEntity island,
+  }) {
+    final mediaQuery = MediaQuery.of(context).size;
+    return GestureDetector(
+      onTap: () {
+        Modular.to.pushNamed('/journey/documents',
+            arguments: {"islandId": island.id});
+      },
+      child: CircularPercentIndicator(
+        percent: percent,
+        lineWidth: 6,
+        animation: true,
+        animationDuration: 500,
+        center: CircleAvatar(
+          backgroundImage: const AssetImage(
+            'assets/images/island.png',
+          ),
+          radius: mediaQuery.width * .105,
+        ),
+        radius: mediaQuery.width * .12,
+        footer: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+          child: Text(
+            island.name,
+            style: GoogleFonts.mulish(
+              textStyle: TextStyle(
+                fontSize: mediaQuery.width * .027,
+                color: const Color(0xFF256380),
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ),
+        backgroundColor: const Color(0xFFE0E0E0),
+        progressColor: const Color(0xFFD03363),
+      ),
     );
   }
 }
