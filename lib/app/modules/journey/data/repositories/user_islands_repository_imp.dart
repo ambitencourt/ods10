@@ -1,4 +1,5 @@
 import 'package:ods10/app/common/mapper/mapper.dart';
+import 'package:ods10/app/modules/journey/data/datasources/preferences_datasource.dart';
 import 'package:ods10/app/modules/journey/data/datasources/user_islands_datasource.dart';
 import 'package:ods10/app/modules/journey/data/models/user_islands_model.dart';
 import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
@@ -6,10 +7,12 @@ import 'package:ods10/app/modules/journey/domain/repositories/user_islands_repos
 
 class UserIslandsRepositoryImp implements UserIslandsRepository {
   final UserIslandsDataSource _userIslandsDataSource;
+  final PreferencesDataSource _preferencesDataSource;
   final Mapper _mapper;
 
   UserIslandsRepositoryImp(
     this._userIslandsDataSource,
+    this._preferencesDataSource,
     this._mapper,
   );
 
@@ -23,5 +26,15 @@ class UserIslandsRepositoryImp implements UserIslandsRepository {
       finalList.add(_mapper.toEntity(element));
     }
     return finalList;
+  }
+
+  @override
+  Future<bool> getTutorialCompleted() async {
+    return await _preferencesDataSource.getTutorialCompleted();
+  }
+
+  @override
+  Future<bool> setTutorialCompleted() async {
+    return await _preferencesDataSource.setTutorialCompleted();
   }
 }
