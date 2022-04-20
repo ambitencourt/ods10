@@ -8,6 +8,7 @@ import '../../../../widgets/islands/sizedbox_widget.dart';
 import 'page1_tutorial.dart';
 import 'page2_tutorial.dart';
 import 'page3_tutorial.dart';
+import 'page4_tutorial.dart';
 
 class TutorialPage extends StatefulWidget {
   const TutorialPage({Key? key}) : super(key: key);
@@ -97,16 +98,18 @@ class _TutorialPageState
                         ],
                       ),
                       customSizedBox3(context),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: LinearProgressIndicator(
-                          minHeight: 5,
-                          backgroundColor: const Color(0xFFD2D2CC),
-                          value: controller.tutorialStore.percentCompleted,
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color(0xFFD03363)),
-                        ),
-                      ),
+                      Observer(builder: (_) {
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: LinearProgressIndicator(
+                            minHeight: 5,
+                            backgroundColor: const Color(0xFFD2D2CC),
+                            value: controller.tutorialStore.current / 3,
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                                Color(0xFFD03363)),
+                          ),
+                        );
+                      }),
                       customSizedBox3(context),
                       SizedBox(
                         height: mediaQuery.height * .5,
@@ -119,6 +122,7 @@ class _TutorialPageState
                               Page1Tutorial(),
                               Page2Tutorial(),
                               Page3Tutorial(),
+                              Page4Tutorial(),
                             ],
                             onPageChanged:
                                 controller.tutorialStore.setCurrentIndex,
@@ -130,7 +134,7 @@ class _TutorialPageState
                         return ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              controller.tutorialStore.current == 2
+                              controller.tutorialStore.current == 3
                                   ? tryToCompleteTutorial()
                                   : controller.pageController.animateToPage(
                                       controller.pageController.page!.toInt() +
@@ -141,7 +145,7 @@ class _TutorialPageState
                             });
                           },
                           child: Text(
-                            controller.tutorialStore.current == 2
+                            controller.tutorialStore.current == 3
                                 ? 'Começar'
                                 : 'Próximo',
                             textAlign: TextAlign.center,
@@ -165,35 +169,42 @@ class _TutorialPageState
                         );
                       }),
                       customSizedBox4(context),
-                      ElevatedButton(
-                        onPressed: () {
-                          tryToCompleteTutorial();
-                        },
-                        child: Text(
-                          'Pular tutorial',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.mulish(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xFFD03363),
-                            ),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(225, 44),
-                            primary: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(31),
+                      Observer(builder: (_) {
+                        return Visibility(
+                          visible: controller.tutorialStore.current < 3
+                              ? true
+                              : false,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              tryToCompleteTutorial();
+                            },
+                            child: Text(
+                              'Pular tutorial',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.mulish(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFFD03363),
+                                ),
                               ),
                             ),
-                            side: const BorderSide(
-                              width: 1.0,
-                              color: Color(0xFFD03363),
-                            )),
-                      ),
+                            style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(225, 44),
+                                primary: Colors.white,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(31),
+                                  ),
+                                ),
+                                side: const BorderSide(
+                                  width: 1.0,
+                                  color: Color(0xFFD03363),
+                                )),
+                          ),
+                        );
+                      }),
                       customSizedBox2(context),
                       SizedBox(
                         width: 297,

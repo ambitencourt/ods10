@@ -8,6 +8,7 @@ import 'package:ods10/app/modules/journey/presentation/widgets/general_error_wid
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../widgets/islands/image_sliders_widget.dart';
 
 class IslandsPage extends StatefulWidget {
@@ -27,6 +28,14 @@ class _IslandsPageState
 
   Future<void> _getIslands() async {
     await controller.getIslands();
+  }
+
+  Future<void> clearData() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.clear();
+    print(
+      const Text('Dados apagados com sucesso!'),
+    );
   }
 
   @override
@@ -165,67 +174,72 @@ class _IslandsPageState
                           ),
                         ],
                       ),
+                      //TODO Criar lógica do button
                       Align(
                         alignment: const Alignment(0, 0),
                         child: Visibility(
-                          visible: false,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(38),
+                          visible: true,
+                          child: InkWell(
+                            onTap: () => clearData(),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(38),
+                                ),
                               ),
-                            ),
-                            height: 62,
-                            width: 187,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: const Color(0xFFD03363),
-                                      width: 3,
+                              height: 62,
+                              width: 187,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: const Color(0xFFD03363),
+                                        width: 3,
+                                      ),
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
                                     ),
-                                    color: Colors.white,
-                                    shape: BoxShape.circle,
+                                    child: const Icon(
+                                      Icons.play_arrow,
+                                      size: 30,
+                                      color: Color(0xFFD03363),
+                                    ),
                                   ),
-                                  child: const Icon(
-                                    Icons.play_arrow,
-                                    size: 30,
-                                    color: Color(0xFFD03363),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Entrar na ilha',
-                                      style: GoogleFonts.mulish(
-                                        textStyle: const TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w700,
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Entrar na ilha',
+                                        style: GoogleFonts.mulish(
+                                          textStyle: const TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Text(
-                                      'João Nery',
-                                      style: GoogleFonts.dmSerifDisplay(
-                                        textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w700,
+                                      Text(
+                                        'João Nery',
+                                        style: GoogleFonts.dmSerifDisplay(
+                                          textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

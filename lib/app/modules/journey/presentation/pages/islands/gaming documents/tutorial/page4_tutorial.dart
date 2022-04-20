@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../widgets/islands/image_sliders_widget.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
-class Page1Tutorial extends StatelessWidget {
-  const Page1Tutorial({Key? key}) : super(key: key);
+class Page4Tutorial extends StatelessWidget {
+  const Page4Tutorial({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,14 @@ class Page1Tutorial extends StatelessWidget {
         children: [
           Flexible(
             child: Image.asset(
-              imgListTutorial.elementAt(0).toString(),
+              imgListTutorial.elementAt(3).toString(),
             ),
           ),
           SizedBox(
             height: 31,
             width: 213,
             child: Text(
-              'Oi, eu me chamo Rê',
+              'Vamos começar?',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
@@ -36,9 +36,9 @@ class Page1Tutorial extends StatelessWidget {
           customSizedBox4(context),
           SizedBox(
             width: 257,
-            height: 108,
+            height: 102,
             child: Text(
-              'Sou uma pessoa não binária e vou te guiar por todo o processo de retificação da sua documentação no Arquipélago Re.tificando.',
+              'Você deve selecionar uma das ilhas para iniciar. Nossa sugestão é que seja seguida a ordem, mas você pode explorar livremente na como preferir.',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(

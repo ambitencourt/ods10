@@ -9,14 +9,6 @@ part of 'tutorial_page_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$TutoriaPageStore on _TutoriaPageStoreBase, Store {
-  Computed<double>? _$percentCompletedComputed;
-
-  @override
-  double get percentCompleted => (_$percentCompletedComputed ??=
-          Computed<double>(() => super.percentCompleted,
-              name: '_TutoriaPageStoreBase.percentCompleted'))
-      .value;
-
   final _$currentAtom = Atom(name: '_TutoriaPageStoreBase.current');
 
   @override
@@ -49,8 +41,7 @@ mixin _$TutoriaPageStore on _TutoriaPageStoreBase, Store {
   @override
   String toString() {
     return '''
-current: ${current},
-percentCompleted: ${percentCompleted}
+current: ${current}
     ''';
   }
 }

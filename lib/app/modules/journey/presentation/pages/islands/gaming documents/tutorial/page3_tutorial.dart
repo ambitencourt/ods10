@@ -14,14 +14,14 @@ class Page3Tutorial extends StatelessWidget {
         children: [
           Flexible(
             child: Image.asset(
-              imgListDocDetails.elementAt(0).toString(),
+              imgListTutorial.elementAt(2).toString(),
             ),
           ),
           SizedBox(
             height: 31,
-            width: 213,
+            width: 239,
             child: Text(
-              'Vamos começar?',
+              'Desbloqueando uma ilha',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
@@ -36,9 +36,9 @@ class Page3Tutorial extends StatelessWidget {
           customSizedBox4(context),
           SizedBox(
             width: 257,
-            height: 101,
+            height: 102,
             child: Text(
-              'Você deve selecionar uma das ilhas para iniciar. Nossa sugestão é que seja seguida a ordem, mas você pode explorar livremente.',
+              'Depois que você mudar o estado de todos os documentos para “recebido” você vai desbloquear a última ilha que guarda o documento final para o processo.',
               textAlign: TextAlign.center,
               style: GoogleFonts.mulish(
                 textStyle: const TextStyle(
