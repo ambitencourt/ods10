@@ -318,7 +318,7 @@ class _IslandsPageState
                       child: Row(
                         children: [
                           Text(
-                            'Desbloquear Ilha Erika Hilton',
+                            'Desbloquear Ilha ${controller.islandsStore.islands.last.name}',
                             style: GoogleFonts.mulish(
                                 textStyle: const TextStyle(fontSize: 10),
                                 fontWeight: FontWeight.w600,
@@ -326,9 +326,10 @@ class _IslandsPageState
                           ),
                           const Spacer(),
                           Text(
-                            index == 0
-                                ? '${controller.islandsStore.totalDocsDone}/${controller.islandsStore.docs.length} documentos'
-                                : '${controller.islandsStore.docsReady[index - 1]}/${controller.islandsStore.islands[index - 1].documents!.length} documentos',
+                            '${controller.islandsStore.totalDocsDone}/${controller.islandsStore.docs.length} documentos',
+                            // index == 0
+                            //     ? '${controller.islandsStore.totalDocsDone}/${controller.islandsStore.docs.length} documentos'
+                            //     : '${controller.islandsStore.docsReady[index - 1]}/${controller.islandsStore.islands[index - 1].documents!.length} documentos',
                             style: GoogleFonts.mulish(
                                 textStyle: const TextStyle(fontSize: 10),
                                 fontWeight: FontWeight.w600,
