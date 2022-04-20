@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_modal_widget.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../widgets/islands/image_sliders_widget.dart';
 
@@ -45,6 +47,9 @@ class _IslandsPageState
       body: Observer(
         builder: (_) {
           final index = controller.islandsPageStore.current;
+          final bool islandBloked = (index == 5 &&
+              controller.islandsStore.totalDocsDone <
+                  controller.islandsStore.docs.length - 1);
           if (controller.islandsPageStore.loading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -182,46 +187,54 @@ class _IslandsPageState
                           child: InkWell(
                             onTap: () {
                               //  clearData();
+                              if (islandBloked) return;
                               controller.navigateToIsland(
-                                  controller.islandsStore.islands[
-                                      controller.islandsPageStore.current]);
+                                  controller.islandsStore.islands[index - 1]);
                             },
                             child: Container(
                               padding: const EdgeInsets.all(10),
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.rectangle,
-                                color: Colors.white,
-                                borderRadius: BorderRadius.all(
+                                color: islandBloked
+                                    ? AppColors.white.withOpacity(0.5)
+                                    : AppColors.white,
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(38),
                                 ),
                               ),
                               // height: 62,
                               // width: 187,
                               child: Row(
+                                mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width: 60,
-                                    height: 60,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: const Color(0xFFD03363),
-                                        width: 3,
-                                      ),
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(
-                                      Icons.play_arrow,
+                                  CircularPercentIndicator(
+                                    percent: index == 0
+                                        ? 0
+                                        : controller.islandsStore
+                                            .percentDone[index - 1],
+                                    lineWidth: 4,
+                                    animation: true,
+                                    animationDuration: 500,
+                                    center: Icon(
+                                      islandBloked
+                                          ? Icons.lock
+                                          : Icons.play_arrow,
                                       size: 30,
-                                      color: Color(0xFFD03363),
+                                      color: islandBloked
+                                          ? AppColors.ligthBlack
+                                          : const Color(0xFFD03363),
                                     ),
+                                    radius: 30,
+                                    backgroundColor: const Color(0xFFE0E0E0),
+                                    progressColor: const Color(0xFFD03363),
                                   ),
                                   const SizedBox(width: 10),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
                                         'Entrar na ilha',
