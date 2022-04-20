@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:ods10/app/common/stores/user_store.dart';
 import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
@@ -32,6 +33,18 @@ class IslandsPageController {
       // rethrow;
     } finally {
       islandsPageStore.setLoading(false);
+    }
+  }
+
+  void navigateToIsland(IslandEntity island) {
+    switch (island.name) {
+      case 'Laerte Coutinho':
+        Modular.to.pushNamed('/journey/laerte_coutinho_details',
+            arguments: {"islandId": island.id});
+        break;
+      default:
+        Modular.to.pushNamed('/journey/documents',
+            arguments: {"islandId": island.id});
     }
   }
 }

@@ -180,8 +180,14 @@ class _IslandsPageState
                         child: Visibility(
                           visible: controller.islandsPageStore.current > 0,
                           child: InkWell(
-                            onTap: () => clearData(),
+                            onTap: () {
+                              //  clearData();
+                              controller.navigateToIsland(
+                                  controller.islandsStore.islands[
+                                      controller.islandsPageStore.current]);
+                            },
                             child: Container(
+                              padding: const EdgeInsets.all(10),
                               decoration: const BoxDecoration(
                                 shape: BoxShape.rectangle,
                                 color: Colors.white,
@@ -189,8 +195,8 @@ class _IslandsPageState
                                   Radius.circular(38),
                                 ),
                               ),
-                              height: 62,
-                              width: 187,
+                              // height: 62,
+                              // width: 187,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -213,6 +219,7 @@ class _IslandsPageState
                                       color: Color(0xFFD03363),
                                     ),
                                   ),
+                                  const SizedBox(width: 10),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -227,7 +234,10 @@ class _IslandsPageState
                                         ),
                                       ),
                                       Text(
-                                        'João Nery',
+                                        index == 0
+                                            ? ''
+                                            : controller.islandsStore
+                                                .islands[index - 1].name,
                                         style: GoogleFonts.dmSerifDisplay(
                                           textStyle: const TextStyle(
                                             fontSize: 20,
@@ -273,17 +283,6 @@ class _IslandsPageState
                   Center(
                     child: Column(
                       children: [
-                        // Slider(
-                        //   value: _progressValue,
-                        //   onChanged: (double _progressValue) {
-                        //     setState(() {
-                        //       _onChanged(_progressValue);
-                        //     });
-                        //   },
-                        //   min: 0.0,
-                        //   max: 30.0,
-                        // ),
-                        // Text('${_progressValue.round()}'),
                         customSizedBox1(context),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),

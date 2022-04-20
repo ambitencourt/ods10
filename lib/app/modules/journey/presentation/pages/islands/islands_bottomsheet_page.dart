@@ -173,14 +173,6 @@ class _IslandsBottomSheetState
   }
 
   void _onIslandPress(IslandEntity island) {
-    switch (island.name.replaceAll('Ilha ', '')) {
-      case 'Laerte Coutinho':
-        Modular.to.pushNamed('/journey/laerte_coutinho_details',
-            arguments: {"islandId": island.id});
-        break;
-      default:
-        Modular.to.pushNamed('/journey/documents',
-            arguments: {"islandId": island.id});
-    }
+    controller.navigateToIsland(island);
   }
 }
