@@ -3,24 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../../../utils/links_util.dart';
 import '../../../widgets/islands/sizedbox_widget.dart';
-import 'free island/free_model.dart';
-import 'free island/page1_detail.dart';
-import 'free island/page2_detail.dart';
-import 'free island/page3_detail.dart';
-import 'free island/page4_detail.dart';
-import 'free island/page5_detail.dart';
-import 'free island/page6_detail.dart';
+import 'laerte_coutinho/free_model.dart';
+import 'laerte_coutinho/page1_detail.dart';
+import 'laerte_coutinho/page2_detail.dart';
+import 'laerte_coutinho/page3_detail.dart';
+import 'laerte_coutinho/page4_detail.dart';
+import 'laerte_coutinho/page5_detail.dart';
+import 'laerte_coutinho/page6_detail.dart';
 
-class DocumentDetaills extends StatefulWidget {
-  const DocumentDetaills({Key? key}) : super(key: key);
+class LaerteCoutinhoIslandDetaills extends StatefulWidget {
+  final Map data;
+  const LaerteCoutinhoIslandDetaills({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
 
   @override
-  State<DocumentDetaills> createState() => _DocumentDetaillsState();
+  State<LaerteCoutinhoIslandDetaills> createState() =>
+      _LaerteCoutinhoIslandDetaillsState();
 }
 
-class _DocumentDetaillsState extends State<DocumentDetaills> {
+class _LaerteCoutinhoIslandDetaillsState
+    extends State<LaerteCoutinhoIslandDetaills> {
   int current = 0;
 
   late PageController pageController;

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/personal_tabs.dart';
