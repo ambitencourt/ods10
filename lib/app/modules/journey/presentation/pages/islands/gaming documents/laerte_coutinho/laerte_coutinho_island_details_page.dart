@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../utils/links_util.dart';
-import '../../../widgets/islands/sizedbox_widget.dart';
-import 'laerte_coutinho/page1_detail.dart';
-import 'laerte_coutinho/page2_detail.dart';
-import 'laerte_coutinho/page3_detail.dart';
-import 'laerte_coutinho/page4_detail.dart';
-import 'laerte_coutinho/page5_detail.dart';
-import 'laerte_coutinho/page6_detail.dart';
+import '../../../../../utils/links_util.dart';
+import '../../../../widgets/islands/sizedbox_widget.dart';
+import 'page1_detail.dart';
+import 'page2_detail.dart';
+import 'page3_detail.dart';
+import 'page4_detail.dart';
+import 'page5_detail.dart';
+import 'page6_detail.dart';
 
 class LaerteCoutinhoIslandDetaills extends StatefulWidget {
   final Map data;

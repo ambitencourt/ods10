@@ -31,21 +31,17 @@ import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_page_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/tutorial_page_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'data/mappers/user_document_mapper.dart';
-
 import 'domain/usecases/get_tutorial_completed_usecase_imp.dart';
-
 import 'domain/usecases/interfaces/get_tutorial_completed_usecase.dart';
 import 'domain/usecases/interfaces/get_user_documents_usecase.dart';
 import 'domain/usecases/interfaces/get_user_islands.usecase.dart';
 import 'domain/usecases/interfaces/set_tutorial_completed_usecase.dart';
 import 'domain/usecases/interfaces/update_user_document_useacase.dart';
 import 'presentation/controllers/home_controller.dart';
-
 import 'presentation/pages/islands/gaming documents/laerte_coutinho/change_state.dart';
 import 'presentation/pages/islands/gaming documents/laerte_coutinho/exit_island.dart';
-import 'presentation/pages/islands/gaming documents/laerte_coutinho_island_details_page.dart';
+import 'presentation/pages/islands/gaming documents/laerte_coutinho/laerte_coutinho_island_details_page.dart';
 import 'presentation/pages/islands/islands_page.dart';
 import 'presentation/stores/islands_store.dart';
 
