@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/modules/journey/presentation/resources/journey_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
@@ -76,7 +77,7 @@ class _GoToDownloadPageState extends State<GoToDownloadPage> {
                   SizedBox(
                     height: mediaQuery.height * .4,
                     child: Image.asset(
-                      'assets/images/cuate.png',
+                      JourneyImages.laerte08,
                     ),
                   ),
                   Text(

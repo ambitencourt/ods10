@@ -113,7 +113,7 @@ class _IslandsBottomSheetState
                               controller.islandsStore.islands[4].name,
                               style: GoogleFonts.mulish(
                                 textStyle: TextStyle(
-                                  fontSize: mediaQuery.width * .027,
+                                  fontSize: mediaQuery.width * .03,
                                   color: const Color(0xFF256380),
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -159,7 +159,7 @@ class _IslandsBottomSheetState
             island.name,
             style: GoogleFonts.mulish(
               textStyle: TextStyle(
-                fontSize: mediaQuery.width * .027,
+                fontSize: mediaQuery.width * .03,
                 color: const Color(0xFF256380),
                 fontWeight: FontWeight.w700,
               ),
