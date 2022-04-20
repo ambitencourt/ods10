@@ -30,6 +30,8 @@ class _IslandsPageState
     await controller.getIslands();
   }
 
+  //*FUNÇÃO PROVISÓRIA PARA REINICIAR O TUTORIAL(LIMPAR O SHARED PREFERENCES)!
+  //*========================================================================
   Future<void> clearData() async {
     final pref = await SharedPreferences.getInstance();
     await pref.clear();
@@ -173,10 +175,10 @@ class _IslandsPageState
                         ],
                       ),
                       //TODO Criar lógica do button
-                      Align(
-                        alignment: const Alignment(0, 0),
+                      Positioned(
+                        top: 150,
                         child: Visibility(
-                          visible: true,
+                          visible: controller.islandsPageStore.current > 0,
                           child: InkWell(
                             onTap: () => clearData(),
                             child: Container(
