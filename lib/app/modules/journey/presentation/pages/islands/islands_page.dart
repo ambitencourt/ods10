@@ -179,7 +179,7 @@ class _IslandsPageState
                           ),
                         ],
                       ),
-                      //TODO Criar lógica do button
+
                       Positioned(
                         top: 150,
                         child: Visibility(
@@ -296,7 +296,7 @@ class _IslandsPageState
                   Center(
                     child: Column(
                       children: [
-                        customSizedBox1(context),
+                        customSizedBox2(context),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: LinearProgressIndicator(
