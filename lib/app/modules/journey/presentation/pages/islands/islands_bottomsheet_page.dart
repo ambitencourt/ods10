@@ -160,8 +160,7 @@ class _IslandsBottomSheetState
     final mediaQuery = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Modular.to.pushNamed('/journey/documents',
-            arguments: {"islandId": island.id});
+        _onIslandPress(island);
       },
       child: CircularPercentIndicator(
         percent: percent,
@@ -192,5 +191,17 @@ class _IslandsBottomSheetState
         progressColor: const Color(0xFFD03363),
       ),
     );
+  }
+
+  void _onIslandPress(IslandEntity island) {
+    switch (island.name) {
+      case 'Ilha Laerte Coutinho':
+        Modular.to.pushNamed('/journey/laerte_coutinho_details',
+            arguments: {"islandId": island.id});
+        break;
+      default:
+        Modular.to.pushNamed('/journey/documents',
+            arguments: {"islandId": island.id});
+    }
   }
 }

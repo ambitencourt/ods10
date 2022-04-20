@@ -1,7 +1,7 @@
 import 'package:ods10/app/modules/journey/domain/entities/document_entity.dart';
 import 'package:ods10/app/modules/journey/domain/enums/document_status_enum.dart';
 import 'package:ods10/app/modules/journey/domain/repositories/update_user_documents_repository.dart';
-import 'package:ods10/app/modules/journey/domain/usecases/update_user_document_useacase.dart';
+import 'interfaces/update_user_document_useacase.dart';
 
 class UpdateUserDocumentsUseCaseImp implements UpdateUserDocumentsUseCase {
   final UpdateUserDocumentsRepository _updateUserDocumentsRepository;

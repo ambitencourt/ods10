@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../pages/islands/gaming documents/free island/confirm_received_page.dart';
+import '../../pages/islands/gaming%20documents/laerte_coutinho/confirm_received_page.dart';
 
 void confirmReceived(context) {
   final mediaQuery = MediaQuery.of(context).size;

@@ -108,8 +108,9 @@ class _IslandsPageState
                               : controller.islandsStore.islands[index - 1].name,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.dmSerifDisplay(
-                            textStyle: const TextStyle(
-                                fontSize: 36, fontStyle: FontStyle.normal),
+                            textStyle: TextStyle(
+                                fontSize: (mediaQuery.width * 0.08),
+                                fontStyle: FontStyle.normal),
                           ),
                         ),
                         customSizedBox3(context),

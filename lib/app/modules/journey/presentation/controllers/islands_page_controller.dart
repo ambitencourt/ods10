@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 
 import 'package:ods10/app/common/stores/user_store.dart';
 import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
-import 'package:ods10/app/modules/journey/domain/usecases/get_user_islands.usecase.dart';
+import 'package:ods10/app/modules/journey/domain/usecases/interfaces/get_user_islands.usecase.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_page_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_store.dart';
 

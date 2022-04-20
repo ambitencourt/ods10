@@ -1,5 +1,5 @@
 import 'package:ods10/app/modules/journey/domain/repositories/user_islands_repository.dart';
-import 'set_tutorial_completed_usecase.dart';
+import 'interfaces/set_tutorial_completed_usecase.dart';
 
 class SetTutorialCompletedUseCaseImp implements SetTutorialCompletedUseCase {
   final UserIslandsRepository _userIslandsRepository;

@@ -11,8 +11,6 @@ import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 
-import '../../../../common/widgets/circular_buttom_widget.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
