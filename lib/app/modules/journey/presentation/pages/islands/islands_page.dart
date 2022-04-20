@@ -302,8 +302,8 @@ class _IslandsPageState
                           child: LinearProgressIndicator(
                             minHeight: 5,
                             backgroundColor: const Color(0xFFD2D2CC),
-                            value:
-                                controller.islandsPageStore.progressValue / 30,
+                            value: (controller.islandsStore.totalDocsDone) /
+                                (controller.islandsStore.docs.length),
                             valueColor: const AlwaysStoppedAnimation<Color>(
                                 Color(0xFFD03363)),
                           ),
