@@ -2,20 +2,25 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 
 import '../../../../../utils/links_util.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
-class ExitIsland extends StatefulWidget {
-  const ExitIsland({Key? key}) : super(key: key);
+class GoToDownloadPage extends StatefulWidget {
+  final Map data;
+  const GoToDownloadPage({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
 
   @override
-  State<ExitIsland> createState() => _ExitIslandState();
+  State<GoToDownloadPage> createState() => _GoToDownloadPageState();
 }
 
-class _ExitIslandState extends State<ExitIsland> {
+class _GoToDownloadPageState extends State<GoToDownloadPage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -74,45 +79,39 @@ class _ExitIslandState extends State<ExitIsland> {
                       'assets/images/cuate.png',
                     ),
                   ),
-                  SizedBox(
-                    height: 27,
-                    width: 157,
-                    child: Text(
-                      'Tudo bem',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.mulish(
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
-                        ),
+                  Text(
+                    'Eba! Que ótimo.',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.mulish(
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                   customSizedBox3(context),
-                  SizedBox(
-                    width: 257,
-                    height: 108,
-                    child: Text(
-                      'Você sempre pode voltar aqui se mudar de ideia. Estou à disposição. Até a próxima e boa sorte na sua retificação.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.mulish(
-                        textStyle: const TextStyle(
-                            fontSize: 16,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w500),
-                      ),
+                  Text(
+                    'Vou apresentar o documento necessário em uma lista para você visualizar e também vou disponibilizar um modelo para download. Não esquece de mudar o estado para recebido quando tiver a documentação.',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.mulish(
+                      textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
+                  customSizedBox3(context),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        Modular.to.pushNamed('/journey/islands');
+                        Modular.to.pushReplacementNamed('/journey/free-model',
+                            arguments: widget.data);
                       });
                     },
                     child: Text(
-                      'Sair',
+                      'Continuar',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.mulish(
                         textStyle: const TextStyle(

@@ -6,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../utils/links_util.dart';
 import '../../../widgets/islands/sizedbox_widget.dart';
-import 'laerte_coutinho/free_model.dart';
 import 'laerte_coutinho/page1_detail.dart';
 import 'laerte_coutinho/page2_detail.dart';
 import 'laerte_coutinho/page3_detail.dart';
@@ -38,6 +37,25 @@ class _LaerteCoutinhoIslandDetaillsState
       initialPage: current,
     );
     super.initState();
+  }
+
+  void _secondButtonPressed() {
+    pageController.page!.toInt() != 5
+        ? Modular.to
+            .pushReplacementNamed('/journey/documents', arguments: widget.data)
+        : Modular.to.pushReplacementNamed('/journey/laerte-go-to-list',
+            arguments: widget.data);
+  }
+
+  void _firstButtonPressed() {
+    setState(() {
+      current == 5
+          ? Modular.to.pushReplacementNamed('/journey/laerte-go-to-download',
+              arguments: widget.data)
+          : pageController.animateToPage(pageController.page!.toInt() + 1,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeIn);
+    });
   }
 
   @override
@@ -129,7 +147,7 @@ class _LaerteCoutinhoIslandDetaillsState
                       child: LinearProgressIndicator(
                         minHeight: 5,
                         backgroundColor: const Color(0xFFD2D2CC),
-                        value: current.toDouble() / 6,
+                        value: current.toDouble() / 5,
                         valueColor: const AlwaysStoppedAnimation<Color>(
                             Color(0xFFD03363)),
                       ),
@@ -148,23 +166,14 @@ class _LaerteCoutinhoIslandDetaillsState
                           Page4Detail(),
                           Page5Detail(),
                           Page6Detail(),
-                          FreeModel(),
+                          // FreeModel(),
                         ],
                         onPageChanged: (page) => setState(() => current = page),
                       ),
                     ),
                     customSizedBox1(context),
                     ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          current == 5
-                              ? pageController.jumpToPage(6)
-                              : pageController.animateToPage(
-                                  pageController.page!.toInt() + 1,
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.easeIn);
-                        });
-                      },
+                      onPressed: _firstButtonPressed,
                       child: Text(
                         nextButton(),
                         textAlign: TextAlign.center,
@@ -188,11 +197,7 @@ class _LaerteCoutinhoIslandDetaillsState
                     ),
                     customSizedBox4(context),
                     ElevatedButton(
-                      onPressed: () {
-                        pageController.page!.toInt() != 6
-                            ? Modular.to.pushNamed('/journey/exit-island')
-                            : Modular.to.pushNamed('/journey/change-state');
-                      },
+                      onPressed: _secondButtonPressed,
                       child: Text(
                         jumpToState(),
                         textAlign: TextAlign.center,

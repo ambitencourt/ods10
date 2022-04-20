@@ -23,6 +23,9 @@ import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_
 import 'package:ods10/app/modules/journey/presentation/controllers/tutorial_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/documents/list_documents.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/home_page.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/laerte_coutinho/free_model.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/laerte_coutinho/go_to_dowload_page.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/laerte_coutinho/go_to_list_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/tutorial/tutorial_page.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_page_store.dart';
@@ -162,6 +165,27 @@ class JourneyModule extends Module {
           '/laerte_coutinho_details',
           transition: TransitionType.fadeIn,
           child: (context, args) => LaerteCoutinhoIslandDetaills(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
+          '/laerte-go-to-download',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => GoToDownloadPage(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
+          '/laerte-go-to-list',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => GoToListPage(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
+          '/free-model',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => FreeModel(
             data: args.data,
           ),
         ),

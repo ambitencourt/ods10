@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/resources/app_images.dart';
-import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/auth/presentation/controllers/splash_controller.dart';
 import 'package:ods10/app/modules/auth/presentation/widgets/personal_error_widget.dart';
 

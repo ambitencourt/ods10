@@ -85,63 +85,42 @@ class _IslandsBottomSheetState
                     percent: controller.islandsStore.percentDone[3],
                     island: controller.islandsStore.islands[3],
                   ),
-                  // CircularPercentIndicator(
-                  //   percent: 0.75,
-                  //   lineWidth: 6,
-                  //   animation: true,
-                  //   animationDuration: 500,
-                  //   center: CircleAvatar(
-                  //     backgroundImage: const AssetImage(
-                  //       'assets/images/island.png',
-                  //     ),
-                  //     radius: mediaQuery.width * .105,
-                  //   ),
-                  //   radius: mediaQuery.width * .12,
-                  //   footer: Padding(
-                  //     padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  //     child: Text(
-                  //       'Requerimento',
-                  //       style: GoogleFonts.mulish(
-                  //         textStyle: TextStyle(
-                  //           fontSize: mediaQuery.width * .03,
-                  //           color: const Color(0xFF256380),
-                  //           fontWeight: FontWeight.w700,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  //   backgroundColor: const Color(0xFFE0E0E0),
-                  //   progressColor: const Color(0xFFD03363),
-                  // ),
-                  Column(
-                    children: [
-                      Container(
-                        height: mediaQuery.width * .23,
-                        width: mediaQuery.width * .22,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFF7C7C7C),
+                  controller.islandsStore.totalDocsDone >=
+                          controller.islandsStore.docs.length - 1
+                      ? _buildIslandCircle(
+                          context,
+                          percent: controller.islandsStore.percentDone[4],
+                          island: controller.islandsStore.islands[4],
+                        )
+                      : Column(
+                          children: [
+                            Container(
+                              height: mediaQuery.width * .23,
+                              width: mediaQuery.width * .22,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFF7C7C7C),
+                              ),
+                              child: Icon(
+                                Icons.lock,
+                                color: Colors.white,
+                                size: mediaQuery.width * .16,
+                              ),
+                              alignment: Alignment.center,
+                            ),
+                            customSizedBox4(context),
+                            Text(
+                              controller.islandsStore.islands[4].name,
+                              style: GoogleFonts.mulish(
+                                textStyle: TextStyle(
+                                  fontSize: mediaQuery.width * .027,
+                                  color: const Color(0xFF256380),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        child: Icon(
-                          Icons.lock,
-                          color: Colors.white,
-                          size: mediaQuery.width * .16,
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      customSizedBox4(context),
-                      Text(
-                        'Requerimento',
-                        style: GoogleFonts.mulish(
-                          textStyle: TextStyle(
-                            fontSize: mediaQuery.width * .03,
-                            color: const Color(0xFF256380),
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
@@ -194,8 +173,8 @@ class _IslandsBottomSheetState
   }
 
   void _onIslandPress(IslandEntity island) {
-    switch (island.name) {
-      case 'Ilha Laerte Coutinho':
+    switch (island.name.replaceAll('Ilha ', '')) {
+      case 'Laerte Coutinho':
         Modular.to.pushNamed('/journey/laerte_coutinho_details',
             arguments: {"islandId": island.id});
         break;
