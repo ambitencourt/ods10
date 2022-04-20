@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../../widgets/islands/image_sliders_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/resources/journey_images.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
 class Page2Detail extends StatelessWidget {
@@ -11,11 +10,11 @@ class Page2Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
-            child: Image.asset(
-              imgListDocDetails.elementAt(0).toString(),
-            ),
+            child: Image.asset(JourneyImages.laerte02),
           ),
           SizedBox(
             height: 27,
@@ -34,18 +33,14 @@ class Page2Detail extends StatelessWidget {
             ),
           ),
           customSizedBox4(context),
-          SizedBox(
-            width: 257,
-            height: 122,
-            child: Text(
-              'Segundo a Lei de Registros Públicos (Lei nº 6.015/1973) é garantida a gratuidade da segunda via das certidões para pessoas que se declararem carentes financeiramente.',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500),
-              ),
+          Text(
+            'Segundo a Lei de Registros Públicos (Lei nº 6.015/1973) é garantida a gratuidade da segunda via das certidões para pessoas que se declararem carentes financeiramente.',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.mulish(
+              textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w500),
             ),
           ),
         ],

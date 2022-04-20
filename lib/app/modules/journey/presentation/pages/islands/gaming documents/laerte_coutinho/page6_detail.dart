@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../../widgets/islands/image_sliders_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/resources/journey_images.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
 class Page6Detail extends StatelessWidget {
@@ -11,11 +10,11 @@ class Page6Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
-            child: Image.asset(
-              imgListDocDetails.elementAt(0).toString(),
-            ),
+            child: Image.asset(JourneyImages.laerte06),
           ),
           SizedBox(
             height: 31,
@@ -34,18 +33,14 @@ class Page6Detail extends StatelessWidget {
             ),
           ),
           customSizedBox4(context),
-          SizedBox(
-            width: 257,
-            height: 101,
-            child: Text(
-              'Você pode voltar para as páginas anteriores, basta arrastar da esquerda para a direita. Mas me conta, você vai pedir a gratuidade do processo?',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500),
-              ),
+          Text(
+            'Você pode voltar para as páginas anteriores, basta arrastar da esquerda para a direita. Mas me conta, você vai pedir a gratuidade do processo?',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.mulish(
+              textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w500),
             ),
           ),
         ],

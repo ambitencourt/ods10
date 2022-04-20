@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../widgets/islands/image_sliders_widget.dart';
+import 'package:ods10/app/modules/journey/presentation/resources/journey_images.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
 class Page4Detail extends StatelessWidget {
@@ -10,11 +10,11 @@ class Page4Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
-            child: Image.asset(
-              imgListDocDetails.elementAt(0).toString(),
-            ),
+            child: Image.asset(JourneyImages.laerte04),
           ),
           SizedBox(
             height: 31,
@@ -33,18 +33,14 @@ class Page4Detail extends StatelessWidget {
             ),
           ),
           customSizedBox4(context),
-          SizedBox(
-            width: 257,
-            height: 101,
-            child: Text(
-              'Para ter acesso a esse benefício você deve estar sem emprego, ou seu salário deve ser inferior a 3 salários mínimos.',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500),
-              ),
+          Text(
+            'Para ter acesso a esse benefício você deve estar sem emprego, ou seu salário deve ser inferior a 3 salários mínimos.',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.mulish(
+              textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w500),
             ),
           ),
         ],
