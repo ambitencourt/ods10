@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
+import 'package:ods10/app/common/resources/app_images.dart';
 import 'package:ods10/app/common/resources/app_text_styles.dart';
 import 'package:ods10/app/modules/auth/presentation/controllers/splash_controller.dart';
 import 'package:ods10/app/modules/auth/presentation/widgets/personal_error_widget.dart';
@@ -47,11 +48,11 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
       body: hasError
           ? PersonalError(onTryAgain: getUser)
           : Container(
-              color: AppColors.primary,
+              color: AppColors.background,
               child: Center(
-                child: Text(
-                  'Re.tifica',
-                  style: getBoldStyle(fontSize: 50, color: AppColors.secondary),
+                child: Image.asset(
+                  AppImages.logoWithoutBackground,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
