@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/tutorial_page_controller.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 import 'page1_tutorial.dart';
@@ -61,7 +62,7 @@ class _TutorialPageState
                                 width: 60,
                                 height: 60,
                                 decoration: const BoxDecoration(
-                                    color: Color(0xFF256380),
+                                    color: AppColors.primary,
                                     shape: BoxShape.circle),
                                 child: const Icon(
                                   Icons.arrow_back,
@@ -85,7 +86,7 @@ class _TutorialPageState
                               width: 60,
                               height: 60,
                               decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
+                                  color: AppColors.primary,
                                   shape: BoxShape.circle),
                               child: const Icon(
                                 Icons.description_outlined,

@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../utils/links_util.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
@@ -103,7 +104,7 @@ class _LaerteCoutinhoIslandDetaillsState
                               width: 60,
                               height: 60,
                               decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
+                                  color: AppColors.primary,
                                   shape: BoxShape.circle),
                               child: const Icon(
                                 Icons.arrow_back,
@@ -127,7 +128,7 @@ class _LaerteCoutinhoIslandDetaillsState
                             width: 60,
                             height: 60,
                             decoration: const BoxDecoration(
-                                color: Color(0xFF256380),
+                                color: AppColors.primary,
                                 shape: BoxShape.circle),
                             child: const Icon(
                               Icons.description_outlined,
@@ -147,8 +148,8 @@ class _LaerteCoutinhoIslandDetaillsState
                         minHeight: 5,
                         backgroundColor: const Color(0xFFD2D2CC),
                         value: current.toDouble() / 5,
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            Color(0xFFD03363)),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),
                       ),
                     ),
                     customSizedBox3(context),

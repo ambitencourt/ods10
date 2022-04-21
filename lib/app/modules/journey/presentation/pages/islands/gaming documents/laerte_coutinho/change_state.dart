@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/links_util.dart';
@@ -44,7 +45,7 @@ class _ChangeStateState extends State<ChangeState> {
                                 width: 60,
                                 height: 60,
                                 decoration: const BoxDecoration(
-                                    color: Color(0xFF256380),
+                                    color: AppColors.primary,
                                     shape: BoxShape.circle),
                                 child: const Icon(
                                   Icons.arrow_back,
@@ -62,7 +63,7 @@ class _ChangeStateState extends State<ChangeState> {
                               width: 60,
                               height: 60,
                               decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
+                                  color: AppColors.primary,
                                   shape: BoxShape.circle),
                               child: const Icon(
                                 Icons.description_outlined,

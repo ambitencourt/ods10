@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
@@ -118,7 +119,7 @@ class _IslandsBottomSheetState
                                 style: GoogleFonts.mulish(
                                   textStyle: TextStyle(
                                     fontSize: mediaQuery.width * .03,
-                                    color: const Color(0xFF256380),
+                                    color: AppColors.primary,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -165,7 +166,7 @@ class _IslandsBottomSheetState
             style: GoogleFonts.mulish(
               textStyle: TextStyle(
                 fontSize: mediaQuery.width * .03,
-                color: const Color(0xFF256380),
+                color: AppColors.primary,
                 fontWeight: FontWeight.w700,
               ),
             ),
