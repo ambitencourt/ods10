@@ -79,9 +79,9 @@ class DocumentItemWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Text(
           label,
-          style: getRegularStyle(
+          style: getRegularStyleW400(
             fontSize: 12,
-            color: AppColors.white,
+            color: AppColors.black,
           ),
         ),
       ),

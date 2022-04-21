@@ -27,7 +27,7 @@ class DocumentsStatusTab extends StatelessWidget {
       text: "Recebidos",
     ),
     const Tab(
-      text: "gratuitos",
+      text: "Gratuitos",
     ),
     const Tab(
       text: "Pagos",
@@ -45,11 +45,11 @@ class DocumentsStatusTab extends StatelessWidget {
             children: [
               TextSpan(
                 text: 'Lista de ',
-                style: getRegularStyle(fontSize: 18),
+                style: getRegularStyleW400(fontSize: 18),
               ),
               TextSpan(
                 text: 'Documentos',
-                style: getBoldStyle(fontSize: 18),
+                style: getBoldStyleW900(fontSize: 18),
               ),
             ],
           ),

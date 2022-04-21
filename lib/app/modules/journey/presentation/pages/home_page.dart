@@ -11,6 +11,8 @@ import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/general_error_widget.dart';
 
+import '../../../../common/widgets/circular_buttom_widget.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -94,17 +96,17 @@ class _HomePageState extends ModularState<HomePage, HomeController>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 10),
-        // Align(
-        //   alignment: Alignment.centerRight,
-        //   child: CircularButtom(
-        //     child: const Icon(
-        //       Icons.description_outlined,
-        //     ),
-        //     onPress: () {
-        //       Modular.to.pushNamed('/journey/documents');
-        //     },
-        //   ),
-        // ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: CircularButtom(
+            child: const Icon(
+              Icons.description_outlined,
+            ),
+            onPress: () {
+              Modular.to.pushNamed('/journey/documents');
+            },
+          ),
+        ),
         Row(
           children: [
             RichText(
@@ -116,7 +118,11 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                   ),
                   TextSpan(
                     text: controller.userStore.user?.name ?? '',
-                    style: getBoldStyle(fontSize: 20),
+                    style: getBoldStyleW900(fontSize: 20),
+                  ),
+                  TextSpan(
+                    text: ' 👋',
+                    style: getRegularStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -129,22 +135,21 @@ class _HomePageState extends ModularState<HomePage, HomeController>
             children: [
               TextSpan(
                 text: 'Entenda como ',
-                style: getRegularStyle(fontSize: 32),
+                style: getRegularStyle(fontSize: 30),
               ),
               TextSpan(
                 text: 'retificar',
-                style: getBoldStyle(fontSize: 32),
+                style: getBoldStyleW900(fontSize: 30),
               ),
             ],
           ),
         ),
-        Container(
-          color: AppColors.secondary,
+        SizedBox(
           child: Padding(
             padding: const EdgeInsets.all(5),
             child: Text(
-              'prenome e gênero',
-              style: getBoldStyle(fontSize: 32, color: AppColors.white),
+              'nome e gênero',
+              style: getBoldStyleW900(fontSize: 30, color: AppColors.primary),
             ),
           ),
         ),
@@ -158,7 +163,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
               ),
               TextSpan(
                 text: 'passo a passo ',
-                style: getBoldStyle(fontSize: 18),
+                style: getBoldStyleW900(fontSize: 18),
               ),
               TextSpan(
                 text: 'da retificação',
@@ -183,7 +188,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
           Hero(
             tag: 'hero-island-page',
             child: Image.asset(
-              AppImages.rectangle1816,
+              AppImages.islands,
               width: double.maxFinite,
               fit: BoxFit.cover,
             ),
@@ -193,7 +198,7 @@ class _HomePageState extends ModularState<HomePage, HomeController>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 Text(
                   'Acompanhe sua documentação',
                   style: getBoldStyle(
@@ -201,19 +206,30 @@ class _HomePageState extends ModularState<HomePage, HomeController>
                   ),
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  'Organize seus documentos e acompanhe o processo para a alteração do prenome e gênero com a ordem recomendada pelos nossos especialistas.',
-                  style: getBoldStyle(
-                    fontSize: 12,
-                    color: AppColors.white.withOpacity(0.7),
+                SizedBox(
+                  height: 39,
+                  width: 299,
+                  child: Text(
+                    'Organize seus documentos e acompanhe o processo para a alteração do prenome e gênero com a ordem recomendada pelos nossos especialistas.',
+                    textAlign: TextAlign.justify,
+                    style: getRegularStyleW600(
+                      fontSize: 12,
+                      color: AppColors.white.withOpacity(0.7),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 14),
                 Observer(builder: (_) {
-                  return LinearProgressIndicator(
-                    value: controller.islandsStore.totalPercentDone,
-                    backgroundColor: AppColors.white.withOpacity(0.4),
-                    color: AppColors.secondary,
+                  return ClipRRect(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    child: LinearProgressIndicator(
+                      value: controller.islandsStore.totalPercentDone,
+                      backgroundColor: AppColors.white.withOpacity(0.4),
+                      color: AppColors.secondary,
+                      minHeight: 7,
+                    ),
                   );
                 }),
               ],
