@@ -42,6 +42,7 @@ import 'presentation/controllers/home_controller.dart';
 import 'presentation/pages/islands/gaming documents/laerte_coutinho/change_state.dart';
 import 'presentation/pages/islands/gaming documents/laerte_coutinho/exit_island.dart';
 import 'presentation/pages/islands/gaming documents/laerte_coutinho/laerte_coutinho_island_details_page.dart';
+import 'presentation/pages/islands/gaming documents/xica_manicongo/xica_manicongo_island_details_page.dart';
 import 'presentation/pages/islands/islands_page.dart';
 import 'presentation/stores/islands_store.dart';
 
@@ -165,6 +166,13 @@ class JourneyModule extends Module {
           ),
         ),
         ChildRoute(
+          '/xica_manicongo_details',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => XicaManicongoIslandDetaills(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
           '/laerte-go-to-download',
           transition: TransitionType.fadeIn,
           child: (context, args) => GoToDownloadPage(
@@ -172,7 +180,21 @@ class JourneyModule extends Module {
           ),
         ),
         ChildRoute(
+          '/xica-go-to-download',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => GoToDownloadPage(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
           '/laerte-go-to-list',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => GoToListPage(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
+          '/xica-go-to-list',
           transition: TransitionType.fadeIn,
           child: (context, args) => GoToListPage(
             data: args.data,

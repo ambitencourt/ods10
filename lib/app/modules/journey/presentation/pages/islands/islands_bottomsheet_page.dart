@@ -92,34 +92,39 @@ class _IslandsBottomSheetState
                           percent: controller.islandsStore.percentDone[4],
                           island: controller.islandsStore.islands[4],
                         )
-                      : Column(
-                          children: [
-                            Container(
-                              height: mediaQuery.width * .23,
-                              width: mediaQuery.width * .22,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF7C7C7C),
+                      : InkWell(
+                          //Esse Inkwell é provisório até finalizar a tela
+                          onTap: () => Modular.to
+                              .pushNamed('/journey/xica_manicongo_details'),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: mediaQuery.width * .23,
+                                width: mediaQuery.width * .22,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF7C7C7C),
+                                ),
+                                child: Icon(
+                                  Icons.lock,
+                                  color: Colors.white,
+                                  size: mediaQuery.width * .16,
+                                ),
+                                alignment: Alignment.center,
                               ),
-                              child: Icon(
-                                Icons.lock,
-                                color: Colors.white,
-                                size: mediaQuery.width * .16,
-                              ),
-                              alignment: Alignment.center,
-                            ),
-                            customSizedBox4(context),
-                            Text(
-                              controller.islandsStore.islands[4].name,
-                              style: GoogleFonts.mulish(
-                                textStyle: TextStyle(
-                                  fontSize: mediaQuery.width * .03,
-                                  color: const Color(0xFF256380),
-                                  fontWeight: FontWeight.w700,
+                              customSizedBox4(context),
+                              Text(
+                                controller.islandsStore.islands[4].name,
+                                style: GoogleFonts.mulish(
+                                  textStyle: TextStyle(
+                                    fontSize: mediaQuery.width * .03,
+                                    color: const Color(0xFF256380),
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                 ],
               ),

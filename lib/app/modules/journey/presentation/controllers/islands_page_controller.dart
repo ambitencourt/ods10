@@ -42,6 +42,10 @@ class IslandsPageController {
         Modular.to.pushNamed('/journey/laerte_coutinho_details',
             arguments: {"islandId": island.id});
         break;
+      case 'Xica Manicongo':
+        Modular.to.pushNamed('/journey/xica_manicongo_details',
+            arguments: {"islandId": island.id});
+        break;
       default:
         Modular.to.pushNamed('/journey/documents',
             arguments: {"islandId": island.id});
