@@ -173,7 +173,7 @@ class _IslandsBottomSheetState
           ),
         ),
         backgroundColor: const Color(0xFFE0E0E0),
-        progressColor: const Color(0xFFD03363),
+        progressColor: AppColors.secondary,
       ),
     );
   }

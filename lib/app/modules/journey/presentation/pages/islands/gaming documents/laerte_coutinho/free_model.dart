@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/modules/journey/presentation/resources/journey_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
@@ -65,7 +66,7 @@ class FreeModel extends StatelessWidget {
                       backgroundColor: Color(0xFFD2D2CC),
                       value: 6,
                       valueColor:
-                          AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),
+                          AlwaysStoppedAnimation<Color>(AppColors.secondary),
                     ),
                   ),
                   SizedBox(
@@ -113,7 +114,7 @@ class FreeModel extends StatelessWidget {
                     ),
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(225, 44),
-                      primary: const Color(0xFFD03363),
+                      primary: AppColors.secondary,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(31),
@@ -134,7 +135,7 @@ class FreeModel extends StatelessWidget {
                           fontSize: 16,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xFFD03363),
+                          color: AppColors.secondary,
                         ),
                       ),
                     ),
@@ -148,7 +149,7 @@ class FreeModel extends StatelessWidget {
                         ),
                         side: const BorderSide(
                           width: 1.0,
-                          color: Color(0xFFD03363),
+                          color: AppColors.secondary,
                         )),
                   ),
                   customSizedBox2(context),

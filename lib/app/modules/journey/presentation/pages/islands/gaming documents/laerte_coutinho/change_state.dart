@@ -83,8 +83,8 @@ class _ChangeStateState extends State<ChangeState> {
                           minHeight: 5,
                           backgroundColor: Color(0xFFD2D2CC),
                           value: 6,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              AppColors.secondary),
                         ),
                       ),
                       SizedBox(
@@ -142,7 +142,7 @@ class _ChangeStateState extends State<ChangeState> {
                         ),
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size(225, 44),
-                          primary: const Color(0xFFD03363),
+                          primary: AppColors.secondary,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(31),
@@ -161,7 +161,7 @@ class _ChangeStateState extends State<ChangeState> {
                               fontSize: 16,
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             ),
                           ),
                         ),
@@ -175,7 +175,7 @@ class _ChangeStateState extends State<ChangeState> {
                             ),
                             side: const BorderSide(
                               width: 1.0,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             )),
                       ),
                       customSizedBox4(context),
@@ -189,7 +189,7 @@ class _ChangeStateState extends State<ChangeState> {
                               fontSize: 16,
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             ),
                           ),
                         ),
@@ -203,7 +203,7 @@ class _ChangeStateState extends State<ChangeState> {
                             ),
                             side: const BorderSide(
                               width: 1.0,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             )),
                       ),
                       customSizedBox3(context),

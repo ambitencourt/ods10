@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -97,7 +98,7 @@ class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
             ),
             style: ElevatedButton.styleFrom(
               fixedSize: const Size(225, 44),
-              primary: const Color(0xFFD03363),
+              primary: AppColors.secondary,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(31),
@@ -116,7 +117,7 @@ class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
                   fontSize: 16,
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xFFD03363),
+                  color: AppColors.secondary,
                 ),
               ),
             ),
@@ -130,7 +131,7 @@ class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
                 ),
                 side: const BorderSide(
                   width: 1.0,
-                  color: Color(0xFFD03363),
+                  color: AppColors.secondary,
                 )),
           ),
           customSizedBox4(context),
@@ -143,7 +144,7 @@ class _ConfirmReceivedPageState extends State<ConfirmReceivedPage> {
                   style: GoogleFonts.mulish(
                     textStyle: const TextStyle(
                       fontSize: 16,
-                      color: Color(0xFFD03363),
+                      color: AppColors.secondary,
                       decoration: TextDecoration.underline,
                     ),
                   ),

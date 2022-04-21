@@ -108,7 +108,7 @@ class _TutorialPageState
                             backgroundColor: const Color(0xFFD2D2CC),
                             value: controller.tutorialStore.current / 3,
                             valueColor: const AlwaysStoppedAnimation<Color>(
-                                Color(0xFFD03363)),
+                                AppColors.secondary),
                           ),
                         );
                       }),
@@ -161,7 +161,7 @@ class _TutorialPageState
                           ),
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(225, 44),
-                            primary: const Color(0xFFD03363),
+                            primary: AppColors.secondary,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(31),
@@ -189,7 +189,7 @@ class _TutorialPageState
                                   fontSize: 16,
                                   fontStyle: FontStyle.normal,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFFD03363),
+                                  color: AppColors.secondary,
                                 ),
                               ),
                             ),
@@ -203,7 +203,7 @@ class _TutorialPageState
                                 ),
                                 side: const BorderSide(
                                   width: 1.0,
-                                  color: Color(0xFFD03363),
+                                  color: AppColors.secondary,
                                 )),
                           ),
                         );

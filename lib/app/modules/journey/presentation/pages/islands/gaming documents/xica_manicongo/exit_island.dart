@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -65,7 +66,7 @@ class _ExitIslandState extends State<ExitIsland> {
                       backgroundColor: Color(0xFFD2D2CC),
                       value: 6,
                       valueColor:
-                          AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),
+                          AlwaysStoppedAnimation<Color>(AppColors.secondary),
                     ),
                   ),
                   SizedBox(
@@ -124,7 +125,7 @@ class _ExitIslandState extends State<ExitIsland> {
                     ),
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(225, 44),
-                      primary: const Color(0xFFD03363),
+                      primary: AppColors.secondary,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(31),

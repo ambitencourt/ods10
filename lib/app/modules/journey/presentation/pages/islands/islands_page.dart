@@ -219,11 +219,11 @@ class _IslandsPageState
                                       size: 30,
                                       color: islandBloked
                                           ? AppColors.ligthBlack
-                                          : const Color(0xFFD03363),
+                                          : AppColors.secondary,
                                     ),
                                     radius: 30,
                                     backgroundColor: const Color(0xFFE0E0E0),
-                                    progressColor: const Color(0xFFD03363),
+                                    progressColor: AppColors.secondary,
                                   ),
                                   const SizedBox(width: 10),
                                   Column(
@@ -294,7 +294,7 @@ class _IslandsPageState
                               shape: BoxShape.circle,
                               color: controller.islandsPageStore.current ==
                                       entry.key
-                                  ? const Color(0xFFD03363)
+                                  ? AppColors.secondary
                                   : const Color(0xFFB8B8B8),
                             ),
                           ),
@@ -314,7 +314,7 @@ class _IslandsPageState
                             value: (controller.islandsStore.totalDocsDone) /
                                 (controller.islandsStore.docs.length),
                             valueColor: const AlwaysStoppedAnimation<Color>(
-                                Color(0xFFD03363)),
+                                AppColors.secondary),
                           ),
                         ),
                         customSizedBox4(context),

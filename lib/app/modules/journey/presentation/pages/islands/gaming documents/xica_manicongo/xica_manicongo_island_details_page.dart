@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
@@ -148,7 +147,7 @@ class _XicaManicongoIslandDetaillsState
                         backgroundColor: const Color(0xFFD2D2CC),
                         value: current.toDouble() / 5,
                         valueColor: const AlwaysStoppedAnimation<Color>(
-                            Color(0xFFD03363)),
+                            AppColors.secondary),
                       ),
                     ),
                     customSizedBox3(context),
@@ -186,7 +185,7 @@ class _XicaManicongoIslandDetaillsState
                       ),
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(225, 44),
-                        primary: const Color(0xFFD03363),
+                        primary: AppColors.secondary,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(31),
@@ -208,7 +207,7 @@ class _XicaManicongoIslandDetaillsState
                     //           fontSize: 16,
                     //           fontStyle: FontStyle.normal,
                     //           fontWeight: FontWeight.w700,
-                    //           color: Color(0xFFD03363),
+                    //           color: AppColors.secondary,
                     //         ),
                     //       ),
                     //     ),
@@ -222,7 +221,7 @@ class _XicaManicongoIslandDetaillsState
                     //         ),
                     //         side: const BorderSide(
                     //           width: 1.0,
-                    //           color: Color(0xFFD03363),
+                    //           color: AppColors.secondary,
                     //         )),
                     //   ),
                     // ),
