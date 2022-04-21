@@ -136,22 +136,29 @@ class DocumentModalItemWidget extends StatelessWidget {
         width: 100,
         decoration: BoxDecoration(
           color: translateStatusEnum(statusEnum) == translateStatus(status)
-              ? AppColors.secondary
+              ? AppColors.secondary.withOpacity(0.1)
               : AppColors.grey,
           borderRadius: BorderRadius.circular(82),
+          border: Border.all(
+            color: translateStatusEnum(statusEnum) == translateStatus(status)
+                ? AppColors.secondary
+                : AppColors.grey,
+          ),
         ),
         child: InkWell(
           child: Center(
             child: Text(
               translateStatusEnum(statusEnum),
               // translateStatus(status),
-              style: getRegularStyle(
-                fontSize: 12,
-                color:
-                    translateStatusEnum(statusEnum) == translateStatus(status)
-                        ? AppColors.white
-                        : AppColors.black,
-              ),
+              style: translateStatusEnum(statusEnum) == translateStatus(status)
+                  ? getBoldStyle(
+                      fontSize: 12,
+                      color: AppColors.black,
+                    )
+                  : getRegularStyle(
+                      fontSize: 12,
+                      color: AppColors.black,
+                    ),
             ),
           ),
         ),

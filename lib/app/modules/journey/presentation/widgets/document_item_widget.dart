@@ -72,8 +72,9 @@ class DocumentItemWidget extends StatelessWidget {
   Widget _buildTag(String label, Color color) {
     return Container(
       decoration: BoxDecoration(
-        color: color,
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: color),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
