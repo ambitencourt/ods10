@@ -28,10 +28,6 @@ class AppModule extends Module {
           module: AuthModule(),
           guards: [HomeGuard()],
         ),
-        // ModuleRoute(
-        //   '/home',
-        //   module: HomeModule(),
-        // ),
         ModuleRoute(
           '/journey/',
           transition: TransitionType.fadeIn,
@@ -41,11 +37,6 @@ class AppModule extends Module {
           '/profile/',
           module: ProfileModule(),
         ),
-        // ModuleRoute(
-        //   '/content',
-        //   transition: TransitionType.fadeIn,
-        //   module: ContentModule(),
-        // ),
       ];
 }
 

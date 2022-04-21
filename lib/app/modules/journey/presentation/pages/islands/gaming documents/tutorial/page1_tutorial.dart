@@ -10,45 +10,47 @@ class Page1Tutorial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Flexible(
-            child: Image.asset(
-              imgListTutorial.elementAt(0).toString(),
+      body: Center(
+        child: Column(
+          children: [
+            Flexible(
+              child: Image.asset(
+                imgListTutorial.elementAt(0).toString(),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 31,
-            width: 213,
-            child: Text(
-              'Oi, eu me chamo Rê',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black,
+            SizedBox(
+              height: 31,
+              width: 213,
+              child: Text(
+                'Oi, eu me chamo Rê',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mulish(
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
-          ),
-          customSizedBox4(context),
-          SizedBox(
-            width: 257,
-            height: 108,
-            child: Text(
-              'Sou uma pessoa não binária e vou te guiar por todo o processo de retificação da sua documentação no Arquipélago Re.tificando.',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500),
+            customSizedBox4(context),
+            SizedBox(
+              width: 257,
+              height: 108,
+              child: Text(
+                'Sou uma pessoa não binária e vou te guiar por todo o processo de retificação da sua documentação no Arquipélago Re.tificando.',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mulish(
+                  textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

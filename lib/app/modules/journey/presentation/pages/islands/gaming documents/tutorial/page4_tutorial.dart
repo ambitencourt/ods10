@@ -10,45 +10,47 @@ class Page4Tutorial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Flexible(
-            child: Image.asset(
-              imgListTutorial.elementAt(3).toString(),
+      body: Center(
+        child: Column(
+          children: [
+            Flexible(
+              child: Image.asset(
+                imgListTutorial.elementAt(3).toString(),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 31,
-            width: 213,
-            child: Text(
-              'Vamos começar?',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black,
+            SizedBox(
+              height: 31,
+              width: 213,
+              child: Text(
+                'Vamos começar?',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mulish(
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
-          ),
-          customSizedBox4(context),
-          SizedBox(
-            width: 257,
-            height: 102,
-            child: Text(
-              'Você deve selecionar uma das ilhas para iniciar. Nossa sugestão é que seja seguida a ordem, mas você pode explorar livremente na como preferir.',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.mulish(
-                textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500),
+            customSizedBox4(context),
+            SizedBox(
+              width: 257,
+              height: 102,
+              child: Text(
+                'Você deve selecionar uma das ilhas para iniciar. Nossa sugestão é que seja seguida a ordem, mas você pode explorar livremente na como preferir.',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mulish(
+                  textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

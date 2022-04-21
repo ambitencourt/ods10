@@ -13,10 +13,6 @@ import 'package:ods10/app/modules/auth/presentation/pages/splash_page.dart';
 class AuthModule extends Module {
   @override
   List<Bind> get binds => [
-        //Stores
-
-        //Mappers
-
         // DATABASES
         Bind.factory<UserDataSource>((i) => UserRemoteDataSource(i<Dio>())),
 

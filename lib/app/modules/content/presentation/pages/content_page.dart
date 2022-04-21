@@ -13,7 +13,6 @@ class _ContentPageState extends State<ContentPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: RouterOutlet(),
-      // bottomNavigationBar: BottomNavibar(),
     );
   }
 }

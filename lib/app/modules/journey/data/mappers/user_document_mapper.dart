@@ -20,7 +20,6 @@ class UserDocumentMapper implements Mapper<DocumentEntity, UserDocumentsModel> {
         link: object.document.link,
         location: object.document.location,
         duration: object.document.duration,
-        // order: object.document.order,
         status: object.status,
         island: IslandEntity(
             id: object.document.island.id,

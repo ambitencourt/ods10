@@ -34,10 +34,10 @@ class _IslandsPageState
 
   //*FUNÇÃO PROVISÓRIA PARA REINICIAR O TUTORIAL(LIMPAR O SHARED PREFERENCES)!
   //*========================================================================
-  Future<void> clearData() async {
-    final pref = await SharedPreferences.getInstance();
-    await pref.clear();
-  }
+  // Future<void> clearData() async {
+  //   final pref = await SharedPreferences.getInstance();
+  //   await pref.clear();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,6 @@ class _IslandsPageState
                                 Modular.to.pop();
                               },
                             ),
-                            // const Spacer(),
                             CircularButtom(
                               child: const Icon(
                                 Icons.description_outlined,
@@ -88,7 +87,6 @@ class _IslandsPageState
                                 await Modular.to.pushNamed(
                                   '/journey/documents',
                                 );
-                                // controller.getIslands();
                               },
                             ),
                           ],
@@ -186,7 +184,6 @@ class _IslandsPageState
                           visible: controller.islandsPageStore.current > 0,
                           child: InkWell(
                             onTap: () {
-                              //  clearData();
                               if (islandBloked) return;
                               controller.navigateToIsland(
                                   controller.islandsStore.islands[index - 1]);
@@ -202,8 +199,6 @@ class _IslandsPageState
                                   Radius.circular(38),
                                 ),
                               ),
-                              // height: 62,
-                              // width: 187,
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
@@ -267,6 +262,21 @@ class _IslandsPageState
                           ),
                         ),
                       ),
+                      //*FUNÇÃO PROVISÓRIA PARA REINICIAR O TUTORIAL(LIMPAR O SHARED PREFERENCES)!
+                      //*========================================================================
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       clearData();
+                      //     });
+                      //     const snackBar = SnackBar(
+                      //       content: Text('Dados limpos com sucesso!'),
+                      //     );
+
+                      //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      //   },
+                      //   child: const Text('Clear'),
+                      // ),
                     ],
                   ),
                   Center(

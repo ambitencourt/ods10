@@ -5,10 +5,7 @@ import 'package:ods10/app/modules/profile/profile_module.dart';
 
 class ContentModule extends Module {
   @override
-  List<Bind> get binds => [
-        // Bind.factory((i) => BottomNavibarStore()),
-        // Bind.factory((i) => BottomNavibarController(i())),
-      ];
+  List<Bind> get binds => [];
 
   @override
   List<ModularRoute> get routes => [

@@ -44,6 +44,7 @@ class _TutorialPageState
       body: Stack(
         children: [
           SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Column(
               children: [
@@ -171,6 +172,7 @@ class _TutorialPageState
                       customSizedBox4(context),
                       Observer(builder: (_) {
                         return Visibility(
+                          replacement: const SizedBox.expand(),
                           visible: controller.tutorialStore.current < 3
                               ? true
                               : false,
