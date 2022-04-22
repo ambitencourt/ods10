@@ -66,6 +66,7 @@ class _DocumentsListState extends ModularState<DocumentsList, HomeController>
         case 3:
           break;
         case 4:
+          Navigator.of(context).pop();
           Modular.to.pushNamed('/journey/xica_manicongo_done');
           break;
         case 5:
