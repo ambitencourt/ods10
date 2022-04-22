@@ -183,7 +183,7 @@ class _IslandsPageState
                           visible: controller.islandsPageStore.current > 0,
                           child: InkWell(
                             onTap: () {
-                              // if (islandBloked) return;
+                              if (islandBloked) return;
                               controller.navigateToIsland(
                                   controller.islandsStore.islands[index - 1]);
                             },
