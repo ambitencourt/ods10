@@ -24,7 +24,6 @@ class DocumentsList extends StatefulWidget {
 
 class _DocumentsListState extends ModularState<DocumentsList, HomeController>
     with SingleTickerProviderStateMixin {
-  bool _init = true;
   @override
   void initState() {
     controller.tabController = TabController(length: 6, vsync: this);
