@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/links_util.dart';
@@ -44,7 +45,7 @@ class _ChangeStateState extends State<ChangeState> {
                                 width: 60,
                                 height: 60,
                                 decoration: const BoxDecoration(
-                                    color: Color(0xFF256380),
+                                    color: AppColors.primary,
                                     shape: BoxShape.circle),
                                 child: const Icon(
                                   Icons.arrow_back,
@@ -62,7 +63,7 @@ class _ChangeStateState extends State<ChangeState> {
                               width: 60,
                               height: 60,
                               decoration: const BoxDecoration(
-                                  color: Color(0xFF256380),
+                                  color: AppColors.primary,
                                   shape: BoxShape.circle),
                               child: const Icon(
                                 Icons.description_outlined,
@@ -82,8 +83,8 @@ class _ChangeStateState extends State<ChangeState> {
                           minHeight: 5,
                           backgroundColor: Color(0xFFD2D2CC),
                           value: 6,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFFD03363)),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              AppColors.secondary),
                         ),
                       ),
                       SizedBox(
@@ -141,7 +142,7 @@ class _ChangeStateState extends State<ChangeState> {
                         ),
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size(225, 44),
-                          primary: const Color(0xFFD03363),
+                          primary: AppColors.secondary,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(31),
@@ -160,7 +161,7 @@ class _ChangeStateState extends State<ChangeState> {
                               fontSize: 16,
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             ),
                           ),
                         ),
@@ -174,7 +175,7 @@ class _ChangeStateState extends State<ChangeState> {
                             ),
                             side: const BorderSide(
                               width: 1.0,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             )),
                       ),
                       customSizedBox4(context),
@@ -188,7 +189,7 @@ class _ChangeStateState extends State<ChangeState> {
                               fontSize: 16,
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             ),
                           ),
                         ),
@@ -202,7 +203,7 @@ class _ChangeStateState extends State<ChangeState> {
                             ),
                             side: const BorderSide(
                               width: 1.0,
-                              color: Color(0xFFD03363),
+                              color: AppColors.secondary,
                             )),
                       ),
                       customSizedBox3(context),

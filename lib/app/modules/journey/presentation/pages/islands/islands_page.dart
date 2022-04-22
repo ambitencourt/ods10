@@ -10,7 +10,6 @@ import 'package:ods10/app/modules/journey/presentation/widgets/islands/open_moda
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../widgets/islands/image_sliders_widget.dart';
 
 class IslandsPage extends StatefulWidget {
@@ -101,7 +100,7 @@ class _IslandsPageState
                             textStyle: const TextStyle(
                                 fontSize: 20,
                                 fontStyle: FontStyle.italic,
-                                color: Color(0xFF256380)),
+                                color: AppColors.primary),
                           ),
                         ),
                         const SizedBox(height: 5),
@@ -220,11 +219,11 @@ class _IslandsPageState
                                       size: 30,
                                       color: islandBloked
                                           ? AppColors.ligthBlack
-                                          : const Color(0xFFD03363),
+                                          : AppColors.secondary,
                                     ),
                                     radius: 30,
                                     backgroundColor: const Color(0xFFE0E0E0),
-                                    progressColor: const Color(0xFFD03363),
+                                    progressColor: AppColors.secondary,
                                   ),
                                   const SizedBox(width: 10),
                                   Column(
@@ -295,7 +294,7 @@ class _IslandsPageState
                               shape: BoxShape.circle,
                               color: controller.islandsPageStore.current ==
                                       entry.key
-                                  ? const Color(0xFFD03363)
+                                  ? AppColors.secondary
                                   : const Color(0xFFB8B8B8),
                             ),
                           ),
@@ -315,7 +314,7 @@ class _IslandsPageState
                             value: (controller.islandsStore.totalDocsDone) /
                                 (controller.islandsStore.docs.length),
                             valueColor: const AlwaysStoppedAnimation<Color>(
-                                Color(0xFFD03363)),
+                                AppColors.secondary),
                           ),
                         ),
                         customSizedBox4(context),
@@ -381,14 +380,14 @@ class _IslandsPageState
                     style: GoogleFonts.mulish(
                       textStyle: const TextStyle(
                         fontSize: 20,
-                        color: Color(0xFF256380),
+                        color: AppColors.primary,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
                   const Icon(
                     Icons.expand_less,
-                    color: Color(0xFF256380),
+                    color: AppColors.primary,
                     size: 24,
                   ),
                 ],
@@ -430,7 +429,7 @@ class _IslandsPageState
                   color: Colors.white,
                   width: 2,
                 ),
-                color: const Color(0xFF256380),
+                color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
               child: Icon(
