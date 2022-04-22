@@ -23,11 +23,21 @@ Aplicativo mobile para facilitar a retificação de documentos de pessoas trans.
 - [x] Consumo de dados via API com DIO;
 - [x] Custom Widgets;
 - [x] Clean architeture;
-- [x] Testes unitários;
+- [ ] Testes unitários;
 - [ ] Login e tela de cadastro
 
 ## 🗺Roadmap
-1.
+1. Desenvolvimento da estrutura base de pastas tendo como referência o Clean Dart;
+2. Implementação do Flutter Modular com as rotas iniciais;
+3. Desenvolvimento das classes responsáveis por conexão com a API;
+4. Implementado a regra de negócios e integração com a API;
+5. Implementado gerenciamento de estado com Mobx;
+6. Desenvolvimento de customs widgets para padronização do app;
+7. Desenvolvimento da estrutura de pastas para documentos e ilhas;
+8. Implementado estado com SetState em progress bar e carousel;
+9. Organização do fluxo do aplicativo;
+10. Reestruturação da chamada à API das ilhas com base no usuário;
+11. Reestruturação da chamada à API nos progress indicators;
 
 ## 🎨Demonstração
 

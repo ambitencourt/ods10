@@ -8,6 +8,8 @@ import 'package:ods10/app/modules/journey/presentation/controllers/islands_page_
 import 'package:ods10/app/modules/journey/presentation/widgets/islands/sizedbox_widget.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../widgets/islands/image_sliders_widget.dart';
+
 class IslandsBottomSheet extends StatefulWidget {
   const IslandsBottomSheet({Key? key}) : super(key: key);
 
@@ -60,16 +62,25 @@ class _IslandsBottomSheetState
                     context,
                     percent: controller.islandsStore.percentDone[0],
                     island: controller.islandsStore.islands[0],
+                    image: AssetImage(
+                      imgListIsland.elementAt(1).toString(),
+                    ),
                   ),
                   _buildIslandCircle(
                     context,
                     percent: controller.islandsStore.percentDone[1],
                     island: controller.islandsStore.islands[1],
+                    image: AssetImage(
+                      imgListIsland.elementAt(2).toString(),
+                    ),
                   ),
                   _buildIslandCircle(
                     context,
                     percent: controller.islandsStore.percentDone[2],
                     island: controller.islandsStore.islands[2],
+                    image: AssetImage(
+                      imgListIsland.elementAt(3).toString(),
+                    ),
                   ),
                 ],
               ),
@@ -85,6 +96,9 @@ class _IslandsBottomSheetState
                     context,
                     percent: controller.islandsStore.percentDone[3],
                     island: controller.islandsStore.islands[3],
+                    image: AssetImage(
+                      imgListIsland.elementAt(4).toString(),
+                    ),
                   ),
                   controller.islandsStore.totalDocsDone >=
                           controller.islandsStore.docs.length - 1
@@ -92,40 +106,45 @@ class _IslandsBottomSheetState
                           context,
                           percent: controller.islandsStore.percentDone[4],
                           island: controller.islandsStore.islands[4],
-                        )
-                      : InkWell(
-                          //Esse Inkwell é provisório até finalizar a tela
-                          onTap: () => Modular.to
-                              .pushNamed('/journey/xica_manicongo_details'),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: mediaQuery.width * .23,
-                                width: mediaQuery.width * .22,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF7C7C7C),
-                                ),
-                                child: Icon(
-                                  Icons.lock,
-                                  color: Colors.white,
-                                  size: mediaQuery.width * .16,
-                                ),
-                                alignment: Alignment.center,
-                              ),
-                              customSizedBox4(context),
-                              Text(
-                                controller.islandsStore.islands[4].name,
-                                style: GoogleFonts.mulish(
-                                  textStyle: TextStyle(
-                                    fontSize: mediaQuery.width * .03,
-                                    color: AppColors.primary,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          image: AssetImage(
+                            imgListIsland.elementAt(5).toString(),
                           ),
+                        )
+                      : Column(
+                          children: [
+                            Container(
+                              height: mediaQuery.width * .23,
+                              width: mediaQuery.width * .23,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFF7C7C7C),
+                              ),
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Image.asset(
+                                    imgListIsland.elementAt(5).toString(),
+                                  ),
+                                  const Icon(
+                                    Icons.lock,
+                                    size: 35,
+                                  ),
+                                ],
+                              ),
+                              alignment: Alignment.center,
+                            ),
+                            customSizedBox4(context),
+                            Text(
+                              controller.islandsStore.islands[4].name,
+                              style: GoogleFonts.mulish(
+                                textStyle: TextStyle(
+                                  fontSize: mediaQuery.width * .03,
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                 ],
               ),
@@ -141,6 +160,7 @@ class _IslandsBottomSheetState
     BuildContext context, {
     required double percent,
     required IslandEntity island,
+    required ImageProvider<Object>? image,
   }) {
     final mediaQuery = MediaQuery.of(context).size;
     return GestureDetector(
@@ -153,9 +173,7 @@ class _IslandsBottomSheetState
         animation: true,
         animationDuration: 500,
         center: CircleAvatar(
-          backgroundImage: const AssetImage(
-            'assets/images/island.png',
-          ),
+          backgroundImage: image,
           radius: mediaQuery.width * .105,
         ),
         radius: mediaQuery.width * .12,

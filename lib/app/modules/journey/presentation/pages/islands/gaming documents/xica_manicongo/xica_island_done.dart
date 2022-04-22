@@ -130,7 +130,7 @@ class _XicaIslandDoneState extends State<XicaIslandDone> {
                     ),
                   ),
                   customSizedBox1(context),
-                  customSizedBox1(context),
+                  customSizedBox3(context),
                   SizedBox(
                     width: 297,
                     height: 32,

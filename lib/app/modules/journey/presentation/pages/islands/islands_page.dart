@@ -31,13 +31,6 @@ class _IslandsPageState
     await controller.getIslands();
   }
 
-  //*FUNÇÃO PROVISÓRIA PARA REINICIAR O TUTORIAL(LIMPAR O SHARED PREFERENCES)!
-  //*========================================================================
-  // Future<void> clearData() async {
-  //   final pref = await SharedPreferences.getInstance();
-  //   await pref.clear();
-  // }
-
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -261,21 +254,6 @@ class _IslandsPageState
                           ),
                         ),
                       ),
-                      //*FUNÇÃO PROVISÓRIA PARA REINICIAR O TUTORIAL(LIMPAR O SHARED PREFERENCES)!
-                      //*========================================================================
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     setState(() {
-                      //       clearData();
-                      //     });
-                      //     const snackBar = SnackBar(
-                      //       content: Text('Dados limpos com sucesso!'),
-                      //     );
-
-                      //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      //   },
-                      //   child: const Text('Clear'),
-                      // ),
                     ],
                   ),
                   Center(

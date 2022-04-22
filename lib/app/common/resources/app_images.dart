@@ -4,6 +4,6 @@ class AppImages {
   static const String clock = "assets/images/clock.png";
   static const String logoWithoutBackground =
       "assets/images/logo_no_background.png";
-  static const String splash = "assets/images/splash.png";
-  static const String splash2 = "assets/images/splash2.png";
+  static const String splash = "assets/images/splashscreen.gif";
+  static const String splash2 = "assets/images/splashscreen.gif";
 }

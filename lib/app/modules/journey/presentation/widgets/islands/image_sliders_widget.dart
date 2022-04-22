@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 final List<String> imgListIsland = [
-  'assets/images/island.png',
-  'assets/images/island.png',
-  'assets/images/island.png',
-  'assets/images/island.png',
-  'assets/images/island.png',
-  'assets/images/island.png',
+  'assets/images/islands/arquipelago.png',
+  'assets/images/islands/lin.png',
+  'assets/images/islands/laerte.png',
+  'assets/images/islands/nery.png',
+  'assets/images/islands/luca.png',
+  'assets/images/islands/xica.png',
 ];
 final List<Widget> imageSlidersIsland = imgListIsland
     .map((item) => Image.asset(
