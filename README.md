@@ -83,10 +83,7 @@ Os seguintes packages foram utilizados no projeto:
  <img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4E03AQHPHYy0A_IJnw/profile-displayphoto-shrink_800_800/0/1544548714728?e=1655942400&v=beta&t=iAyuaelGr1QrDwl2Wa7KVld7FtJBJ_86iNUdCBWnf-Q" width="100px;" alt=""/>
  <br />
  <sub><b>Pedro Ferreira</b></sub></a> <a href="https://github.com/pedroenrre" title="Github"></a>
-
-
-(84) 988524773 
-
+<p>
 
 [![Linkedin Badge](https://img.shields.io/badge/-Pedro-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pedro-ferreira-a825758b/)](https://www.linkedin.com/in/pedro-ferreira-a825758b/) 
 [![Hotmail Badge](https://img.shields.io/badge/-Hotmail-0078D4?style=flat-square&logo=microsoft-outlook&logoColor=white&link=mailto:pedro_enrre@hotmail.com)](mailto:pedro_enrre@hotmail.com)
@@ -98,9 +95,7 @@ Os seguintes packages foram utilizados no projeto:
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/73924078?s=400&u=111fa3d893e5677088f0f0d8d4d74e52fdbc4e39&v=4" width="100px;" alt=""/>
  <br />
  <sub><b>Adriano Bitencourt</b></sub></a> <a href="https://github.com/ambitencourt" title="Github"></a>
-
-
-(75) 998512353 
+<p>
 
 [![Linkedin Badge](https://img.shields.io/badge/-Adriano-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/adrianombitencourt/)](https://www.linkedin.com/in/adrianombitencourt/) 
 [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:adriano.mirandabitencourt@gmail.com)](mailto:adriano.mirandabitencourt@gmail.com)
