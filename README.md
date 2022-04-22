@@ -26,10 +26,10 @@ Aplicativo mobile para facilitar a retificação de documentos de pessoas trans.
 - [x] Testes unitários;
 - [ ] Login e tela de cadastro
 
-## 🗺 Roadmap
+## 🗺Roadmap
 1.
 
-## 🎨 Demonstração
+## 🎨Demonstração
 
 Seguem telas:
 <table>
@@ -38,14 +38,14 @@ Seguem telas:
 </div>
 </table>
 
-## 🛠 Tecnologias
+## 🛠Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
 
-## 📦 Packages
+## 📦Packages
 
 Os seguintes packages foram utilizados no projeto:
 
@@ -62,7 +62,7 @@ Os seguintes packages foram utilizados no projeto:
 - [Google Fonts](https://pub.dev/packages/google_fonts)
 - [Build Runner](https://pub.dev/packages/build_runner) 
 - [Flutter Native Splash](https://pub.dev/packages/flutter_native_splash)  
-## 🤝 Como contribuir no projeto
+## 🤝Como contribuir no projeto
 
 1. Faça um **fork** do projeto.
 2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
@@ -72,7 +72,7 @@ Os seguintes packages foram utilizados no projeto:
 
 ---
 
-## 📱 Desenvolvedores
+## 📱Desenvolvedores
 
 <table>
 <tr>
@@ -111,7 +111,7 @@ Os seguintes packages foram utilizados no projeto:
 </table>
 ---
 
-## 📝 Licença
+## 📝Licença
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
 Projeto desenvolvido na trilha de Flutter do bootcamp 4 da Ioasys, disponibilizado publicamente para ser replicado e utilizado.
