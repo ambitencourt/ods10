@@ -4,15 +4,15 @@
 Aplicativo mobile para facilitar a retificação de documentos de pessoas trans.
 
 
-<p align="center">
+<p align="center"> • 
  <a href="#features">Features</a> •
  <a href="#roadmap">Roadmap</a> • 
  <a href="#demonstração">Demonstração</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#packages">Packages</a> • 
- <a href="#contribuição">Contribuição</a> • 
- <a href="#licença">Licença</a> • 
- <a href="#desenvolvedores">Desenvolvedores</a>
+ <a href="#contribuição">Contribuição</a>  •
+ <a href="#desenvolvedores">Desenvolvedores</a> •
+ <a href="#licença">Licença</a>
 </p>
 
 ## 🧩Features
