@@ -4,4 +4,5 @@ class AppImages {
   static const String clock = "assets/images/clock.png";
   static const String logoWithoutBackground =
       "assets/images/logo_no_background.png";
+  static const String splash = "assets/images/splash.png";
 }

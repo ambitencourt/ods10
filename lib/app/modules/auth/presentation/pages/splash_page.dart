@@ -43,18 +43,14 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: hasError
-          ? PersonalError(onTryAgain: getUser)
-          : Container(
-              color: AppColors.background,
-              child: Center(
-                child: Image.asset(
-                  AppImages.logoWithoutBackground,
-                  fit: BoxFit.contain,
-                ),
-              ),
+    return hasError
+        ? PersonalError(onTryAgain: getUser)
+        : Container(
+            color: AppColors.primary,
+            child: Image.asset(
+              AppImages.splash,
+              fit: BoxFit.cover,
             ),
-    );
+          );
   }
 }
