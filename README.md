@@ -62,7 +62,7 @@ Os seguintes packages foram utilizados no projeto:
 - [Google Fonts](https://pub.dev/packages/google_fonts)
 - [Build Runner](https://pub.dev/packages/build_runner) 
 - [Flutter Native Splash](https://pub.dev/packages/flutter_native_splash)  
-## 🤝Como contribuir no projeto
+## 🤝Contribuição
 
 1. Faça um **fork** do projeto.
 2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
