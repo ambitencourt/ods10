@@ -51,7 +51,7 @@ Os seguintes packages foram utilizados no projeto:
 
 - [Flutter Modular](https://pub.dev/packages?q=flutter_modular)
 - [Mobx](https://pub.dev/packages/mobx)
-  - [Flutter Mobx](htthttps://pub.dev/packages/flutter_mobx)
+  - [Flutter Mobx](https://pub.dev/packages/flutter_mobx)
   - [Mobx Codegen](https://pub.dev/packages/mobx_codegen)
 - [Dio](https://pub.dev/packages/dio)
 - [Google Fonts](https://pub.dev/packages/google_fonts)
@@ -85,11 +85,11 @@ Os seguintes packages foram utilizados no projeto:
  <sub><b>Pedro Ferreira</b></sub></a> <a href="https://github.com/pedroenrre" title="Github"></a>
 
 
-(84) 998512353 
+(84) 988524773 
 
 
 [![Linkedin Badge](https://img.shields.io/badge/-Pedro-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pedro-ferreira-a825758b/)](https://www.linkedin.com/in/pedro-ferreira-a825758b/) 
-[![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:adriano.mirandabitencourt@gmail.com)](mailto:pedro_enrre@hotmail.com)
+[![Hotmail Badge](https://img.shields.io/badge/-Hotmail-0078D4?style=flat-square&logo=microsoft-outlook&logoColor=white&link=mailto:pedro_enrre@hotmail.com)](mailto:pedro_enrre@hotmail.com)
 </div>
 </td>
 <td>
