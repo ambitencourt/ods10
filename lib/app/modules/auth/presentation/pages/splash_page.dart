@@ -47,9 +47,11 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
         ? PersonalError(onTryAgain: getUser)
         : Container(
             color: AppColors.primary,
-            child: Image.asset(
-              AppImages.splash,
-              fit: BoxFit.cover,
+            child: Center(
+              child: Image.asset(
+                AppImages.splash2,
+                fit: BoxFit.cover,
+              ),
             ),
           );
   }
