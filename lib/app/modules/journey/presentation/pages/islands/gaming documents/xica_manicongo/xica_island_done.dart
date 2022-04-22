@@ -11,18 +11,16 @@ import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
 import '../../../../../utils/links_util.dart';
 import '../../../../widgets/islands/sizedbox_widget.dart';
 
-class GoToListPage extends StatefulWidget {
-  final Map data;
-  const GoToListPage({
+class XicaIslandDone extends StatefulWidget {
+  const XicaIslandDone({
     Key? key,
-    required this.data,
   }) : super(key: key);
 
   @override
-  State<GoToListPage> createState() => _GoToListPageState();
+  State<XicaIslandDone> createState() => _XicaIslandDoneState();
 }
 
-class _GoToListPageState extends State<GoToListPage> {
+class _XicaIslandDoneState extends State<XicaIslandDone> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -51,6 +49,7 @@ class _GoToListPageState extends State<GoToListPage> {
                           ),
                           onPress: () {
                             Modular.to.pop();
+                            Modular.to.pop();
                           }),
                       const Spacer(),
                       CircularButtom(
@@ -59,8 +58,7 @@ class _GoToListPageState extends State<GoToListPage> {
                           size: 24,
                           color: Colors.white,
                         ),
-                        onPress: () =>
-                            Modular.to.pushNamed('/journey/documents'),
+                        onPress: () => Modular.to.pop(),
                       ),
                     ],
                   ),
@@ -82,7 +80,7 @@ class _GoToListPageState extends State<GoToListPage> {
                     ),
                   ),
                   Text(
-                    'Eba! Que ótimo.',
+                    'Parabéns',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.mulish(
                       textStyle: const TextStyle(
@@ -95,7 +93,7 @@ class _GoToListPageState extends State<GoToListPage> {
                   ),
                   customSizedBox3(context),
                   Text(
-                    'Vou apresentar o documento necessário em uma lista para você visualizar e também vou disponibilizar um modelo para download. Não esquece de mudar o estado para recebido quando tiver a documentação.',
+                    'Você recebeu o documento que faltava para a retificação do seu nome e/ou gênero. Sua conquista também é a nossa conquista. Nossa e de toda a comunidade. ',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.mulish(
                       textStyle: const TextStyle(
@@ -107,13 +105,11 @@ class _GoToListPageState extends State<GoToListPage> {
                   customSizedBox3(context),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        Modular.to.pushReplacementNamed('/journey/documents',
-                            arguments: widget.data);
-                      });
+                      Modular.to.pop();
+                      Modular.to.pop();
                     },
                     child: Text(
-                      'Ok',
+                      'Voltar ao arquipélago',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.mulish(
                         textStyle: const TextStyle(
@@ -133,6 +129,7 @@ class _GoToListPageState extends State<GoToListPage> {
                       ),
                     ),
                   ),
+                  customSizedBox1(context),
                   customSizedBox1(context),
                   SizedBox(
                     width: 297,

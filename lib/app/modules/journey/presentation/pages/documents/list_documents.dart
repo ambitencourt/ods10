@@ -2,8 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 import 'package:ods10/app/common/resources/app_colors.dart';
 import 'package:ods10/app/common/widgets/circular_buttom_widget.dart';
+import 'package:ods10/app/modules/journey/domain/entities/island_entity.dart';
 import 'package:ods10/app/modules/journey/presentation/controllers/home_controller.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_status_tab.dart';
 import 'package:ods10/app/modules/journey/presentation/widgets/documents_tab_bar_view.dart';
@@ -22,15 +24,56 @@ class DocumentsList extends StatefulWidget {
 
 class _DocumentsListState extends ModularState<DocumentsList, HomeController>
     with SingleTickerProviderStateMixin {
+  bool _init = true;
   @override
   void initState() {
     controller.tabController = TabController(length: 6, vsync: this);
     _getDocs();
     super.initState();
+    when((_) => shouldNavigate(controller.islandsStore.islands), () {
+      autoNavigation();
+    });
   }
 
   Future<void> _getDocs() async {
     await controller.getUserDocuments();
+  }
+
+  bool shouldNavigate(List<IslandEntity> list) {
+    // if (_init) return false;
+    if (widget.islandId == null) false;
+    final islandIndex = controller.islandsStore.islands
+        .indexWhere((element) => element.id == widget.islandId?['islandId']);
+    if (controller.islandsStore.percentDone[islandIndex] == 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  autoNavigation() {
+    if (widget.islandId == null) return;
+    final islandIndex = controller.islandsStore.islands
+        .indexWhere((element) => element.id == widget.islandId?['islandId']);
+    if (controller.islandsStore.percentDone[islandIndex] == 1) {
+      switch (islandIndex) {
+        case 0:
+          break;
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+        case 4:
+          Modular.to.pushNamed('/journey/xica_manicongo_done');
+          break;
+        case 5:
+          break;
+        default:
+          return;
+      }
+    }
   }
 
   @override

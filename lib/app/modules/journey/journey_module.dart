@@ -27,6 +27,7 @@ import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20do
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/laerte_coutinho/go_to_dowload_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/laerte_coutinho/go_to_list_page.dart';
 import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/tutorial/tutorial_page.dart';
+import 'package:ods10/app/modules/journey/presentation/pages/islands/gaming%20documents/xica_manicongo/xica_island_done.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/home_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/islands_page_store.dart';
 import 'package:ods10/app/modules/journey/presentation/stores/tutorial_page_store.dart';
@@ -166,21 +167,7 @@ class JourneyModule extends Module {
           ),
         ),
         ChildRoute(
-          '/xica_manicongo_details',
-          transition: TransitionType.fadeIn,
-          child: (context, args) => XicaManicongoIslandDetaills(
-            data: args.data,
-          ),
-        ),
-        ChildRoute(
           '/laerte-go-to-download',
-          transition: TransitionType.fadeIn,
-          child: (context, args) => GoToDownloadPage(
-            data: args.data,
-          ),
-        ),
-        ChildRoute(
-          '/xica-go-to-download',
           transition: TransitionType.fadeIn,
           child: (context, args) => GoToDownloadPage(
             data: args.data,
@@ -194,7 +181,7 @@ class JourneyModule extends Module {
           ),
         ),
         ChildRoute(
-          '/xica-go-to-list',
+          '/laerte-go-to-list',
           transition: TransitionType.fadeIn,
           child: (context, args) => GoToListPage(
             data: args.data,
@@ -216,6 +203,18 @@ class JourneyModule extends Module {
           '/exit-island',
           transition: TransitionType.fadeIn,
           child: (context, args) => const ExitIsland(),
+        ),
+        ChildRoute(
+          '/xica_manicongo_details',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => XicaManicongoIslandDetaills(
+            data: args.data,
+          ),
+        ),
+        ChildRoute(
+          '/xica_manicongo_done',
+          transition: TransitionType.fadeIn,
+          child: (context, args) => const XicaIslandDone(),
         ),
       ];
 }

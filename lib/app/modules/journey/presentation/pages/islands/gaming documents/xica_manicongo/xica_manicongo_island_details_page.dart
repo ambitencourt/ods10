@@ -11,7 +11,6 @@ import 'page2_detail.dart';
 import 'page3_detail.dart';
 import 'page4_detail.dart';
 import 'page5_detail.dart';
-import 'page6_detail.dart';
 
 class XicaManicongoIslandDetaills extends StatefulWidget {
   final Map? data;
@@ -40,37 +39,31 @@ class _XicaManicongoIslandDetaillsState
   }
 
   void _secondButtonPressed() {
-    pageController.page!.toInt() != 5
-        ? Modular.to
-            .pushReplacementNamed('/journey/documents', arguments: widget.data)
-        : Modular.to.pushReplacementNamed('/journey/xica-go-to-list',
-            arguments: widget.data);
+    Modular.to
+        .pushReplacementNamed('/journey/documents', arguments: widget.data);
   }
 
   void _firstButtonPressed() {
     setState(() {
-      current == 5
-          ? Modular.to.pushReplacementNamed('/journey/xica-go-to-download',
-              arguments: widget.data)
+      current == 4
+          ? _launchURLCNJ()
           : pageController.animateToPage(pageController.page!.toInt() + 1,
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn);
     });
   }
 
+  void _launchURLCNJ() async {
+    if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
 
-    void _launchURLCNJ() async {
-      if (!await launch(urlCNJ)) throw 'Tente novamente mais tarde $urlCNJ';
-    }
-
     nextButton() {
       if (current == 4) {
         return 'Baixar Modelo';
-      } else if (current == 5) {
-        return 'Voltar ao arquipélago';
       } else {
         return 'Próximo';
       }
@@ -145,7 +138,7 @@ class _XicaManicongoIslandDetaillsState
                       child: LinearProgressIndicator(
                         minHeight: 5,
                         backgroundColor: const Color(0xFFD2D2CC),
-                        value: current.toDouble() / 5,
+                        value: current.toDouble() / 4,
                         valueColor: const AlwaysStoppedAnimation<Color>(
                             AppColors.secondary),
                       ),
@@ -163,7 +156,7 @@ class _XicaManicongoIslandDetaillsState
                           Page3Detail(),
                           Page4Detail(),
                           Page5Detail(),
-                          Page6Detail(),
+                          // Page6Detail(),
                           // FreeModel(),
                         ],
                         onPageChanged: (page) => setState(() => current = page),
@@ -194,37 +187,33 @@ class _XicaManicongoIslandDetaillsState
                       ),
                     ),
                     customSizedBox4(context),
-                    // Visibility(
-                    //   replacement: const SizedBox.expand(),
-                    //   visible: current == 5 ? true : false,
-                    //   child: ElevatedButton(
-                    //     onPressed: _secondButtonPressed,
-                    //     child: Text(
-                    //       jumpToState(),
-                    //       textAlign: TextAlign.center,
-                    //       style: GoogleFonts.mulish(
-                    //         textStyle: const TextStyle(
-                    //           fontSize: 16,
-                    //           fontStyle: FontStyle.normal,
-                    //           fontWeight: FontWeight.w700,
-                    //           color: AppColors.secondary,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     style: ElevatedButton.styleFrom(
-                    //         fixedSize: const Size(225, 44),
-                    //         primary: Colors.white,
-                    //         shape: const RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.all(
-                    //             Radius.circular(31),
-                    //           ),
-                    //         ),
-                    //         side: const BorderSide(
-                    //           width: 1.0,
-                    //           color: AppColors.secondary,
-                    //         )),
-                    //   ),
-                    // ),
+                    ElevatedButton(
+                      onPressed: _secondButtonPressed,
+                      child: Text(
+                        jumpToState(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.mulish(
+                          textStyle: const TextStyle(
+                            fontSize: 16,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.secondary,
+                          ),
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(225, 44),
+                          primary: Colors.white,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(31),
+                            ),
+                          ),
+                          side: const BorderSide(
+                            width: 1.0,
+                            color: AppColors.secondary,
+                          )),
+                    ),
                     customSizedBox2(context),
                     SizedBox(
                       width: 297,
