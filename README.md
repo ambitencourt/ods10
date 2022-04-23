@@ -42,18 +42,9 @@ Aplicativo mobile para facilitar a retificação de documentos de pessoas trans.
 ## 🎨Demonstração
 
 Seguem telas:
-<table>
- <tr>
- <td>
-<img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%201.png" width="296" height="550"/>
-</td> <td>
-<img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%202.png" width="296" height="550"/>
-</td> <td>
-<img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%203.png" width="296" height="550"/>
 
-</td>
-</tr>
-</table>
+<img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%201.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%202.png"height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%203.png"height="300em"/>
+
 
 ## 🛠Tecnologias
 
