@@ -43,7 +43,7 @@ Aplicativo mobile para facilitar a retificação de documentos de pessoas trans.
 
 Seguem telas:
 
-<img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%201.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%202.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%203.png" height="300em"/>
+<img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%201.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%202.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%203.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Retifica-app-Flutter.gif" height="300em"/>
 
 
 ## 🛠Tecnologias
