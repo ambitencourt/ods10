@@ -171,7 +171,7 @@ class _IslandsPageState
                       ),
 
                       Positioned(
-                        top: 150,
+                        bottom: 20,
                         child: Visibility(
                           visible: controller.islandsPageStore.current > 0,
                           child: InkWell(
@@ -186,7 +186,7 @@ class _IslandsPageState
                                 shape: BoxShape.rectangle,
                                 color: islandBloked
                                     ? AppColors.white.withOpacity(0.5)
-                                    : AppColors.white,
+                                    : AppColors.white.withOpacity(0.8),
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(38),
                                 ),
