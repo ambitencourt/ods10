@@ -41,8 +41,9 @@ class _PersonalTabsState extends State<PersonalTabs>
           isScrollable: true,
           controller: widget.tabController,
           labelPadding: const EdgeInsets.symmetric(horizontal: 20),
-          unselectedLabelStyle: getRegularStyle(color: AppColors.black),
-          labelStyle: getBoldStyle(color: AppColors.black),
+          unselectedLabelStyle:
+              getRegularStyle(color: AppColors.black, fontSize: 18),
+          labelStyle: getBoldStyle(color: AppColors.black, fontSize: 18),
           labelColor: AppColors.black,
           indicatorSize: TabBarIndicatorSize.tab,
           indicatorWeight: 4,
