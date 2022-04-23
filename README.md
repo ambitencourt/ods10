@@ -44,10 +44,11 @@ Aplicativo mobile para facilitar a retificação de documentos de pessoas trans.
 Seguem telas:
 <table>
  <tr>
+ <td>
 <img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%201.png" />
 <img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%202.png" />
 <img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%203.png" />
-<td>
+
 </td>
 </tr>
 </table>
