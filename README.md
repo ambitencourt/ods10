@@ -51,6 +51,7 @@ Seguem telas:
 ## 🏁Como utilizar
 
 Baixe o apk(pacote de instalação do Android) no link abaixo e instale.
+https://github.com/ambitencourt/ods10/blob/master/assets/images/present/app-release.apk
 
 ## 🛠Tecnologias
 
