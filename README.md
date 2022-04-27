@@ -8,10 +8,12 @@ Link do protótipo final(figma): https://www.figma.com/file/5lKJSMhg2LZL6KOPZCZC
  <a href="#features">Features</a> •
  <a href="#roadmap">Roadmap</a> • 
  <a href="#demonstração">Demonstração</a> • 
+ <a href="#como-utilizar">Como utilizar</a> •
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#packages">Packages</a> • 
  <a href="#contribuição">Contribuição</a>  •
  <a href="#desenvolvedores">Desenvolvedores</a> •
+ <a href="#mentoria">Mentoria</a> •
  <a href="#licença">Licença</a>
 </p>
 
@@ -45,6 +47,10 @@ Seguem telas:
 
 <img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%201.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%202.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Group%203.png" height="300em"/><img src="https://github.com/ambitencourt/ods10/blob/master/assets/images/present/Retifica-app-Flutter.gif" height="300em"/>
 
+
+## 🏁Como utilizar
+
+Baixe o apk(pacote de instalação do Android) no link abaixo e instale.
 
 ## 🛠Tecnologias
 
@@ -114,6 +120,26 @@ Os seguintes packages foram utilizados no projeto:
 </table>
 ---
 
+## 📱Mentoria
+
+<table>
+<tr>
+
+<td>
+<div align="center">
+<a href="https://www.linkedin.com/in/toshiossada/">
+ <img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQGD1TmGrU-IJw/profile-displayphoto-shrink_800_800/0/1635343142852?e=1656547200&v=beta&t=D3xWf5diLfu1yJf94hcFSlAXGUu7SEFrFhhbyTZ6PEE" width="100px;" alt=""/>
+ <br />
+ <sub><b>Toshi Ossada</b></sub></a> <a href="https://github.com/toshiossada" title="Github"></a>
+<p>
+
+[![Linkedin Badge](https://img.shields.io/badge/-Toshi-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/toshiossada/)](https://www.linkedin.com/in/toshiossada/) 
+[![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:toshiossada@gmail.com)](mailto:toshiossada@gmail.com)
+</div>
+
+</td>
+</tr>
+</table>
 ## 📝Licença
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
