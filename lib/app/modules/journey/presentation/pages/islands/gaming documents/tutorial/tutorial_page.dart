@@ -105,7 +105,7 @@ class _TutorialPageState
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: LinearProgressIndicator(
                             minHeight: 5,
-                            backgroundColor: const Color(0xFFD2D2CC),
+                            backgroundColor: const Color(0xFFF65097),
                             value: controller.tutorialStore.current / 3,
                             valueColor: const AlwaysStoppedAnimation<Color>(
                                 AppColors.secondary),
